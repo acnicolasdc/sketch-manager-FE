@@ -1,6 +1,6 @@
 import React from 'react';
 import {useStyletron} from 'baseui';
-import { BsSquare, BsCircle, BsTextareaT } from "react-icons/bs";
+import { BsSquare, BsCircle, BsTextareaT, BsDash } from "react-icons/bs";
 import { OptionContainer,  OptionLabel } from './Option.style';
 
 export interface OptionProps {
@@ -8,6 +8,7 @@ export interface OptionProps {
 };
 
 const Icons:any = {
+    BsDash: (props:object) => (<BsDash {...props}/>),
     BsSquare: (props:object) => (<BsSquare {...props}/>),
     BsCircle: (props:object) => (<BsCircle {...props}/>),
     BsTextareaT: (props:object) => (<BsTextareaT {...props}/>),

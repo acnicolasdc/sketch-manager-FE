@@ -19,6 +19,7 @@ const { updateReact, rectangles } = React.useContext(StoreContext);
     if (e.type === 'click') {
         selectRect(id);
       } else if (e.type === 'contextmenu') {
+        window.addEventListener("contextmenu", function(a){ a.preventDefault()})
         alert('Right click');
       }
   }

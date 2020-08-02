@@ -5,7 +5,7 @@ export const OptionContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80px;
+    height: 70px;
     width:80px;
     padding:5px;
     background-color:'#FFF';

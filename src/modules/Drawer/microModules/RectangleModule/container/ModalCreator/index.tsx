@@ -24,11 +24,12 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
 const [value, setValue] = React.useState([]);
 const { addReact, rectangles } = React.useContext(StoreContext);
 const addRectangle = () => {
-  const newRect:Rect = {...RECT, id:`rect-code-03043`};
-  addReact(newRect);
-  cancell();
-}
-console.log("CONTEXT",rectangles)
+  const newRect:Rect = {...RECT, id:`rect-code-${rectangles.length}`};
+    addReact(newRect);
+    setValue([]);
+    cancell();
+  }
+  console.log(value)
   return (
       <Modal onClose={cancell} isOpen={isOpen}>
         <FocusOnce>
@@ -54,7 +55,7 @@ console.log("CONTEXT",rectangles)
           >
             Close
           </ModalButton>
-          <ModalButton autoFocus onClick={addRectangle}>
+          <ModalButton autoFocus onClick={addRectangle} disabled={value.length === 0}>
             Create
           </ModalButton>
         </ModalFooter>

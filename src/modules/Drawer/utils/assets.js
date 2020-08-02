@@ -4,14 +4,24 @@ export const RECT = {
     x: 200,
     y: 200,
     width: 450,
-    height: 20,
+    height: 10,
     fill: '#34495e',
     id: 'rect-code'
 }
 
+export const LABEL = {
+  x: 200,
+  y: 200,
+  fontSize: 15,
+  text: '',
+  id: 'label-code',
+}
+
+
 export const INITIAL_OPTIONS = [
     {label: 'Pipe', key: ModulesEnum.rect, icon:'BsSquare'},
     {label: 'Text', key: ModulesEnum.text, icon:'BsTextareaT'},
+    {label: 'Line', key: ModulesEnum.text, icon:'BsDash'},
 ];
 
 export const INITIAL_RECTS = [

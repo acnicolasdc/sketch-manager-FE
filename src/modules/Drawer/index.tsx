@@ -1,6 +1,7 @@
 import React from 'react'
 import { Stage } from 'react-konva';
-import StoreProvider, { StoreContext } from './providers/Store'
+import StoreProvider, { StoreContext } from './providers/Store';
+import TextModule, { TextModal } from './microModules/TextModule';
 import RectangleModule, { RectangleModal } from './microModules/RectangleModule';
 import OptionsBar from './components/OptionsBar';
 import { DrawerContainer } from './Drawer.style';
@@ -39,12 +40,14 @@ const Drawer: React.FunctionComponent = () => {
                               selected={selectedId}
                               selectRect={selectShape}
                             />
+                            <TextModule />
                         </StoreContext.Provider>
                   </Stage>
               )}
             </StoreContext.Consumer>
         </DrawerContainer>
       <RectangleModal isOpen={runModule===ModulesEnum.rect} cancell={closeModal}/>
+      <TextModal isOpen={runModule===ModulesEnum.text} cancell={closeModal}/>
     </StoreProvider>
   );
 }
