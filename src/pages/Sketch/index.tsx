@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Drawer from 'modules/Drawer'
+import { Container } from './Sketch.style';
 
 const Sketch = () => {
     return (
-        <div>
-            
-        </div>
+        <Container>
+            <Drawer />
+        </Container>
     )
 }
 
