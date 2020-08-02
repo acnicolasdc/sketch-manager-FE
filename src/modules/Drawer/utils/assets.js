@@ -1,3 +1,5 @@
+import { ModulesEnum } from './_';
+
 export const RECT = {
     x: 200,
     y: 200,
@@ -6,10 +8,12 @@ export const RECT = {
     fill: '#34495e',
     id: 'rect-code'
 }
+
 export const INITIAL_OPTIONS = [
-    {label: 'Pipe', key:'BsSquare', icon:'BsSquare'},
-    {label: 'Text', key:'BsTextareaT', icon:'BsTextareaT'},
+    {label: 'Pipe', key: ModulesEnum.rect, icon:'BsSquare'},
+    {label: 'Text', key: ModulesEnum.text, icon:'BsTextareaT'},
 ];
+
 export const INITIAL_RECTS = [
     {
       x: 10,

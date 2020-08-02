@@ -15,10 +15,10 @@ const Icons:any = {
 
 const Option: React.FunctionComponent<OptionProps> = (props) => {
     const [css, theme] = useStyletron();
-    const { item:{label, icon}, ...rest }:any = props;
+    const { item:{label, icon, key}, onClick, ...rest }:any = props;
     const Icon = Icons[icon];
     return (
-        <OptionContainer {...rest} theme={theme}>
+        <OptionContainer {...rest} theme={theme} onClick={()=>onClick(key)}>
             <Icon color={theme.colors.mono500}/>
             <OptionLabel theme={theme} >{label}</OptionLabel>
         </OptionContainer>

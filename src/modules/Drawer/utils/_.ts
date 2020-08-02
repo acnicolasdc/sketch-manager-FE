@@ -11,3 +11,8 @@ export type Options = {
     key?: string;
     icon?: string;
 }
+
+export enum ModulesEnum {
+    rect = "rect-module",
+    text = "text-module"
+ }

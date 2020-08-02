@@ -8,6 +8,9 @@ import {
   ModalButton,
   FocusOnce,
 } from 'baseui/modal';
+import { RECT } from '../../../../utils/assets';
+import { Rect } from '../../../../utils/_';
+import { StoreContext } from '../../../../providers/Store'
 
 const FAKE_FN = () => {};
 
@@ -19,6 +22,13 @@ export interface ModalCreatorProps {
 
 const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_FN, cancell=FAKE_FN, isOpen= false}) => {
 const [value, setValue] = React.useState([]);
+const { addReact, rectangles } = React.useContext(StoreContext);
+const addRectangle = () => {
+  const newRect:Rect = {...RECT, id:`rect-code-03043`};
+  addReact(newRect);
+  cancell();
+}
+console.log("CONTEXT",rectangles)
   return (
       <Modal onClose={cancell} isOpen={isOpen}>
         <FocusOnce>
@@ -44,7 +54,7 @@ const [value, setValue] = React.useState([]);
           >
             Close
           </ModalButton>
-          <ModalButton autoFocus onClick={accept}>
+          <ModalButton autoFocus onClick={addRectangle}>
             Create
           </ModalButton>
         </ModalFooter>

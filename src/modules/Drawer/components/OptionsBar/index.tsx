@@ -8,7 +8,7 @@ const ON_ClICK = () => {};
 export interface ButtonRadioGroupProps {
     overrides?: object;
     options?: Array<Options>;
-    onClick?: (name: string) => void;
+    onClick?: (key: string) => void;
 };
 
 const OptionsBar: React.FunctionComponent<ButtonRadioGroupProps> = ({ options = [], onClick = ON_ClICK, overrides = {}}) => {

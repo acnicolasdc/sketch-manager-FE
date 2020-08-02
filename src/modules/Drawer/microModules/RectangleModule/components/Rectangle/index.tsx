@@ -1,5 +1,6 @@
 import React from 'react';
 import { Rect, Transformer } from 'react-konva';
+import { StoreContext } from '../../../../providers/Store'
 
 export interface RectangleProps {
     shapeProps?: object;
@@ -12,7 +13,8 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
   
   const shapeRef = React.useRef<HTMLHeadingElement | any>();
   const trRef = React.useRef<HTMLHeadingElement | any>();
-
+  const { rectangles } = React.useContext(StoreContext);
+  console.log("COMPONENT",rectangles)
   React.useEffect(() => {
     if (isSelected) {
       // we need to attach transformer manually
