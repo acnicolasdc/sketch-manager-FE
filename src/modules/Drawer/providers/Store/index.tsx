@@ -7,6 +7,7 @@ export interface AppContextInterface {
     addText: (element: object) => void,
     addReact: (element: object) => void,
     updateReact: (rectangles: Array<object>) => void,
+    updateTexts: (texts: Array<object>) => void,
 }
 
 export const StoreContext = React.createContext<AppContextInterface>({
@@ -14,7 +15,8 @@ export const StoreContext = React.createContext<AppContextInterface>({
     texts:[],
     addText: () => {},
     addReact: () => {},
-    updateReact: () => {}
+    updateReact: () => {},
+    updateTexts: () => {}
 });
 export interface StoreProviderProps {
     children?: React.ReactNode;
@@ -36,9 +38,10 @@ const StoreProvider:React.FunctionComponent<StoreProviderProps> = ({ children })
     const addText = (element: object = {}) => _addElement(element, setTexts);
 
     const updateReact = (rectangles:Array<object>) => setRect(rectangles);
+    const updateTexts = (texts:Array<object>) => setTexts(texts);
     
     return (
-        <StoreContext.Provider value={{ rectangles, texts, addReact, addText, updateReact}}>
+        <StoreContext.Provider value={{ rectangles, texts, addReact, addText, updateReact, updateTexts}}>
             {children}
         </StoreContext.Provider>
     )
