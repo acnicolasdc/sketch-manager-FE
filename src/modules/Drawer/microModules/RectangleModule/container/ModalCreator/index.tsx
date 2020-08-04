@@ -24,7 +24,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
 const [value, setValue] = React.useState([]);
 const { addReact, rectangles } = React.useContext(StoreContext);
 const addRectangle = () => {
-  const newRect:Rect = {...RECT, id:`rect-code-${rectangles.length}`};
+  const newRect:Rect = {...RECT, id:`rect-code-pipe-${rectangles.length}`};
     addReact(newRect);
     setValue([]);
     cancell();

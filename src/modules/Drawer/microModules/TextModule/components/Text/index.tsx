@@ -9,23 +9,27 @@ export interface RectangleProps {
 };
 
 const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
-  const shapeRef = React.useRef<HTMLHeadingElement | any>();
-  const trRef = React.useRef<HTMLHeadingElement | any>();
+  const textRef = React.useRef<HTMLHeadingElement | any>();
+  const texRef = React.useRef<HTMLHeadingElement | any>();
 
   React.useEffect(() => {
     if (isSelected) {
       // we need to attach transformer manually
-      trRef.current.setNode(shapeRef.current);
-      trRef.current.getLayer().batchDraw();
+      texRef.current.setNode(textRef.current);
+      texRef.current.getLayer().batchDraw();
     }
   }, [isSelected]);
   return (
     <React.Fragment>
       <Text
-        ref={shapeRef}
+        onContextMenu={onSelect}
+        onClick={onSelect}
+        onTap={onSelect}
+        ref={textRef}
         {...shapeProps}
         draggable
         onDragEnd={e => {
+          console.log("Dragable", e)
           onChange({
             ...shapeProps,
             x: e.target.x(),
@@ -37,10 +41,9 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
           // and NOT its width or height
           // but in the store we have only width and height
           // to match the data better we will reset scale on transform end
-          const node: any = shapeRef.current;
+          const node: any = textRef.current;
           const scaleX = node.scaleX();
           const scaleY = node.scaleY();
-
           // we will reset it back
           node.scaleX(1);
           node.scaleY(1);
@@ -48,6 +51,7 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
             ...shapeProps,
             x: node.x(),
             y: node.y(),
+            fontSize: Math.max(node.height() * scaleY),
             // set minimal value
             width: Math.max(5, node.width() * scaleX),
             height: Math.max(node.height() * scaleY)
@@ -56,7 +60,7 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
       />
     {isSelected && (
         <Transformer
-          ref={trRef}
+          ref={texRef}
           boundBoxFunc={(oldBox, newBox) => {
             // limit resize
             if (newBox.width < 5 || newBox.height < 5) {

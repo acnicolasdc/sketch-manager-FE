@@ -40,7 +40,10 @@ const Drawer: React.FunctionComponent = () => {
                               selected={selectedId}
                               selectRect={selectShape}
                             />
-                            <TextModule />
+                            <TextModule 
+                              selected={selectedId}
+                              selectRect={selectShape}
+                            />
                         </StoreContext.Provider>
                   </Stage>
               )}

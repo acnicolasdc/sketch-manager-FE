@@ -24,7 +24,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({ cancell=FAKE
   const { addText, texts } = React.useContext(StoreContext);
 
   const addLabel = () => {
-    const newLabel: Label = {...LABEL, id:`rect-code-${texts.length}`, text: value};
+    const newLabel: Label = {...LABEL, id:`rect-code-text-${texts.length}`, text: value};
     addText(newLabel);
     setValue('');
     cancell();
