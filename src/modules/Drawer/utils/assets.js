@@ -17,11 +17,13 @@ export const LABEL = {
   id: 'label-code',
 }
 
-
 export const INITIAL_OPTIONS = [
-    {label: 'Pipe', key: ModulesEnum.rect, icon:'BsSquare'},
-    {label: 'Text', key: ModulesEnum.text, icon:'BsTextareaT'},
-    {label: 'Line', key: ModulesEnum.text, icon:'BsDash'},
+    {label: 'Pipe', key: ModulesEnum.rect, icon:'BsDash'},
+    {label: 'Union', key: ModulesEnum.union, icon:'BsCrop'},
+    {label: 'Valve', key: ModulesEnum.valve, icon:'BsCircle'},
+    {label: 'Drip', key: ModulesEnum.drip, icon:'BsCircleFill'},
+    {label: 'Reducer', key: ModulesEnum.decrease, icon:'BsCaretRightFill'},
+    {label: 'Label', key: ModulesEnum.text, icon:'BsTextareaT'},
 ];
 
 export const INITIAL_RECTS = [

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Select } from "baseui/select";
+import { Input } from "baseui/input";
+import { Slider } from "baseui/slider";
 import {
   Modal,
   ModalHeader,
@@ -10,8 +12,9 @@ import {
 } from 'baseui/modal';
 import { RECT } from '../../../../utils/assets';
 import { Rect } from '../../../../utils/_';
-import { StoreContext } from '../../../../providers/Store'
-
+import { StoreContext } from '../../../../providers/Store';
+import { OPTIONS_TYPES_MATERIAL, OPTIONS_TYPES_METHOD, OPTIONS_TYPES_PRESSURE, OPTIONS_TYPES_SIZE } from './utils/assets';
+import { Row } from './ModalCreator.style';
 const FAKE_FN = () => {};
 
 export interface ModalCreatorProps {
@@ -21,32 +24,113 @@ export interface ModalCreatorProps {
 };
 
 const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_FN, cancell=FAKE_FN, isOpen= false}) => {
-const [value, setValue] = React.useState([]);
-const { addReact, rectangles } = React.useContext(StoreContext);
-const addRectangle = () => {
-  const newRect:Rect = {...RECT, id:`rect-code-pipe-${rectangles.length}`};
-    addReact(newRect);
-    setValue([]);
-    cancell();
+  const [material, setMaterial] = React.useState([]);
+  const [pressure, setPressure] = React.useState([]);
+  const [ size, setSize ] = React.useState([]);
+  const [ method, setMethod ] = React.useState([]);
+  const [length, setLenght] = React.useState('');
+  const [ year, setYear] = React.useState('');
+  const [ cover, setCover ] = React.useState([70]);
+
+  const { addReact, rectangles } = React.useContext(StoreContext);
+  const addRectangle = () => {
+      const newRect:Rect = {...RECT, id:`rect-code-pipe-${rectangles.length}`};
+      addReact(newRect);
+      cancell();  
   }
-  console.log(value)
+
+  const formVerification = ():boolean => {
+    if(material.length === 0 || pressure.length === 0)return true;
+    if(size.length === 0 || method.length === 0)return true;
+    if(year === '' || cover.length === 0)return true;
+    return false;
+  }
   return (
       <Modal onClose={cancell} isOpen={isOpen}>
         <FocusOnce>
           <ModalHeader>Create a Pipe</ModalHeader>
         </FocusOnce>
         <ModalBody>
-        <Select
-            options={[
-                { label: "PVC", id: "#F0F8FF" },
-                { label: "Rigid", id: "#FAEBD7" },
-                { label: "PEX", id: "#00FFFF" },
-                { label: "Cast Iron", id: "#7FFFD4" },
-            ]}
-            value={value}
-            placeholder="Select Type"
-            onChange={(params:any) => setValue(params.value)}
+          <Row>
+            <Select
+              options={OPTIONS_TYPES_MATERIAL}
+              value={material}
+              placeholder="Select material"
+              onChange={(params:any) => setMaterial(params.value)}
             />
+            <Select
+              options={OPTIONS_TYPES_METHOD}
+              value={method}
+              placeholder="Select method"
+              onChange={(params:any) => setMethod(params.value)}
+            />
+          </Row>
+          <Row>
+          <Select
+              options={OPTIONS_TYPES_SIZE}
+              value={size}
+              placeholder="Select size"
+              onChange={(params:any) => setSize(params.value)}
+            />
+            <Select
+              options={OPTIONS_TYPES_PRESSURE}
+              value={pressure}
+              placeholder="Select pressure"
+              onChange={(params:any) => setPressure(params.value)}
+            />
+          </Row>
+          <Row>
+              <Input
+                required
+                value={year}
+                onChange={(e: any) => setYear(e.target.value)} 
+                placeholder="Year"
+              />
+              <Input
+                required 
+                value={length}
+                onChange={(e: any) => setLenght(e.target.value)}
+                placeholder="Length"
+              />
+          </Row>
+          <Slider
+            value={cover}
+            min={10}
+            max={100}
+            onChange={({value}) => setCover(value)}
+            overrides={{
+              InnerThumb: ({$value, $thumbIndex}) => (
+                <React.Fragment>{$value[$thumbIndex]+'"'}</React.Fragment>
+              ),
+              ThumbValue: () => null,
+              Thumb: {
+                style: () => ({
+                  height: '36px',
+                  width: '36px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderTopLeftRadius: '36px',
+                  borderTopRightRadius: '36px',
+                  borderBottomRightRadius: '36px',
+                  borderBottomLeftRadius: '36px',
+                  borderLeftStyle: 'solid',
+                  borderRightStyle: 'solid',
+                  borderTopStyle: 'solid',
+                  borderBottomStyle: 'solid',
+                  borderLeftWidth: '3px',
+                  borderTopWidth: '3px',
+                  borderRightWidth: '3px',
+                  borderBottomWidth: '3px',
+                  borderLeftColor: `#ccc`,
+                  borderTopColor: `#ccc`,
+                  borderRightColor: `#ccc`,
+                  borderBottomColor: `#ccc`,
+                  backgroundColor: '#fff',
+              }),
+              },
+            }}
+          />
         </ModalBody>
         <ModalFooter>
           <ModalButton
@@ -55,7 +139,7 @@ const addRectangle = () => {
           >
             Close
           </ModalButton>
-          <ModalButton autoFocus onClick={addRectangle} disabled={value.length === 0}>
+          <ModalButton autoFocus onClick={addRectangle} disabled={formVerification()}>
             Create
           </ModalButton>
         </ModalFooter>

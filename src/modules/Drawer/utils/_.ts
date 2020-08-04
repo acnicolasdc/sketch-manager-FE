@@ -24,5 +24,9 @@ export type Options = {
 export enum ModulesEnum {
     rect = "rect-module",
     text = "text-module",
-    label = "label-module"
- }
+    line = "line-module",
+    valve = "valve-module",
+    drip = "drip-module",
+    decrease = "decrease-module",
+    union = "union-module",
+}

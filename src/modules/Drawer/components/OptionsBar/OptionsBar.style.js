@@ -6,5 +6,4 @@ export const Option = styled('div', {
     alignItems: 'center',
     height: '80px',
     width:'80px',
-    backgroundColor: 'red'
 });
