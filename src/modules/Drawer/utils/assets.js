@@ -17,6 +17,14 @@ export const LABEL = {
   id: 'label-code',
 }
 
+export const CIRCLE = {
+  x: 200,
+  y: 200,
+  radius: 20,
+  code:'V#12345',
+  id: 'circle-code',
+}
+
 export const INITIAL_OPTIONS = [
     {label: 'Pipe', key: ModulesEnum.rect, icon:'BsDash'},
     {label: 'Union', key: ModulesEnum.union, icon:'BsCrop'},

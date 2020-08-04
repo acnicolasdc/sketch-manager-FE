@@ -15,6 +15,14 @@ export type Label = {
     id?: string;
 }
 
+export type Circle = {
+    x?: number;
+    y?: number;
+    radius?: number;
+    code?:string;
+    id?: string;
+}
+
 export type Options = {
     label?: string;
     key?: string;

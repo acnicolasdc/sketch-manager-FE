@@ -7,17 +7,17 @@ import { StoreContext } from '../../providers/Store';
 
 export interface RectangleProps {
     selected?: string;
-    selectRect?:(id:string)=>void;    
+    selectText?:(id:string)=>void;    
 };
 
 
 const TextModule: React.FunctionComponent<RectangleProps> = (
-    {selected='', selectRect = ()=>{}}
+    {selected='', selectText = ()=>{}}
 ) => {
   const { texts, updateTexts } = React.useContext(StoreContext);
   const handlerClick = (e:any, id:any) => {
     if (e.type === 'click') {
-        selectRect(id);
+        selectText(id);
       } else if (e.type === 'contextmenu') {
         window.addEventListener("contextmenu", function(a){ a.preventDefault()})
         alert('Right click');
