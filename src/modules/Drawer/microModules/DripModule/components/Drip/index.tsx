@@ -23,9 +23,9 @@ const Drip: React.FunctionComponent <DripProps> = ({ shapeProps, isSelected, onS
   return (
     <React.Fragment>
       <Group ref={shapeRef}>
-      <Text text={shapeProps.code}fontSize={12} x={shapeProps.x+shapeProps.radius+10} y={shapeProps.y} ref={shapeRef}/>
+      <Text text={shapeProps.code}fontSize={12} x={shapeProps.x+shapeProps.radius+10} y={shapeProps.y-15} ref={shapeRef}/>
         <Circle
-          radius={50}
+          radius={30}
           onContextMenu={onSelect}
           onClick={onSelect}
           onTap={onSelect}

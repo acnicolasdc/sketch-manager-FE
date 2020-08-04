@@ -3,7 +3,7 @@ export type Rect = {
     y?: number;
     width?: number;
     height?: number;
-    fill?: string;
+    value?: string;
     id?: string;
 }
 
@@ -23,6 +23,13 @@ export type Circle = {
     id?: string;
 }
 
+export type Trinagle = {
+    x?: number;
+    y?: number;
+    value?:string;
+    id?: string;
+}
+
 export type Options = {
     label?: string;
     key?: string;
@@ -35,6 +42,6 @@ export enum ModulesEnum {
     line = "line-module",
     valve = "valve-module",
     drip = "drip-module",
-    decrease = "decrease-module",
+    reducer = "reducer-module",
     union = "union-module",
 }

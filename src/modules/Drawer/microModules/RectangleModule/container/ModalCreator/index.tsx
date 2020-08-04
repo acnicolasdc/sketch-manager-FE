@@ -34,7 +34,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
 
   const { addReact, rectangles } = React.useContext(StoreContext);
   const addRectangle = () => {
-      const newRect:Rect = {...RECT, id:`rect-code-pipe-${rectangles.length}`};
+      const newRect:Rect = {...RECT, id:`rect-code-pipe-${rectangles.length}`, value:`${length}"`};
       addReact(newRect);
       cancell();  
   }
@@ -42,7 +42,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
   const formVerification = ():boolean => {
     if(material.length === 0 || pressure.length === 0)return true;
     if(size.length === 0 || method.length === 0)return true;
-    if(year === '' || cover.length === 0)return true;
+    if(year === '' || cover.length === 0 || length === '')return true;
     return false;
   }
   return (

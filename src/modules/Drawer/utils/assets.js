@@ -4,8 +4,8 @@ export const RECT = {
     x: 200,
     y: 200,
     width: 450,
-    height: 10,
-    fill: '#34495e',
+    height: 5,
+    value:'500"',
     id: 'rect-code'
 }
 
@@ -25,12 +25,19 @@ export const CIRCLE = {
   id: 'circle-code',
 }
 
+export const TRIANGLE = {
+  x: 200,
+  y: 200,
+  code:'12"',
+  id: 'triangle-code',
+}
+
 export const INITIAL_OPTIONS = [
     {label: 'Pipe', key: ModulesEnum.rect, icon:'BsDash'},
     {label: 'Union', key: ModulesEnum.union, icon:'BsCrop'},
     {label: 'Valve', key: ModulesEnum.valve, icon:'BsCircle'},
     {label: 'Drip', key: ModulesEnum.drip, icon:'BsCircleFill'},
-    {label: 'Reducer', key: ModulesEnum.decrease, icon:'BsCaretRightFill'},
+    {label: 'Reducer', key: ModulesEnum.reducer, icon:'BsCaretRightFill'},
     {label: 'Label', key: ModulesEnum.text, icon:'BsTextareaT'},
 ];
 

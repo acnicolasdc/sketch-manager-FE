@@ -1,8 +1,8 @@
 import React from 'react';
-import { Rect, Transformer } from 'react-konva';
+import { Rect, Transformer, Group, Text } from 'react-konva';
 
 export interface RectangleProps {
-    shapeProps?: object;
+    shapeProps?: any;
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
@@ -20,14 +20,16 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
       trRef.current.getLayer().batchDraw();
     }
   }, [isSelected]);
-
+  const postionX = shapeProps.x + (shapeProps.width / 2);
   return (
     <React.Fragment>
+      <Group ref={shapeRef}>
+      <Text text={shapeProps.value}fontSize={12} x={postionX} y={shapeProps.y-15} ref={shapeRef}/>
       <Rect
         onContextMenu={onSelect}
         onClick={onSelect}
         onTap={onSelect}
-        ref={shapeRef}
+        fill='#2d3436'
         {...shapeProps}
         draggable
         onDragEnd={e => {
@@ -59,6 +61,7 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
           });
         }}
       />
+      </Group>
       {isSelected && (
         <Transformer
           ref={trRef}

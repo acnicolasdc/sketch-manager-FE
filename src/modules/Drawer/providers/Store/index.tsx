@@ -5,30 +5,36 @@ export interface AppContextInterface {
     texts: Array<object>,
     drips: Array<object>,
     valves: Array<object>,
+    reducers: Array<object>,
     rectangles: Array<object>,
     addText: (element: object) => void,
     addValves: (element: object) => void,
+    addReducers: (element: object) => void,
     addDrips: (element: object) => void,
     addReact: (element: object) => void,
     updateTexts: (texts: Array<object>) => void,
     updateValves: (valves: Array<object>) => void,
+    updateReducers: (reducers: Array<object>) => void,
     updateDrips: (drips: Array<object>) => void,
     updateReact: (rectangles: Array<object>) => void,
 }
 
 export const StoreContext = React.createContext<AppContextInterface>({
     rectangles: [],
+    reducers: [],
     valves: [],
     drips: [],
     texts:[],
     addText: () => {},
     addReact: () => {},
+    addReducers: () => {},
     addValves: () => {},
     addDrips: () => {},
     updateTexts: () => {},
     updateValves: () => {},
     updateReact: () => {},
     updateDrips: () => {},
+    updateReducers: () => {},
 });
 export interface StoreProviderProps {
     children?: React.ReactNode;
@@ -40,6 +46,7 @@ const StoreProvider:React.FunctionComponent<StoreProviderProps> = ({ children })
     const [texts, setTexts] =  React.useState<object[]>([]);
     const [valves, setValves] =  React.useState<object[]>([]);
     const [drips, setDrips] =  React.useState<object[]>([]);
+    const [reducers, setReducers] =  React.useState<object[]>([]);
 
     const _validation = (element: object = {}): boolean => typeof element === 'object' && Object.keys(element).length !== 0;
     
@@ -52,14 +59,16 @@ const StoreProvider:React.FunctionComponent<StoreProviderProps> = ({ children })
     const addText = (element: object = {}) => _addElement(element, setTexts);
     const addValves = (element: object = {}) => _addElement(element, setValves);
     const addDrips = (element: object = {}) => _addElement(element, setDrips);
+    const addReducers = (element: object = {}) => _addElement(element, setReducers);
 
     const updateReact = (rectangles:Array<object>) => setRect(rectangles);
     const updateValves = (valves:Array<object>) => setValves(valves);
     const updateTexts = (texts:Array<object>) => setTexts(texts);
     const updateDrips = (drips:Array<object>) => setDrips(drips);
+    const updateReducers = (reducers:Array<object>) => setReducers(reducers);
     
     return (
-        <StoreContext.Provider value={{ rectangles, texts, valves, drips, addReact, addText, addValves, addDrips, updateReact, updateTexts, updateValves, updateDrips }}>
+        <StoreContext.Provider value={{ rectangles, texts, valves, drips, reducers, addReact, addText, addValves, addDrips, addReducers, updateReact, updateTexts, updateValves, updateDrips, updateReducers }}>
             {children}
         </StoreContext.Provider>
     )

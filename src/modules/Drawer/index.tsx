@@ -4,6 +4,7 @@ import StoreProvider, { StoreContext } from './providers/Store';
 import ValveModule, { ValveModal } from './microModules/ValveModule';
 import DripModule, { DripModal } from './microModules/DripModule';
 import TextModule, { TextModal } from './microModules/TextModule';
+import ReducerModule, { ReducerModal } from './microModules/ReducerModule';
 import RectangleModule, { RectangleModal } from './microModules/RectangleModule';
 import OptionsBar from './components/OptionsBar';
 import { DrawerContainer } from './Drawer.style';
@@ -54,7 +55,10 @@ const Drawer: React.FunctionComponent = () => {
                               selected={selectedId}
                               selectDrip={selectShape}
                             />
-
+                            <ReducerModule
+                              selected={selectedId}
+                              selectReducer={selectShape}
+                            />
                         </StoreContext.Provider>
                   </Stage>
               )}
@@ -64,6 +68,7 @@ const Drawer: React.FunctionComponent = () => {
       <ValveModal isOpen={runModule===ModulesEnum.valve} cancell={closeModal}/>
       <TextModal isOpen={runModule===ModulesEnum.text} cancell={closeModal}/>
       <DripModal isOpen={runModule===ModulesEnum.drip} cancell={closeModal}/>
+      <ReducerModal isOpen={runModule===ModulesEnum.reducer} cancell={closeModal}/>
     </StoreProvider>
   );
 }

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Circle, Transformer, Group, Text } from 'react-konva';
+import { Line, Transformer, Group, Text } from 'react-konva';
 
-export interface ValveProps {
+export interface ReducerProps {
     shapeProps?: any;
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
 };
 
-const Valve: React.FunctionComponent <ValveProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const Reducer: React.FunctionComponent <ReducerProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
   
   const shapeRef = React.useRef<HTMLHeadingElement | any>();
   const trRef = React.useRef<HTMLHeadingElement | any>();
@@ -23,13 +23,14 @@ const Valve: React.FunctionComponent <ValveProps> = ({ shapeProps, isSelected, o
   return (
     <React.Fragment>
       <Group ref={shapeRef}>
-      <Text text={shapeProps.code}fontSize={12} x={shapeProps.x+shapeProps.radius+10} y={shapeProps.y-15} ref={shapeRef}/>
-        <Circle
-          radius={30}
+      <Text text={shapeProps.value}fontSize={12} x={shapeProps.x+30} y={shapeProps.y} ref={shapeRef}/>
+        <Line
+          points={[0, 30, 15, 0, 30, 30]}
+          closed
           onContextMenu={onSelect}
           onClick={onSelect}
           onTap={onSelect}
-          stroke="#2d3436"
+          fill="#2d3436"
           {...shapeProps}
           draggable
           onDragEnd={e => {
@@ -78,4 +79,4 @@ const Valve: React.FunctionComponent <ValveProps> = ({ shapeProps, isSelected, o
   );
 };
 
-export default Valve;
+export default Reducer;
