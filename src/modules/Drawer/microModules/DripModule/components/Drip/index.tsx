@@ -1,14 +1,14 @@
 import React from 'react';
 import { Circle, Transformer, Group, Text } from 'react-konva';
 
-export interface ValveProps {
+export interface DripProps {
     shapeProps?: any;
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
 };
 
-const Valve: React.FunctionComponent <ValveProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const Drip: React.FunctionComponent <DripProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
   
   const shapeRef = React.useRef<HTMLHeadingElement | any>();
   const trRef = React.useRef<HTMLHeadingElement | any>();
@@ -29,7 +29,7 @@ const Valve: React.FunctionComponent <ValveProps> = ({ shapeProps, isSelected, o
           onContextMenu={onSelect}
           onClick={onSelect}
           onTap={onSelect}
-          stroke="black"
+          fill="#4d73be"
           {...shapeProps}
           draggable
           onDragEnd={e => {
@@ -78,4 +78,4 @@ const Valve: React.FunctionComponent <ValveProps> = ({ shapeProps, isSelected, o
   );
 };
 
-export default Valve;
+export default Drip;

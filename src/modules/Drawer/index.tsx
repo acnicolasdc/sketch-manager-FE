@@ -2,6 +2,7 @@ import React from 'react'
 import { Stage } from 'react-konva';
 import StoreProvider, { StoreContext } from './providers/Store';
 import ValveModule, { ValveModal } from './microModules/ValveModule';
+import DripModule, { DripModal } from './microModules/DripModule';
 import TextModule, { TextModal } from './microModules/TextModule';
 import RectangleModule, { RectangleModal } from './microModules/RectangleModule';
 import OptionsBar from './components/OptionsBar';
@@ -49,6 +50,10 @@ const Drawer: React.FunctionComponent = () => {
                               selected={selectedId}
                               selectValve={selectShape}
                             />
+                            <DripModule 
+                              selected={selectedId}
+                              selectDrip={selectShape}
+                            />
 
                         </StoreContext.Provider>
                   </Stage>
@@ -58,6 +63,7 @@ const Drawer: React.FunctionComponent = () => {
       <RectangleModal isOpen={runModule===ModulesEnum.rect} cancell={closeModal}/>
       <ValveModal isOpen={runModule===ModulesEnum.valve} cancell={closeModal}/>
       <TextModal isOpen={runModule===ModulesEnum.text} cancell={closeModal}/>
+      <DripModal isOpen={runModule===ModulesEnum.drip} cancell={closeModal}/>
     </StoreProvider>
   );
 }
