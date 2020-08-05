@@ -55,7 +55,7 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
           });
         }}
       />
-      <Text text={`Cover: ${shapeProps.value}"`}fontSize={12} x={postionX} y={shapeProps.y+10} ref={shapeRef}/>
+      <Text text={`Cover: ${shapeProps.data.cover}"`}fontSize={12} x={postionX} y={shapeProps.y+10} ref={shapeRef}/>
       </Group>
       {isSelected && (
         <Transformer
