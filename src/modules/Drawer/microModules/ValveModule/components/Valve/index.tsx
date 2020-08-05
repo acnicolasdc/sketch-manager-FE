@@ -25,7 +25,7 @@ const Valve: React.FunctionComponent <ValveProps> = ({ shapeProps, isSelected, o
       <Group ref={shapeRef}>
       <Text text={shapeProps.code}fontSize={12} x={shapeProps.x+shapeProps.radius+10} y={shapeProps.y-15} ref={shapeRef}/>
         <Circle
-          radius={30}
+          radius={20}
           onContextMenu={onSelect}
           onClick={onSelect}
           onTap={onSelect}

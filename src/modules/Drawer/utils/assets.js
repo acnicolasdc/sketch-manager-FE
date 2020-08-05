@@ -6,6 +6,7 @@ export const RECT = {
     width: 450,
     height: 5,
     value:'500"',
+    data:{},
     id: 'rect-code'
 }
 
@@ -20,7 +21,7 @@ export const LABEL = {
 export const CIRCLE = {
   x: 200,
   y: 200,
-  radius: 20,
+  radius: 10,
   code:'V#12345',
   id: 'circle-code',
 }

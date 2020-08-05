@@ -1,14 +1,14 @@
 import React from 'react';
-import { Circle, Transformer, Group, Text } from 'react-konva';
+import { Arrow, Transformer } from 'react-konva';
 
-export interface DripProps {
+export interface ArrowProps {
     shapeProps?: any;
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
 };
 
-const Drip: React.FunctionComponent <DripProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const ArrowDrawer: React.FunctionComponent <ArrowProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
   
   const shapeRef = React.useRef<HTMLHeadingElement | any>();
   const trRef = React.useRef<HTMLHeadingElement | any>();
@@ -22,14 +22,15 @@ const Drip: React.FunctionComponent <DripProps> = ({ shapeProps, isSelected, onS
   }, [isSelected]);
   return (
     <React.Fragment>
-      <Group ref={shapeRef}>
-      <Text text={shapeProps.code}fontSize={12} x={shapeProps.x+shapeProps.radius+10} y={shapeProps.y-15} ref={shapeRef}/>
-        <Circle
+        <Arrow
+          fill="black"
+          stroke="black"
+          pointerAtBeginning={true}  
+          ref={shapeRef}
           radius={20}
           onContextMenu={onSelect}
           onClick={onSelect}
           onTap={onSelect}
-          fill="#4d73be"
           {...shapeProps}
           draggable
           onDragEnd={e => {
@@ -61,7 +62,6 @@ const Drip: React.FunctionComponent <DripProps> = ({ shapeProps, isSelected, onS
             });
           }}
         />
-      </Group>
       {isSelected && (
         <Transformer
           ref={trRef}
@@ -78,4 +78,4 @@ const Drip: React.FunctionComponent <DripProps> = ({ shapeProps, isSelected, onS
   );
 };
 
-export default Drip;
+export default ArrowDrawer;

@@ -15,7 +15,6 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
 
   React.useEffect(() => {
     if (isSelected) {
-      // we need to attach transformer manually
       trRef.current.setNode(shapeRef.current);
       trRef.current.getLayer().batchDraw();
     }
@@ -24,7 +23,7 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
   return (
     <React.Fragment>
       <Group ref={shapeRef}>
-      <Text text={shapeProps.value}fontSize={12} x={postionX} y={shapeProps.y-15} ref={shapeRef}/>
+      <Text text={`Length: ${shapeProps.value}`}fontSize={12} x={postionX} y={shapeProps.y-15} ref={shapeRef}/>
       <Rect
         onContextMenu={onSelect}
         onClick={onSelect}
@@ -40,14 +39,9 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
           });
         }}
         onTransformEnd={e => {
-          // transformer is changing scale of the node
-          // and NOT its width or height
-          // but in the store we have only width and height
-          // to match the data better we will reset scale on transform end
           const node: any = shapeRef.current;
           const scaleX = node.scaleX();
           const scaleY = node.scaleY();
-
           // we will reset it back
           node.scaleX(1);
           node.scaleY(1);
@@ -61,15 +55,18 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
           });
         }}
       />
+      <Text text={`Cover: ${shapeProps.value}"`}fontSize={12} x={postionX} y={shapeProps.y+10} ref={shapeRef}/>
       </Group>
       {isSelected && (
         <Transformer
           ref={trRef}
+          rotateAnchorOffset={100}
+          rotationSnaps={[45,90, 135, 180, 225, 270, 315, 360]}
           boundBoxFunc={(oldBox, newBox) => {
-            // limit resize
             if (newBox.width < 5 || newBox.height < 5) {
               return oldBox;
             }
+            newBox.height = oldBox.height;
             return newBox;
           }}
         />

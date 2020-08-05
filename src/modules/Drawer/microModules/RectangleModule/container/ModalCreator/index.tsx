@@ -24,17 +24,35 @@ export interface ModalCreatorProps {
 };
 
 const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_FN, cancell=FAKE_FN, isOpen= false}) => {
-  const [material, setMaterial] = React.useState([]);
-  const [pressure, setPressure] = React.useState([]);
-  const [ size, setSize ] = React.useState([]);
-  const [ method, setMethod ] = React.useState([]);
+  const [material, setMaterial] = React.useState<any[]>([]);
+  const [pressure, setPressure] = React.useState<any[]>([]);
+  const [ size, setSize ] = React.useState<any[]>([]);
+  const [ method, setMethod ] = React.useState<any[]>([]);
   const [length, setLenght] = React.useState('');
   const [ year, setYear] = React.useState('');
   const [ cover, setCover ] = React.useState([70]);
 
   const { addReact, rectangles } = React.useContext(StoreContext);
+  const generateData = (): object => {
+    const data = {
+      material:material[0].label,
+      pressure:pressure[0].label,
+      size:size[0].label,
+      method:method[0].label,
+      length:length,
+      year:year,
+      cover:cover[0],
+    }
+    return data;
+  }
   const addRectangle = () => {
-      const newRect:Rect = {...RECT, id:`rect-code-pipe-${rectangles.length}`, value:`${length}"`};
+      const newRect:Rect = {
+        ...RECT, 
+        id:`rect-code-pipe-${rectangles.length}`, 
+        value:`${length}'`, 
+        width: parseInt(length, 10),
+        data: generateData()
+      };
       addReact(newRect);
       cancell();  
   }

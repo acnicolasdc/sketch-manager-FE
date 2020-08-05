@@ -4,6 +4,7 @@ export type Rect = {
     width?: number;
     height?: number;
     value?: string;
+    data?: any;
     id?: string;
 }
 
