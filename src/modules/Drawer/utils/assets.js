@@ -1,4 +1,4 @@
-import { ModulesEnum } from './_';
+import { ModulesEnum, CouplingEnum } from './_';
 
 export const RECT = {
     x: 200,
@@ -33,9 +33,17 @@ export const TRIANGLE = {
   id: 'triangle-code',
 }
 
+export const COUPLING = {
+  x: 200,
+  y: 200,
+  id: 'coupling-code',
+  type: CouplingEnum.uni,
+  text: '',
+}
+
 export const INITIAL_OPTIONS = [
     {label: 'Pipe', key: ModulesEnum.rect, icon:'BsDash'},
-    {label: 'Union', key: ModulesEnum.union, icon:'BsCrop'},
+    {label: 'Coupling', key: ModulesEnum.union, icon:'BsCrop'},
     {label: 'Valve', key: ModulesEnum.valve, icon:'BsCircle'},
     {label: 'Drip', key: ModulesEnum.drip, icon:'BsCircleFill'},
     {label: 'Reducer', key: ModulesEnum.reducer, icon:'BsCaretRightFill'},

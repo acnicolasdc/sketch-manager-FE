@@ -37,6 +37,14 @@ export type Options = {
     icon?: string;
 }
 
+export type LineCoupling = {
+    id?: string;
+    x?: number;
+    y?: number;
+    text?: string;
+    type?: string;
+}
+
 export enum ModulesEnum {
     rect = "rect-module",
     text = "text-module",
@@ -45,4 +53,11 @@ export enum ModulesEnum {
     drip = "drip-module",
     reducer = "reducer-module",
     union = "union-module",
+}
+
+export enum CouplingEnum {
+    tf = "TF",
+    ij = "IJ",
+    simple = "SM",
+    uni = "UNI",
 }

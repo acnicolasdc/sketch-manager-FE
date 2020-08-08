@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, Transformer } from 'react-konva';
 
-export interface RectangleProps {
+export interface LabelProps {
     shapeProps?: object;
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
 };
 
-const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const Label: React.FunctionComponent <LabelProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
   const textRef = React.useRef<HTMLHeadingElement | any>();
   const texRef = React.useRef<HTMLHeadingElement | any>();
 
@@ -74,4 +74,4 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
   );
 };
 
-export default Rectangle;
+export default Label;

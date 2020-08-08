@@ -8,6 +8,7 @@ import DripModule, { DripModal } from './microModules/DripModule';
 import TextModule, { TextModal } from './microModules/TextModule';
 import ReducerModule, { ReducerModal } from './microModules/ReducerModule';
 import RectangleModule, { RectangleModal } from './microModules/RectangleModule';
+import CouplingModule, { CouplingModal } from './microModules/CouplingModule';
 import InformationModule from './microModules/InformationModule';
 import OptionsBar from './components/OptionsBar';
 import { DrawerContainer, OptionHeader } from './Drawer.style';
@@ -71,6 +72,10 @@ const Drawer: React.FunctionComponent = () => {
                               selected={selectedId}
                               selectReducer={selectShape}
                             />
+                            <CouplingModule
+                              selected={selectedId}
+                              selectCoupling={selectShape}
+                            />                            
                         </StoreContext.Provider>
                   </Stage>
               )}
@@ -81,6 +86,7 @@ const Drawer: React.FunctionComponent = () => {
       <TextModal isOpen={runModule===ModulesEnum.text} cancell={closeModal}/>
       <DripModal isOpen={runModule===ModulesEnum.drip} cancell={closeModal}/>
       <ReducerModal isOpen={runModule===ModulesEnum.reducer} cancell={closeModal}/>
+      <CouplingModal isOpen={runModule===ModulesEnum.union} cancell={closeModal}/>
       <InformationModule isOpen={openReport} cancell={cancellReport}/>
     </StoreProvider>
   );
