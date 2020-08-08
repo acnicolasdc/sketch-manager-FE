@@ -24,7 +24,7 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({ isOpen=f
      return secondHEader;
  }
 
- const groupBy = (keyGetter:any):any => {
+ const groupBy = (keyGetter:(item:object, key:string)=> void):any => {
     const map = new Map();
     rectangles.forEach((item:any) => {
         const size = keyGetter(item,'size');
@@ -58,7 +58,7 @@ const sumStrings = (val:string, val2: string): number => {
      const pressure = ['PRESSURE'];
     const grouped = groupBy((item:any, key:string)=>item.data[key]);
     const newGrouped:any = [];
-    grouped.forEach((value:any, key:string) => {
+    grouped.forEach((value:any[]) => {
         let newElement:any = {}
         value.forEach(({data}:any) => {
             newElement = {
@@ -98,7 +98,7 @@ const sumStrings = (val:string, val2: string): number => {
     })
     return { data: [size, year, cover, length, material, method, pressure], header:header};
  }
- const {data, header} = dataGenerator()
+ const {data, header} = dataGenerator();
   return (
     <Modal
       onClose={cancell}
@@ -120,4 +120,4 @@ const sumStrings = (val:string, val2: string): number => {
   );
 }
 
-export default InformationModule;
+export default React.memo(InformationModule);

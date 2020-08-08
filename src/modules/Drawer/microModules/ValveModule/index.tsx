@@ -44,4 +44,4 @@ const { updateValves, valves } = React.useContext(StoreContext);
 }
 
 export const ValveModal = ModalCreator;
-export default ValveModule
+export default React.memo(ValveModule);

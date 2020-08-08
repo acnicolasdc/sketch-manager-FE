@@ -45,4 +45,4 @@ const { updateReact, rectangles } = React.useContext(StoreContext);
 }
 
 export const RectangleModal = ModalCreator;
-export default RectangleModule
+export default React.memo(RectangleModule);

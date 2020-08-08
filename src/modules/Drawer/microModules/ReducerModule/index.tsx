@@ -45,4 +45,4 @@ const { updateReducers, reducers } = React.useContext(StoreContext);
 }
 
 export const ReducerModal = ModalCreator;
-export default ReducerModule
+export default React.memo(ReducerModule);

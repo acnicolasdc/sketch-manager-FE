@@ -44,4 +44,4 @@ const { updateDrips, drips } = React.useContext(StoreContext);
 }
 
 export const DripModal = ModalCreator;
-export default DripModule
+export default React.memo(DripModule)

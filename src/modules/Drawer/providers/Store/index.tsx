@@ -67,13 +67,6 @@ const StoreProvider:React.FunctionComponent<StoreProviderProps> = ({ children })
     const updateDrips = (drips:Array<object>) => setDrips(drips);
     const updateReducers = (reducers:Array<object>) => setReducers(reducers);
     
-    const getRectangles = (): object[] => {
-        const newRects = rectangles?.map((rects:any) => {
-            delete rects.data
-            return rects
-        })
-        return newRects;
-    }
     return (
         <StoreContext.Provider value={{ rectangles:rectangles, texts, valves, drips, reducers, addReact, addText, addValves, addDrips, addReducers, updateReact, updateTexts, updateValves, updateDrips, updateReducers }}>
             {children}

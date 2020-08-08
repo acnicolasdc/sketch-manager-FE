@@ -45,4 +45,4 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
 }
 
 export const TextModal = ModalCreator;
-export default TextModule
+export default React.memo(TextModule)
