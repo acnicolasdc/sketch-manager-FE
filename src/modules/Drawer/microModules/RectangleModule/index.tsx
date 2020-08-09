@@ -1,5 +1,4 @@
 import React from 'react'
-import { Layer } from 'react-konva';
 import ModalCreator from './container/ModalCreator';
 import { Rect } from '../../utils/_';
 import Rectangle from './components/Rectangle';

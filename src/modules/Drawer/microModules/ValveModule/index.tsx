@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layer } from 'react-konva';
+ 
 import ModalCreator from './container/ModalCreator';
 import { Circle } from '../../utils/_';
 import Valve from './components/Valve';

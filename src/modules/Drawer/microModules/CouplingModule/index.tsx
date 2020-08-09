@@ -1,5 +1,4 @@
 import React from 'react'
-import { Layer } from 'react-konva';
 import ModalCreator from './containers/ModalCreator';
 import { LineCoupling, CouplingEnum } from '../../utils/_';
 import SimpleUnion from './components/SimpleUnion';

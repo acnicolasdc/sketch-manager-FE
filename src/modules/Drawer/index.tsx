@@ -14,14 +14,16 @@ import RectangleModule, { RectangleModal } from './microModules/RectangleModule'
 import CouplingModule, { CouplingModal } from './microModules/CouplingModule';
 import InformationModule from './microModules/InformationModule';
 import OptionsBar from './components/OptionsBar';
-import { DrawerContainer, OptionHeader } from './Drawer.style';
+import { DrawerContainer, OptionHeader, DrawerContent } from './Drawer.style';
 import { INITIAL_OPTIONS } from './utils/assets';
 import { ModulesEnum } from './utils/_';
+
 
 const Drawer: React.FunctionComponent = () => {
   const [runModule, setRunModule] = React.useState<string>('');
   const [selectedId, selectShape] = React.useState<string>('');
-  const [openReport, selectOpenReport] = React.useState<boolean>(false);
+  const [openReport, setOpenReport] = React.useState<boolean>(false);
+  const [geratePDF, setGeneratePDF] = React.useState<boolean>(false);
 
   const checkDeselect = (e: any) => {
     const clickedOnEmpty = e.target === e.target.getStage();
@@ -31,20 +33,22 @@ const Drawer: React.FunctionComponent = () => {
   };
 
   const printDocument = () => {
+    if(geratePDF) return;
+    setGeneratePDF(true);
     const input:any = document.querySelector('.konvajs-content > canvas')
     html2canvas(input)
       .then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF();
-        pdf.addImage(imgData, 'JPEG', 0, 0);
+        pdf.addImage(imgData, 'JPEG', 20, 20, 180, 180);
         pdf.save("download.pdf");
+        setGeneratePDF(false);
       });
 
   }
 
   const closeModal = () => setRunModule('');
-  const cancellReport = () => selectOpenReport(false);
-  console.log("ID",selectedId)
+  const cancellReport = () => setOpenReport(false);
   return (
     <StoreProvider>
       <DrawerContainer>
@@ -52,27 +56,27 @@ const Drawer: React.FunctionComponent = () => {
       <Button shape={SHAPE.square} overrides={{ Root:{ style:{ marginRight: '15px'} } }} disabled={selectedId===''}>
         <BsFillTrashFill />
       </Button>
-      <Button shape={SHAPE.square} overrides={{ Root:{ style:{ marginRight: '15px'} } }}
-      onClick={()=>printDocument()}
-      >
-        <BsFileEarmarkArrowDown />
+      <Button shape={SHAPE.square}  
+        endEnhancer={() => <BsFileEarmarkArrowDown />}
+        onClick={()=>printDocument()}>
+        Generate PDF
       </Button>
       <Button endEnhancer={() => <ChevronDown size={24} />}
-        onClick={()=>printDocument()}
+        onClick={()=>setOpenReport(true)}
       >
         Open Report
       </Button>
       </OptionHeader>
+      <DrawerContent>
           <OptionsBar
               onClick={(key: string)=>setRunModule(key)} 
               options={INITIAL_OPTIONS}
           />
             <StoreContext.Consumer>
               {value => (
-                <div  id='divToPrint'>
                   <Stage
                       width={window.innerWidth-170}
-                      height={window.innerHeight}
+                      height={window.innerHeight-40}
                       onMouseDown={checkDeselect}
                       onTouchStart={checkDeselect}>
                         <StoreContext.Provider value={value}>
@@ -104,9 +108,9 @@ const Drawer: React.FunctionComponent = () => {
                           </Layer>                            
                         </StoreContext.Provider>
                   </Stage>
-                  </div>
               )}
             </StoreContext.Consumer>
+            </DrawerContent>
         </DrawerContainer>
       <RectangleModal isOpen={runModule===ModulesEnum.rect} cancell={closeModal}/>
       <ValveModal isOpen={runModule===ModulesEnum.valve} cancell={closeModal}/>
