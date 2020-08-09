@@ -40,7 +40,7 @@ const Drawer: React.FunctionComponent = () => {
       .then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF();
-        pdf.addImage(imgData, 'JPEG', 20, 20, 180, 180);
+        pdf.addImage(imgData, 'JPEG', 20, 20, 200, 200);
         pdf.save("download.pdf");
         setGeneratePDF(false);
       });
@@ -57,9 +57,10 @@ const Drawer: React.FunctionComponent = () => {
         <BsFillTrashFill />
       </Button>
       <Button shape={SHAPE.square}  
+        disabled={geratePDF}
         endEnhancer={() => <BsFileEarmarkArrowDown />}
         onClick={()=>printDocument()}>
-        Generate PDF
+        {geratePDF?"Generating...":"Generate PDF"}
       </Button>
       <Button endEnhancer={() => <ChevronDown size={24} />}
         onClick={()=>setOpenReport(true)}
