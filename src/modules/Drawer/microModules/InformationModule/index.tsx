@@ -35,10 +35,8 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({ isOpen=f
         const key = `${size}/${material}/${pressure}/${method}/${year}`;
          const collection = map.get(key);
          if (!collection) {
-             console.log("IF",item);
              map.set(key, [item]);
          } else {
-            console.log("ELSE",item);
              collection.push(item);
          }
     });

@@ -24,7 +24,7 @@ const { updateReducers, reducers } = React.useContext(StoreContext);
       }
   }
   return (
-    <Layer>
+    <React.Fragment>
     {reducers?.map((element: Rect, i: number) => {
         return (
         <Reducer
@@ -40,7 +40,7 @@ const { updateReducers, reducers } = React.useContext(StoreContext);
             />
         );
     })}
-    </Layer>
+    </React.Fragment>
   );
 }
 

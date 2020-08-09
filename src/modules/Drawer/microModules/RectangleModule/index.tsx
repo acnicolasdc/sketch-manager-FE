@@ -24,7 +24,7 @@ const { updateReact, rectangles } = React.useContext(StoreContext);
       }
   }
   return (
-    <Layer>
+    <React.Fragment>
     {rectangles?.map((element: Rect, i: number) => {
         return (
         <Rectangle
@@ -40,7 +40,7 @@ const { updateReact, rectangles } = React.useContext(StoreContext);
             />
         );
     })}
-    </Layer>
+    </React.Fragment>
   );
 }
 

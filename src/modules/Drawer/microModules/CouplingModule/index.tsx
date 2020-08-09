@@ -25,9 +25,8 @@ const CouplingModule: React.FunctionComponent<RectangleProps> = (
       }
   }
   return (
-    <Layer>
+    <React.Fragment>
       {couplings?.map((element: LineCoupling, i: number) => {
-        console.log(element.type)
           if(CouplingEnum.uni === element.type){
             return (
               <Union
@@ -58,7 +57,7 @@ const CouplingModule: React.FunctionComponent<RectangleProps> = (
             />
           );
       })}
-    </Layer>
+    </React.Fragment>
   );
 }
 

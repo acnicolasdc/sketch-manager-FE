@@ -23,7 +23,7 @@ const { updateValves, valves } = React.useContext(StoreContext);
       }
   }
   return (
-    <Layer>
+    <React.Fragment>
     {valves?.map((element: Circle, i: number) => {
         return (
         <Valve
@@ -39,7 +39,7 @@ const { updateValves, valves } = React.useContext(StoreContext);
             />
         );
     })}
-    </Layer>
+    </React.Fragment>
   );
 }
 

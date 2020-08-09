@@ -17,10 +17,6 @@ const Icons:any = {
     BsTextareaT: (props:object) => (<BsTextareaT {...props}/>),
 }
 
-//new BsCrop
-// BsCircle
-// BsCircleFill
-// BsCaretRightFill
 const Option: React.FunctionComponent<OptionProps> = (props) => {
     const [css, theme] = useStyletron();
     const { item:{label, icon, key}, onClick, ...rest }:any = props;

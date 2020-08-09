@@ -29,7 +29,6 @@ const Label: React.FunctionComponent <LabelProps> = ({ shapeProps, isSelected, o
         {...shapeProps}
         draggable
         onDragEnd={e => {
-          console.log("Dragable", e)
           onChange({
             ...shapeProps,
             x: e.target.x(),

@@ -23,7 +23,7 @@ const { updateDrips, drips } = React.useContext(StoreContext);
       }
   }
   return (
-    <Layer>
+    <React.Fragment>
     {drips?.map((element: Circle, i: number) => {
         return (
         <Drip
@@ -39,7 +39,7 @@ const { updateDrips, drips } = React.useContext(StoreContext);
             />
         );
     })}
-    </Layer>
+    </React.Fragment>
   );
 }
 

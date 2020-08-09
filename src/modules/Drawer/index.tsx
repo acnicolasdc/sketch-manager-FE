@@ -1,7 +1,10 @@
 import React from 'react'
-import { Stage } from 'react-konva';
+import { Stage, Layer } from 'react-konva';
 import {ChevronDown} from 'baseui/icon';
-import {Button} from 'baseui/button';
+import {Button, SHAPE} from 'baseui/button';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf'
+import { BsFillTrashFill, BsFileEarmarkArrowDown } from "react-icons/bs";
 import StoreProvider, { StoreContext } from './providers/Store';
 import ValveModule, { ValveModal } from './microModules/ValveModule';
 import DripModule, { DripModal } from './microModules/DripModule';
@@ -27,15 +30,35 @@ const Drawer: React.FunctionComponent = () => {
     }
   };
 
+  const printDocument = () => {
+    const input:any = document.querySelector('.konvajs-content > canvas')
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        pdf.save("download.pdf");
+      });
+
+  }
+
   const closeModal = () => setRunModule('');
   const cancellReport = () => selectOpenReport(false);
-
+  console.log("ID",selectedId)
   return (
     <StoreProvider>
       <DrawerContainer>
-      <OptionHeader >
+      <OptionHeader>
+      <Button shape={SHAPE.square} overrides={{ Root:{ style:{ marginRight: '15px'} } }} disabled={selectedId===''}>
+        <BsFillTrashFill />
+      </Button>
+      <Button shape={SHAPE.square} overrides={{ Root:{ style:{ marginRight: '15px'} } }}
+      onClick={()=>printDocument()}
+      >
+        <BsFileEarmarkArrowDown />
+      </Button>
       <Button endEnhancer={() => <ChevronDown size={24} />}
-        onClick={()=>selectOpenReport(true)}
+        onClick={()=>printDocument()}
       >
         Open Report
       </Button>
@@ -46,12 +69,14 @@ const Drawer: React.FunctionComponent = () => {
           />
             <StoreContext.Consumer>
               {value => (
+                <div  id='divToPrint'>
                   <Stage
                       width={window.innerWidth-170}
                       height={window.innerHeight}
                       onMouseDown={checkDeselect}
                       onTouchStart={checkDeselect}>
                         <StoreContext.Provider value={value}>
+                          <Layer>
                             <RectangleModule
                               selected={selectedId}
                               selectRect={selectShape}
@@ -75,9 +100,11 @@ const Drawer: React.FunctionComponent = () => {
                             <CouplingModule
                               selected={selectedId}
                               selectCoupling={selectShape}
-                            />                            
+                            />
+                          </Layer>                            
                         </StoreContext.Provider>
                   </Stage>
+                  </div>
               )}
             </StoreContext.Consumer>
         </DrawerContainer>

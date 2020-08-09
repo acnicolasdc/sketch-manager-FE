@@ -24,7 +24,7 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
       }
   }
   return (
-    <Layer>
+    <React.Fragment>
       {texts?.map((element: Label, i: number) => {
           return (
             <Text
@@ -40,7 +40,7 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
             />
           );
       })}
-    </Layer>
+    </React.Fragment>
   );
 }
 
