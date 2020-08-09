@@ -22,22 +22,17 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
   const postionX = shapeProps.x + (shapeProps.width / 2);
   return (
     <React.Fragment>
-      <Group ref={shapeRef}>
-      <Text text={`Length: ${shapeProps.value}`}fontSize={12} x={postionX} y={shapeProps.y-15} ref={shapeRef}/>
-      <Rect
+      <Group 
+        ref={shapeRef}
         onContextMenu={onSelect}
         onClick={onSelect}
         onTap={onSelect}
+        draggable
+      >
+      <Text text={`Length: ${shapeProps.value}`}fontSize={12} x={postionX} y={shapeProps.y-15}/>
+      <Rect
         fill='#2d3436'
         {...shapeProps}
-        draggable
-        onDragEnd={e => {
-          onChange({
-            ...shapeProps,
-            x: e.target.x(),
-            y: e.target.y()
-          });
-        }}
         onTransformEnd={e => {
           const node: any = shapeRef.current;
           const scaleX = node.scaleX();
@@ -55,7 +50,7 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
           });
         }}
       />
-      <Text text={`Cover: ${shapeProps.data.cover}"`}fontSize={12} x={postionX} y={shapeProps.y+10} ref={shapeRef}/>
+      <Text text={`Cover: ${shapeProps.data.cover}"`}fontSize={12} x={postionX} y={shapeProps.y+10}/>
       </Group>
       {isSelected && (
         <Transformer
