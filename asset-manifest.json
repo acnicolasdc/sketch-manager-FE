@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/sketch-manager/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/sketch-manager/static/js/main.c8d2edf3.chunk.js",
+    "main.js.map": "/sketch-manager/static/js/main.c8d2edf3.chunk.js.map",
+    "runtime-main.js": "/sketch-manager/static/js/runtime-main.e96321d4.js",
+    "runtime-main.js.map": "/sketch-manager/static/js/runtime-main.e96321d4.js.map",
+    "static/js/2.ff161d9f.chunk.js": "/sketch-manager/static/js/2.ff161d9f.chunk.js",
+    "static/js/2.ff161d9f.chunk.js.map": "/sketch-manager/static/js/2.ff161d9f.chunk.js.map",
+    "index.html": "/sketch-manager/index.html",
+    "precache-manifest.c782f9e31567eb00120ea8e8e6925c78.js": "/sketch-manager/precache-manifest.c782f9e31567eb00120ea8e8e6925c78.js",
+    "service-worker.js": "/sketch-manager/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/sketch-manager/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.ff161d9f.chunk.js.LICENSE.txt": "/sketch-manager/static/js/2.ff161d9f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e96321d4.js",
+    "static/js/2.ff161d9f.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.c8d2edf3.chunk.js"
+  ]
+}
