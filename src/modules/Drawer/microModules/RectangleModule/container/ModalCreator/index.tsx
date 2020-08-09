@@ -63,6 +63,13 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
     if(year === '' || cover.length === 0 || length === '')return true;
     return false;
   }
+  const overriesTestinE2E = (data:string) : object => ({
+    Root:{
+      props:{
+        "data-cy":data
+      }
+    }
+  })
   return (
       <Modal onClose={cancell} isOpen={isOpen}>
         <FocusOnce>
@@ -71,12 +78,14 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
         <ModalBody>
           <Row>
             <Select
+              overrides={overriesTestinE2E("rmm-select-material")}
               options={OPTIONS_TYPES_MATERIAL}
               value={material}
               placeholder="Select material"
               onChange={(params:any) => setMaterial(params.value)}
             />
             <Select
+              overrides={overriesTestinE2E("rmm-select-method")}
               options={OPTIONS_TYPES_METHOD}
               value={method}
               placeholder="Select method"
@@ -85,12 +94,14 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
           </Row>
           <Row>
           <Select
+              overrides={overriesTestinE2E("rmm-select-size")}
               options={OPTIONS_TYPES_SIZE}
               value={size}
               placeholder="Select size"
               onChange={(params:any) => setSize(params.value)}
             />
             <Select
+              overrides={overriesTestinE2E("rmm-select-pressure")}
               options={OPTIONS_TYPES_PRESSURE}
               value={pressure}
               placeholder="Select pressure"
@@ -101,12 +112,14 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
               <Input
                 required
                 value={year}
-                onChange={(e: any) => setYear(e.target.value)} 
+                onChange={(e: any) => setYear(e.target.value)}
+                overrides={overriesTestinE2E("rmm-input-year")} 
                 placeholder="Year"
               />
               <Input
                 required 
                 value={length}
+                overrides={overriesTestinE2E("rmm-input-length")}
                 onChange={(e: any) => setLenght(e.target.value)}
                 placeholder="Length"
               />
@@ -146,6 +159,9 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
                   borderBottomColor: `#ccc`,
                   backgroundColor: '#fff',
               }),
+              props:{
+                "data-cy": "rmm-slider-cover"
+              }
               },
             }}
           />

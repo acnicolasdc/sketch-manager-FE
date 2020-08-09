@@ -22,7 +22,8 @@ const Option: React.FunctionComponent<OptionProps> = (props) => {
     const { item:{label, icon, key}, onClick, ...rest }:any = props;
     const Icon = Icons[icon];
     return (
-        <OptionContainer {...rest} theme={theme} onClick={()=>onClick(key)}>
+        <OptionContainer {...rest} theme={theme} onClick={()=>onClick(key)}
+            data-cy="option-side-bar">
             <Icon color={theme.colors.mono500}/>
             <OptionLabel theme={theme} >{label}</OptionLabel>
         </OptionContainer>
