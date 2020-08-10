@@ -5,6 +5,12 @@ import { TitleSection } from './Login.style';
 // import { HeaderSection } from './Login.style';
 import { LoginSection } from './Login.style';
 // import { FooterSection } from './Login.style'
+import {
+    Card,
+    StyledBody,
+    StyledAction
+} from "baseui/card";
+
 
 const Login = () => {
     return (
@@ -20,13 +26,14 @@ const Login = () => {
 
 
             <LoginSection>
-                <section className="login__container">
-                    <figure className="login__container--image">
-                        <img className="login--image" src={require("assets/icons/lock_icon.png")} alt="login_icon" />
-                    </figure>
+                <Card >
+                    <div className="login__container">
+                        <h3 className="login__container--title">Login to your account</h3>
+                    </div>
                     <Autentication />
-                </section>
+                </Card>
             </LoginSection>
+
 
             {/* <FooterSection>
                 <a href="/">Con Edison Privacy Policy</a>

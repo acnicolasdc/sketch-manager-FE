@@ -1,13 +1,22 @@
 import React from 'react'
-import {FormSection} from '../../pages/Login/Login.style';
+import { Input } from "baseui/input";
+import { Button } from "baseui/button";
+import { FormSection } from '../../pages/Login/Login.style';
+import { StyledBody, Card } from "baseui/card";
 
 
 const Autentication = () => {
     return (
         <FormSection>
-                <input className="login__container--form-input " type="text"  placeholder="UserName"/>
-                <input className="login__container--form-input " type="password"  placeholder="Password" />
-                <button className="button"><a href="./Home.html">LOGIN</a></button>  
+            <StyledBody>
+                <Input placeholder="User Name" type="text" />
+                <Input placeholder="Password" type="password" />
+            </StyledBody>
+
+            <StyledBody>
+                <Button
+                    overrides={{ BaseButton: { style: { width: "100%" } } }}>LOGIN</Button>
+            </StyledBody>
         </FormSection>
     )
 }

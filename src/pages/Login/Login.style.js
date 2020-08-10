@@ -63,35 +63,22 @@ export const LoginSection = styled.section`
   min-height: calc(100vh - 200px);
 
 .login__container{
-    display: flex;
+  font-family: "Muli", sans-serif;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   min-height: calc(100vh - 200px);
-  border: 2px solid white;
-  border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.1);
   justify-content: space-around;
-  padding: 20px 60px 40px;
-  color: white;
-  min-height: 300px;
+  padding: auto;
+  color: black;
+  min-height: 150px;
   width: 300px;
 }
-
-.login__container--image{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80px;
-  height: 80px;
-  color: white;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-
-.login--image{
-  width: 100%;
-  height: 100%;
+.login__container--title{
+  margin: 0;
+  padding:0;
 }
 `;
 
