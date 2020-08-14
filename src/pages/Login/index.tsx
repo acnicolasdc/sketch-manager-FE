@@ -5,11 +5,7 @@ import { TitleSection } from './Login.style';
 // import { HeaderSection } from './Login.style';
 import { LoginSection } from './Login.style';
 // import { FooterSection } from './Login.style'
-import {
-    Card,
-    StyledBody,
-    StyledAction
-} from "baseui/card";
+import {Card} from "baseui/card";
 
 
 const Login = () => {
