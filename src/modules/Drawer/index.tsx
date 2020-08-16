@@ -1,11 +1,5 @@
-import React from 'react'
-import { Stage, Layer } from 'react-konva';
-import {ChevronDown} from 'baseui/icon';
-import {Button, SHAPE} from 'baseui/button';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf'
-import { BsFillTrashFill, BsFileEarmarkArrowDown } from "react-icons/bs";
-import StoreProvider, { StoreContext } from './providers/Store';
+import React from 'react';
+/** @microModules Functionality */
 import ValveModule, { ValveModal } from './microModules/ValveModule';
 import DripModule, { DripModal } from './microModules/DripModule';
 import TextModule, { TextModal } from './microModules/TextModule';
@@ -13,10 +7,18 @@ import ReducerModule, { ReducerModal } from './microModules/ReducerModule';
 import RectangleModule, { RectangleModal } from './microModules/RectangleModule';
 import CouplingModule, { CouplingModal } from './microModules/CouplingModule';
 import InformationModule from './microModules/InformationModule';
+import StoreProvider, { StoreContext } from './providers/Store';
+/** @components Presentantional Elements */
+import { Stage, Layer } from 'react-konva';
+import {ChevronDown} from 'baseui/icon';
+import {Button, SHAPE} from 'baseui/button'
 import OptionsBar from './components/OptionsBar';
-import { DrawerContainer, OptionHeader, DrawerContent } from './Drawer.style';
+import { BsFillTrashFill, BsFileEarmarkArrowDown } from "react-icons/bs";
+/** @utils Types, Enums and Styles */
 import { INITIAL_OPTIONS } from './utils/assets';
 import { ModulesEnum } from './utils/_';
+import documentGenerator from './utils/printDocument';
+import { DrawerContainer, OptionHeader, DrawerContent } from './Drawer.style';
 
 
 const Drawer: React.FunctionComponent = () => {
@@ -32,23 +34,17 @@ const Drawer: React.FunctionComponent = () => {
     }
   };
 
-  const printDocument = () => {
+  const printDocument = async () => {
     if(geratePDF) return;
     setGeneratePDF(true);
     const input:any = document.querySelector('.konvajs-content > canvas')
-    html2canvas(input)
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, 'JPEG', 20, 20, 180, 180);
-        pdf.save("download.pdf");
-        setGeneratePDF(false);
-      });
-
+    await documentGenerator(input);
+    setGeneratePDF(false);
   }
 
   const closeModal = () => setRunModule('');
   const cancellReport = () => setOpenReport(false);
+
   return (
     <StoreProvider>
       <DrawerContainer>
@@ -57,9 +53,10 @@ const Drawer: React.FunctionComponent = () => {
         <BsFillTrashFill />
       </Button>
       <Button shape={SHAPE.square}  
+        disabled={geratePDF}
         endEnhancer={() => <BsFileEarmarkArrowDown />}
         onClick={()=>printDocument()}>
-        Generate PDF
+        {geratePDF?"Generating...":"Generate PDF"}
       </Button>
       <Button endEnhancer={() => <ChevronDown size={24} />}
         onClick={()=>setOpenReport(true)}
