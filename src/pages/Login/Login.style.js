@@ -18,26 +18,6 @@ a {
   text-decoration: none;
 }
 `;
-
-export const TitleSection = styled.section`
-    
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: -6px;
-
-.title__text{
-    text-shadow:1px 1px 2px #fff;
-    color: #219bd5;
-    font-size: 60px;
-    margin: 50px 0;
-    ${'' /* top: 50%; */}
-    opacity: 0.5;
-}
-`;
-
-
 export const LoginSection = styled.section`
   display: flex;
   justify-content: center;
@@ -61,17 +41,28 @@ export const LoginSection = styled.section`
 }
 `;
 
-export const FormSection = styled.section`
+export const Layout = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: calc(100vh - 300px);
   margin-top:90px;
+  
 
-  .image__container{
-    -webkit-box-shadow: -8px 13px 38px -12px rgba(0,0,0,0.75);
-    -moz-box-shadow: -8px 13px 38px -12px rgba(0,0,0,0.75);
-    box-shadow: -8px 13px 38px -12px rgba(0,0,0,0.75);
+  .image__container img{
+    -webkit-box-shadow: 10px 10px 34px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 34px -9px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 34px -9px rgba(0,0,0,0.75);
+    
   }
 `;
+
+export const FormSection = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: calc(100vh - 300px);
+  margin-top:auto;
+`; 
