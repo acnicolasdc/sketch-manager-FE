@@ -2,7 +2,7 @@
   "name": "sketch-manager",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://acnicolasdc.github.io/sketch-manager/",
+  "homepage": "https://acnicolasdc.github.io/sketch-manager-FE/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
