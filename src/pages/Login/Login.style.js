@@ -5,7 +5,6 @@ export const GeneralSection = styled.div`
 
   margin: 0;
   font-family: "Muli", sans-serif;
-  background: linear-gradient(#FFF, #219bd5) fixed;
   display: flex;
   flex-direction: column;
   min-height: 100vh;  
@@ -54,23 +53,25 @@ export const LoginSection = styled.section`
   align-items: center;
   flex-direction: column;
   min-height: calc(100vh - 200px);
-  background-color: rgba(255, 255, 255, 0.1);
   justify-content: space-around;
   padding: auto;
   color: black;
   min-height: 150px;
   width: 300px;
 }
-.login__container--title{
-  margin: 0;
-  padding:0;
-}
 `;
 
 export const FormSection = styled.section`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: calc(100vh - 300px);
+  margin-top:90px;
+
+  .image__container{
+    -webkit-box-shadow: -8px 13px 38px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -8px 13px 38px -12px rgba(0,0,0,0.75);
+    box-shadow: -8px 13px 38px -12px rgba(0,0,0,0.75);
+  }
 `;
