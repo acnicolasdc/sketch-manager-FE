@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/sketch-manager/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/sketch-manager/static/js/main.a78466af.chunk.js",
-    "main.js.map": "/sketch-manager/static/js/main.a78466af.chunk.js.map",
-    "runtime-main.js": "/sketch-manager/static/js/runtime-main.e96321d4.js",
-    "runtime-main.js.map": "/sketch-manager/static/js/runtime-main.e96321d4.js.map",
-    "static/js/2.d3ab623c.chunk.js": "/sketch-manager/static/js/2.d3ab623c.chunk.js",
-    "static/js/2.d3ab623c.chunk.js.map": "/sketch-manager/static/js/2.d3ab623c.chunk.js.map",
-    "index.html": "/sketch-manager/index.html",
-    "precache-manifest.4de35804fbf27a0ba1c578b8ec9edf8b.js": "/sketch-manager/precache-manifest.4de35804fbf27a0ba1c578b8ec9edf8b.js",
-    "service-worker.js": "/sketch-manager/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/sketch-manager/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.d3ab623c.chunk.js.LICENSE.txt": "/sketch-manager/static/js/2.d3ab623c.chunk.js.LICENSE.txt"
+    "main.css": "/sketch-manager-FE/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/sketch-manager-FE/static/js/main.d882265b.chunk.js",
+    "main.js.map": "/sketch-manager-FE/static/js/main.d882265b.chunk.js.map",
+    "runtime-main.js": "/sketch-manager-FE/static/js/runtime-main.2af6ce11.js",
+    "runtime-main.js.map": "/sketch-manager-FE/static/js/runtime-main.2af6ce11.js.map",
+    "static/js/2.3ffa08cd.chunk.js": "/sketch-manager-FE/static/js/2.3ffa08cd.chunk.js",
+    "static/js/2.3ffa08cd.chunk.js.map": "/sketch-manager-FE/static/js/2.3ffa08cd.chunk.js.map",
+    "index.html": "/sketch-manager-FE/index.html",
+    "precache-manifest.a0b2eb60ebf94bc73ce3167bd6261047.js": "/sketch-manager-FE/precache-manifest.a0b2eb60ebf94bc73ce3167bd6261047.js",
+    "service-worker.js": "/sketch-manager-FE/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/sketch-manager-FE/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.3ffa08cd.chunk.js.LICENSE.txt": "/sketch-manager-FE/static/js/2.3ffa08cd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.e96321d4.js",
-    "static/js/2.d3ab623c.chunk.js",
+    "static/js/runtime-main.2af6ce11.js",
+    "static/js/2.3ffa08cd.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.a78466af.chunk.js"
+    "static/js/main.d882265b.chunk.js"
   ]
 }
