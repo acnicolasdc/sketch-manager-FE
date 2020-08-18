@@ -67,12 +67,13 @@ const Union: React.FunctionComponent <UnionProps> = ({ shapeProps, isSelected, o
     {isSelected && (
         <Transformer
           ref={ijeRef}
-          boundBoxFunc={(oldBox, newBox) => {
-            if (newBox.width < 5 || newBox.height < 5) {
-              return oldBox;
-            }
-            return newBox;
-          }}
+          keepRatio={true}
+          enabledAnchors={[
+            'top-left',
+            'top-right',
+            'bottom-left',
+            'bottom-right',
+          ]}
         />
       )}
     </React.Fragment>

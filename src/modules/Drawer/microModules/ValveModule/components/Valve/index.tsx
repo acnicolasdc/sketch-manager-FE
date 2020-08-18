@@ -49,12 +49,13 @@ const Valve: React.FunctionComponent <ValveProps> = ({ shapeProps, isSelected, o
       {isSelected && (
         <Transformer
           ref={trRef}
-          boundBoxFunc={(oldBox, newBox) => {
-            if (newBox.width < 5 || newBox.height < 5) {
-              return oldBox;
-            }
-            return newBox;
-          }}
+          keepRatio={true}
+          enabledAnchors={[
+            'top-left',
+            'top-right',
+            'bottom-left',
+            'bottom-right',
+          ]}
         />
       )}
     </React.Fragment>

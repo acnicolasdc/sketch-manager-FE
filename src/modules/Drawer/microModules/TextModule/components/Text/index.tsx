@@ -60,13 +60,13 @@ const Label: React.FunctionComponent <LabelProps> = ({ shapeProps, isSelected, o
     {isSelected && (
         <Transformer
           ref={texRef}
-          boundBoxFunc={(oldBox, newBox) => {
-            // limit resize
-            if (newBox.width < 5 || newBox.height < 5) {
-              return oldBox;
-            }
-            return newBox;
-          }}
+          keepRatio={true}
+          enabledAnchors={[
+            'top-left',
+            'top-right',
+            'bottom-left',
+            'bottom-right',
+          ]}
         />
       )}
     </React.Fragment>

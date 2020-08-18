@@ -11,6 +11,8 @@ export interface RectangleProps {
 const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
   
   const shapeRef = React.useRef<HTMLHeadingElement | any>();
+  const textRef = React.useRef<HTMLHeadingElement | any>();
+  const text2Ref = React.useRef<HTMLHeadingElement | any>();
   const trRef = React.useRef<HTMLHeadingElement | any>();
 
   React.useEffect(() => {
@@ -19,38 +21,71 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
       trRef.current.getLayer().batchDraw();
     }
   }, [isSelected]);
-  const postionX = shapeProps.x + (shapeProps.width / 2);
+
+  const toDegrees = (number:number): number => {
+    return number*(Math.PI/180)
+  }
+
+  const onTransformX = (rotation: number = 0, width: number = 0, x: number = 0): number => {
+    let tranradians = toDegrees(rotation);
+    return x + Math.cos(tranradians)*(width/2);
+  }
+  const onTransformY = (rotation: number = 0, width: number = 0, y: number = 0): number => {
+    let tranradians = toDegrees(rotation);
+    return y + Math.sin(tranradians)*(width/2);
+  }
+
+  const onTraformElement = (reference:HTMLHeadingElement | any, element:HTMLHeadingElement | any) => {
+    const node: any = reference.current;
+
+    const rotation = node.rotation();
+    const nodeWidth = node.width();
+    
+    element.current.rotation(node.rotation());
+    const transformX = onTransformX(rotation, nodeWidth, node.x());
+    const transformY = onTransformY(rotation, nodeWidth, node.y());
+    element.current.x(transformX)
+    element.current.y(transformY);
+  }
+  const x = onTransformX(shapeProps.rotation, shapeProps.width, shapeProps.x);
+  const y = onTransformY(shapeProps.rotation, shapeProps.width, shapeProps.y);
   return (
     <React.Fragment>
       <Group 
-        ref={shapeRef}
         onContextMenu={onSelect}
         onClick={onSelect}
         onTap={onSelect}
         draggable
       >
-      <Text text={`Length: ${shapeProps.value}`}fontSize={12} x={postionX} y={shapeProps.y-15}/>
+      <Text text={`Length: ${shapeProps.value}`}fontSize={12} x={x} y={y-10} ref={textRef}/>
       <Rect
+        ref={shapeRef}
         fill='#2d3436'
         {...shapeProps}
+        onTransform={()=>{
+          onTraformElement(shapeRef, textRef)
+          onTraformElement(shapeRef, text2Ref);
+        }}
         onTransformEnd={e => {
           const node: any = shapeRef.current;
           const scaleX = node.scaleX();
           const scaleY = node.scaleY();
-          // we will reset it back
+          onTraformElement(shapeRef, textRef);
+          onTraformElement(shapeRef, text2Ref);
           node.scaleX(1);
           node.scaleY(1);
           onChange({
             ...shapeProps,
             x: node.x(),
             y: node.y(),
+            rotation: node.rotation(),
             // set minimal value
             width: Math.max(5, node.width() * scaleX),
             height: Math.max(node.height() * scaleY)
           });
         }}
       />
-      <Text text={`Cover: ${shapeProps.data.cover}"`}fontSize={12} x={postionX} y={shapeProps.y+10}/>
+      <Text text={`Cover: ${shapeProps.data.cover}"`}fontSize={12} x={x} y={y+10} ref={text2Ref}/>
       </Group>
       {isSelected && (
         <Transformer

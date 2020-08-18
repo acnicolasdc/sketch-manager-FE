@@ -5,6 +5,7 @@ export type Rect = {
     height?: number;
     value?: string;
     data?: any;
+    rotation?:number;
     id?: string;
 }
 
