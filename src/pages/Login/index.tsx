@@ -1,14 +1,15 @@
 import React from 'react'
-import Autentication from "modules/Autentication/components";
+// import Autentication from "modules/Layout/components";
 import { GeneralSection } from './Login.style';
 import { LoginSection } from './Login.style';
 import Form from '../../modules/Form/Components/index';
+import Layout from 'modules/Layout/components';
 
 const Login = () => {
     return (
         <GeneralSection>
             <LoginSection> 
-                    <Autentication children = {<Form/>}/>
+                    <Layout children = {<Form/>}/>
             </LoginSection>
         </GeneralSection>
     )

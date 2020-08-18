@@ -41,7 +41,7 @@ export const LoginSection = styled.section`
 }
 `;
 
-export const Layout = styled.section`
+export const LayoutStyle = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
