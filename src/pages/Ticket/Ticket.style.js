@@ -22,16 +22,5 @@ export const TicketSection = styled.section`
   min-height: 150px;
   width: 300px;
   
-}
-
-.image__container{
-  display: flex;
-  justify-content:center;
-}
-img{
-  -webkit-box-shadow: -1px 11px 24px -4px rgba(0,0,0,0.75);
-  -moz-box-shadow: -1px 11px 24px -4px rgba(0,0,0,0.75);
-  box-shadow: -1px 11px 24px -4px rgba(0,0,0,0.75);
-}
-`;
+}`;
 

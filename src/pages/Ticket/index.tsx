@@ -1,6 +1,6 @@
 import React from 'react';
 import Ticket from '../../modules/Ticket/components/index';
-import Layout from 'modules/Layout/components';
+import Layout from '../../components/Layout'
 import { TicketSection } from 'pages/Ticket/Ticket.style';
 
 

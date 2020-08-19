@@ -28,9 +28,7 @@ const Ticket = () => {
                 overrides={{ BaseButton: { style: { width: "80%" } } }}>NEXT
             </Button>
             </section>
-
         
-
     )
 }
 
