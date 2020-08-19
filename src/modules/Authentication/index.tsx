@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
-import { FormSection } from './FormControl.style';
+import { AuthenticationSection } from './Authenticacion.style';
 
 
 
@@ -18,7 +18,7 @@ const FormControl = () => {
     }
 
     return (
-        <FormSection>
+        <AuthenticationSection>
             <Input
                 value={user}
                 onChange={event => setUser(event.currentTarget.value)}
@@ -56,7 +56,7 @@ const FormControl = () => {
                 // onClick={() => inputRef.current && inputRef.current.focus()}
                 overrides={{ BaseButton: { style: { width: "80%" } } }}>LOGIN
             </Button>
-        </FormSection>
+        </AuthenticationSection>
     )
 }
 

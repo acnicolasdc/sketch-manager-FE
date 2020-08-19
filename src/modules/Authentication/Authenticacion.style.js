@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const FormSection = styled.section`
+export const AuthenticationSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
