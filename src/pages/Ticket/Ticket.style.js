@@ -21,7 +21,7 @@ a {
 `;
 
 
-export const LoginSection = styled.section`
+export const TicketSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;

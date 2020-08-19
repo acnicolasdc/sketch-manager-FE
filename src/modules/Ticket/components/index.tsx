@@ -1,8 +1,7 @@
 import React, {useState, useRef} from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
-import {FormSection} from '../../../pages/Ticket/Ticket.style'
-import { LoginSection } from 'pages/Login/Login.style';
+import { TicketSection } from 'pages/Ticket/Ticket.style';
 
 const Ticket = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -17,7 +16,7 @@ const Ticket = () => {
     }
     
     return (
-        <LoginSection>
+        <TicketSection>
             <section className= 'login__container' >
             <Input
                 value={pin}
@@ -32,7 +31,7 @@ const Ticket = () => {
             </Button>
             </section>
 
-        </LoginSection>
+        </TicketSection>
 
     )
 }
