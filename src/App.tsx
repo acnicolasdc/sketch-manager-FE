@@ -4,7 +4,7 @@ import {Provider as StyletronProvider} from 'styletron-react';
 import {LightTheme, BaseProvider } from 'baseui';
 import Sketch from 'pages/Sketch';
 import Login from 'pages/Login';
-import Ticket from 'modules/Ticket/components';
+import Ticket from 'pages/Ticket/index';
 
 const engine = new Styletron();
 

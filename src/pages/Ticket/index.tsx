@@ -1,11 +1,15 @@
-import React from 'react'
-import Ticket from '../../modules/Ticket/components/index'
+import React from 'react';
+import Ticket from '../../modules/Ticket/components/index';
+import Layout from 'modules/Layout/components';
+import { TicketSection } from 'pages/Ticket/Ticket.style';
 
 
-const index = () => {
+const TicketPage = () => {
     return (
-                <Ticket/>
+            <TicketSection>
+                <Layout children = {<Ticket/>}/>
+            </TicketSection>
     )
 }
 
-export default index
+export default TicketPage

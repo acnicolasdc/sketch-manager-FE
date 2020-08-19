@@ -1,7 +1,6 @@
 import React, {useState, useRef} from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
-import { TicketSection } from 'pages/Ticket/Ticket.style';
 
 const Ticket = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -16,8 +15,7 @@ const Ticket = () => {
     }
     
     return (
-        <TicketSection>
-            <section className= 'login__container' >
+            <section className= 'ticket__container' >
             <Input
                 value={pin}
                 onChange={event => setPin(event.currentTarget.value)}
@@ -31,7 +29,7 @@ const Ticket = () => {
             </Button>
             </section>
 
-        </TicketSection>
+        
 
     )
 }
