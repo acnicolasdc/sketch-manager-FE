@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
-import { FormSection } from '../../../pages/Login/Login.style';
+import { FormSection } from './FormControl.style';
 
 
 
-const Form = () => {
+const FormControl = () => {
 
     const [user, setUser] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -60,4 +60,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default FormControl
