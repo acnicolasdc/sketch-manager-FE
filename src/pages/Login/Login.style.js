@@ -7,7 +7,13 @@ export const GeneralSection = styled.div`
   font-family: "Muli", sans-serif;
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   min-height: 100vh;  
+=======
+  align-items:center;
+  min-height: 100vh; 
+
+>>>>>>> dfa4f040286a77b19ea1844f50055ff27b0065b3
 a {
   color: white;
   cursor: pointer;
@@ -22,6 +28,7 @@ export const LoginSection = styled.section`
   flex-direction: column;
   padding: 0px 30px;
   min-height: calc(100vh - 200px);
+  
 
 .login__container{
   font-family: "Muli", sans-serif;
@@ -33,8 +40,7 @@ export const LoginSection = styled.section`
   justify-content: space-around;
   padding: auto;
   color: black;
-  min-height: 150px;
-  width: 300px;
+  min-height: 150px; 
 }
 `;
 

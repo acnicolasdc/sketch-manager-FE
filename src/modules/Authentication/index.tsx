@@ -8,12 +8,16 @@ import { useHistory } from 'react-router';
 
 
 
-const FormControl = () => {
+const Authentication = () => {
 
     const [user, setUser] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+<<<<<<< HEAD
     const history = useHistory();
     const inputRef = useRef<HTMLInputElement>(null);
+=======
+
+>>>>>>> dfa4f040286a77b19ea1844f50055ff27b0065b3
 
     const handleDisable = (): boolean => {
         if (user === '' || password === '') return true
@@ -29,7 +33,6 @@ const FormControl = () => {
             <Input
                 value={user}
                 onChange={event => setUser(event.currentTarget.value)}
-                inputRef={inputRef}
                 type="text"
                 placeholder="User"
                 overrides={{
@@ -45,7 +48,6 @@ const FormControl = () => {
             <Input
                 value={password}
                 onChange={event => setPassword(event.currentTarget.value)}
-                inputRef={inputRef}
                 placeholder="Password"
                 type="password"
                 overrides={{
@@ -60,11 +62,15 @@ const FormControl = () => {
             />
 
             <Button type="submit" disabled={handleDisable()}
+<<<<<<< HEAD
                 onClick={handleClick}
                 overrides={{ BaseButton: { style: { width: "80%" } } }}>LOGIN
+=======
+                overrides={{ BaseButton: { style: { width: "100%" } } }}>LOGIN
+>>>>>>> dfa4f040286a77b19ea1844f50055ff27b0065b3
             </Button>
         </AuthenticationSection>
     )
 }
 
-export default FormControl
+export default Authentication

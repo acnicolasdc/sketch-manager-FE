@@ -8,4 +8,5 @@ export const AuthenticationSection = styled.section`
   flex-direction: column;
   width: calc(100vh - 300px);
   margin-top:auto;
+  max-width: 400px;
 `; 
