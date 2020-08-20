@@ -7,6 +7,7 @@ export type Rect = {
     data?: any;
     rotation?:number;
     id?: string;
+    name?: string;
 }
 
 export type Label = {
@@ -15,6 +16,7 @@ export type Label = {
     fontSize?: number;
     text?: string;
     id?: string;
+    name?: string;
 }
 
 export type Circle = {
@@ -23,6 +25,7 @@ export type Circle = {
     radius?: number;
     code?:string;
     id?: string;
+    name?: string;
 }
 
 export type Trinagle = {
@@ -30,12 +33,14 @@ export type Trinagle = {
     y?: number;
     value?:string;
     id?: string;
+    name?: string;
 }
 
 export type Options = {
     label?: string;
     key?: string;
     icon?: string;
+    name?: string;
 }
 
 export type LineCoupling = {
@@ -44,6 +49,7 @@ export type LineCoupling = {
     y?: number;
     text?: string;
     type?: string;
+    name?: string;
 }
 
 export enum ModulesEnum {

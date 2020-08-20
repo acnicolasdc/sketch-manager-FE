@@ -8,7 +8,8 @@ export const RECT = {
     value:'500"',
     data:{},
     rotation:0,
-    id: 'rect-code'
+    id: 'rect-code',
+    name:'guideLine-element'
 }
 
 export const LABEL = {
@@ -17,6 +18,7 @@ export const LABEL = {
   fontSize: 15,
   text: '',
   id: 'label-code',
+  name:'guideLine-element'
 }
 
 export const CIRCLE = {
@@ -25,6 +27,7 @@ export const CIRCLE = {
   radius: 10,
   code:'V#12345',
   id: 'circle-code',
+  name:'guideLine-element'
 }
 
 export const TRIANGLE = {
@@ -32,6 +35,7 @@ export const TRIANGLE = {
   y: 200,
   code:'12"',
   id: 'triangle-code',
+  name:'guideLine-element'
 }
 
 export const COUPLING = {
@@ -40,6 +44,7 @@ export const COUPLING = {
   id: 'coupling-code',
   type: CouplingEnum.uni,
   text: '',
+  name:'guideLine-element'
 }
 
 export const INITIAL_OPTIONS = [
