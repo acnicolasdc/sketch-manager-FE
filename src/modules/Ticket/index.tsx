@@ -29,7 +29,7 @@ const Ticket = () => {
                     Root: {
                         style: ({ $theme }) => {
                             return {
-                                margin: `10px 0`,
+                                marginBottom: `15px`,
                             };
                         }
                     }
