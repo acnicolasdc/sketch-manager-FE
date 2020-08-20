@@ -7,9 +7,7 @@ export const GeneralSection = styled.div`
   font-family: "Muli", sans-serif;
   display: flex;
   flex-direction: column;
-  align-items:center;
-  min-height: 100vh; 
-
+  min-height: 100vh;  
 a {
   color: white;
   cursor: pointer;

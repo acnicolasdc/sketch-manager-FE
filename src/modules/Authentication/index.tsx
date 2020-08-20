@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
 import { AuthenticationSection } from './Authenticacion.style';
+import { useHistory } from 'react-router';
+
 
 
 
@@ -9,12 +11,16 @@ const Authentication = () => {
 
     const [user, setUser] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-
+    const history = useHistory();
 
     const handleDisable = (): boolean => {
         if (user === '' || password === '') return true
         return false
     }
+
+    const handleClick = ():any => {
+        history.push('/Ticket');
+    };
 
     return (
         <AuthenticationSection>
@@ -49,6 +55,7 @@ const Authentication = () => {
                 }}
             />
             <Button type="submit" disabled={handleDisable()}
+                onClick={handleClick}
                 overrides={{ BaseButton: { style: { width: "100%" } } }}>LOGIN
             </Button>
         </AuthenticationSection>
