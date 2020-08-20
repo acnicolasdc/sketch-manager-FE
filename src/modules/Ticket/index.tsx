@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
-import { useHistory } from "react-router-dom";
-import {TicketSection} from './Ticket.style';
+import { useHistory } from 'react-router';
+import {TicketSection} from './Ticket.style'
 
 const Ticket = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [pin, setPin] = useState<string>("");
+    // eslint-disable-next-line react-hooks/rules-of-hooks
 
     const history = useHistory();
     
@@ -20,7 +21,7 @@ const Ticket = () => {
     }
     
     return (
-            <TicketSection>
+        <TicketSection>
             <Input
                 value={pin}
                 onChange={event => setPin(event.currentTarget.value)}
@@ -29,19 +30,17 @@ const Ticket = () => {
                     Root: {
                         style: ({ $theme }) => {
                             return {
-                                marginBottom: `15px`,
+                                marginBottom: `10px`,
                             };
                         }
                     }
                 }}
             />
-            
-            
             <Button type="submit" disabled={handleDisable()}
                 onClick={handleClick}
                 overrides={{ BaseButton: { style: { width: "100%" } } }}>NEXT
             </Button>
-            </TicketSection>
+        </TicketSection>
         
     )
 }
