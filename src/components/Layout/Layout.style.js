@@ -13,7 +13,7 @@ export const LayoutStyle = styled.section`
 
 
 export const ImageStyle = styled.img`
-    margin-bottom:30px;
+  margin-bottom:30px;
 
   -webkit-box-shadow: 0 8pt 16pt rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 8pt 16pt rgba(0, 0, 0, 0.2);
