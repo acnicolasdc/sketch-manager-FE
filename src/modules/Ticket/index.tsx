@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
 import { useHistory } from 'react-router';
+import {TicketSection} from './Ticket.style';
 
 const Ticket = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -19,18 +20,28 @@ const Ticket = () => {
     }
     
     return (
-            <section>
+            <TicketSection>
             <Input
                 value={pin}
                 onChange={event => setPin(event.currentTarget.value)}
                 placeholder="Ticket Number"
+                overrides={{
+                    Root: {
+                        style: ({ $theme }) => {
+                            return {
+                                margin: `10px 0`,
+                            };
+                        }
+                    }
+                }}
             />
+            
             
             <Button type="submit" disabled={handleDisable()}
                 onClick={handleClick}
                 overrides={{ BaseButton: { style: { width: "100%" } } }}>NEXT
             </Button>
-            </section>
+            </TicketSection>
         
     )
 }
