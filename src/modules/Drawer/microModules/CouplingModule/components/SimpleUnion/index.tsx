@@ -49,13 +49,8 @@ const SimpleUnion: React.FunctionComponent <SimpleUnionProps> = ({ shapeProps, i
     {isSelected && (
         <Transformer
           ref={ijeRef}
-          boundBoxFunc={(oldBox, newBox) => {
-            if (newBox.width < 5 || newBox.height < 5) {
-              return oldBox;
-            }
-            newBox.height = oldBox.height;
-            return newBox;
-          }}
+          keepRatio={true}
+          resizeEnabled={false}
         />
       )}
     </React.Fragment>

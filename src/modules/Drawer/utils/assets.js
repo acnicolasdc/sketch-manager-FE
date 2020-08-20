@@ -7,6 +7,7 @@ export const RECT = {
     height: 5,
     value:'500"',
     data:{},
+    rotation:0,
     id: 'rect-code'
 }
 
