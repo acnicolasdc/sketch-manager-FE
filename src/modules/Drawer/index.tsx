@@ -74,7 +74,7 @@ const Drawer: React.FunctionComponent = () => {
   function drawGuides(guides:any) {
     guides.forEach((lg:any) => {
       if (lg.orientation === 'H') {
-        var line = <Line{...{
+        var line = <Line {...{
           key:lines.length,
           points: [-6000, lg.lineGuide, 6000, lg.lineGuide],
           stroke: 'rgb(0, 161, 255)',
