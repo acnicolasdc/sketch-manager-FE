@@ -9,6 +9,7 @@ const Ticket = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const inputRef = useRef<HTMLInputElement>(null);
     const history = useHistory();
+    
     const handleClick = ():any => {
         history.push('/Sketch');
     }
