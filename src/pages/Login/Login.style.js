@@ -7,9 +7,8 @@ export const GeneralSection = styled.div`
   font-family: "Muli", sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;  
-
-
+  align-items:center;
+  min-height: 100vh; 
 
 a {
   color: white;
@@ -25,6 +24,7 @@ export const LoginSection = styled.section`
   flex-direction: column;
   padding: 0px 30px;
   min-height: calc(100vh - 200px);
+  
 
 .login__container{
   font-family: "Muli", sans-serif;
@@ -36,8 +36,7 @@ export const LoginSection = styled.section`
   justify-content: space-around;
   padding: auto;
   color: black;
-  min-height: 150px;
-  width: 300px;
+  min-height: 150px; 
 }
 `;
 

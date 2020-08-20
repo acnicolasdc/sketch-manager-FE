@@ -1,7 +1,5 @@
 import React from 'react'
-// import Autentication from "modules/Layout/components";
-import { GeneralSection } from './Login.style';
-import { LoginSection } from './Login.style';
+import { GeneralSection,LoginSection } from './Login.style';
 import Authentication from '../../modules/Authentication';
 import Layout from '../../components/Layout';
 

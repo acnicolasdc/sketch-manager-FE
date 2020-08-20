@@ -8,16 +8,15 @@ export const LayoutStyle = styled.section`
   flex-direction: column;
   width: calc(100vh - 300px);
   margin-top:90px;
-
-  
 );
 `;
 
 
-export const ImageStyle = styled.section`
-img{
-  -webkit-box-shadow: 10px 10px 34px -9px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 34px -9px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 34px -9px rgba(0,0,0,0.75);
-}
+export const ImageStyle = styled.img`
+    margin-bottom:30px;
+
+  -webkit-box-shadow: 0 8pt 16pt rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 8pt 16pt rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8pt 16pt rgba(0, 0, 0, 0.2);
+
 `;
