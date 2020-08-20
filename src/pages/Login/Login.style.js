@@ -7,22 +7,8 @@ export const GeneralSection = styled.div`
   font-family: "Muli", sans-serif;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-  min-height: 100vh;  
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 10776bfc95c1c0b2a31d3be92220e68798dbecec
-=======
   align-items:center;
   min-height: 100vh; 
-
->>>>>>> dfa4f040286a77b19ea1844f50055ff27b0065b3
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 2c1db49c438afaf5acee82dfd025b1062aa31461
->>>>>>> 10776bfc95c1c0b2a31d3be92220e68798dbecec
 a {
   color: white;
   cursor: pointer;

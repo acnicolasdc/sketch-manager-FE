@@ -8,14 +8,6 @@ export const LayoutStyle = styled.section`
   flex-direction: column;
   width: calc(100vh - 300px);
   margin-top:90px;
-<<<<<<< HEAD
-);
-=======
-<<<<<<< HEAD
-);
-=======
->>>>>>> 2c1db49c438afaf5acee82dfd025b1062aa31461
->>>>>>> 10776bfc95c1c0b2a31d3be92220e68798dbecec
 `;
 
 

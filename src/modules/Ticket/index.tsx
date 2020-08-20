@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
 import { useHistory } from 'react-router';
@@ -22,13 +22,6 @@ const Ticket = () => {
     
     return (
         <TicketSection>
-            <section className= 'ticket__container' >
-            <Input
-                value={pin}
-                onChange={event => setPin(event.currentTarget.value)}
-                placeholder="Ticket Number"
-            />
-            
             <Input
                 value={pin}
                 onChange={event => setPin(event.currentTarget.value)}
@@ -37,19 +30,16 @@ const Ticket = () => {
                     Root: {
                         style: ({ $theme }) => {
                             return {
-                                marginBottom: `15px`,
+                                marginBottom: `10px`,
                             };
                         }
                     }
                 }}
             />
-            
-            
             <Button type="submit" disabled={handleDisable()}
                 onClick={handleClick}
                 overrides={{ BaseButton: { style: { width: "100%" } } }}>NEXT
             </Button>
-            </section>
         </TicketSection>
         
     )
