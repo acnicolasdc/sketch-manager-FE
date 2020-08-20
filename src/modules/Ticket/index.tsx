@@ -30,7 +30,7 @@ const Ticket = () => {
             
             <Button type="submit" disabled={handleDisable()}
                 onClick={handleClick}
-                overrides={{ BaseButton: { style: { width: "80%" } } }}>NEXT
+                overrides={{ BaseButton: { style: { width: "100%" } } }}>NEXT
             </Button>
             </section>
         

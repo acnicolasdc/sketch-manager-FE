@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState} from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
 import { AuthenticationSection } from './Authenticacion.style';
-import Ticket from 'modules/Ticket/components';
+import Ticket from 'modules/Ticket';
 import { useHistory } from 'react-router';
 
 
@@ -12,12 +12,8 @@ const Authentication = () => {
 
     const [user, setUser] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-<<<<<<< HEAD
     const history = useHistory();
-    const inputRef = useRef<HTMLInputElement>(null);
-=======
 
->>>>>>> dfa4f040286a77b19ea1844f50055ff27b0065b3
 
     const handleDisable = (): boolean => {
         if (user === '' || password === '') return true
@@ -62,12 +58,8 @@ const Authentication = () => {
             />
 
             <Button type="submit" disabled={handleDisable()}
-<<<<<<< HEAD
                 onClick={handleClick}
-                overrides={{ BaseButton: { style: { width: "80%" } } }}>LOGIN
-=======
                 overrides={{ BaseButton: { style: { width: "100%" } } }}>LOGIN
->>>>>>> dfa4f040286a77b19ea1844f50055ff27b0065b3
             </Button>
         </AuthenticationSection>
     )
