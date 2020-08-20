@@ -10,7 +10,6 @@ const engine = new Styletron();
 
 function App() {
   return (
-  
       <StyletronProvider value={engine}>
         <BaseProvider theme={LightTheme}>
           <Login />

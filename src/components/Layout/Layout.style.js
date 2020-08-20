@@ -8,7 +8,6 @@ export const LayoutStyle = styled.section`
   flex-direction: column;
   width: calc(100vh - 300px);
   margin-top:90px;
-);
 `;
 
 

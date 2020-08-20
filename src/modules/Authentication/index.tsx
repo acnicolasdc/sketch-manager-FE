@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, {useState} from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
 import { AuthenticationSection } from './Authenticacion.style';
@@ -48,7 +48,6 @@ const Authentication = () => {
                     }
                 }}
             />
-
             <Button type="submit" disabled={handleDisable()}
                 overrides={{ BaseButton: { style: { width: "100%" } } }}>LOGIN
             </Button>
