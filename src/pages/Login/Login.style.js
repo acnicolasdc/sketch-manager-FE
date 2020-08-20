@@ -9,11 +9,14 @@ export const GeneralSection = styled.div`
   flex-direction: column;
 <<<<<<< HEAD
   min-height: 100vh;  
+<<<<<<< HEAD
 =======
   align-items:center;
   min-height: 100vh; 
 
 >>>>>>> dfa4f040286a77b19ea1844f50055ff27b0065b3
+=======
+>>>>>>> 2c1db49c438afaf5acee82dfd025b1062aa31461
 a {
   color: white;
   cursor: pointer;

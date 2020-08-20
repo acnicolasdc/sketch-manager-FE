@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router-dom";
 import {TicketSection} from './Ticket.style';
 
 const Ticket = () => {
