@@ -5,12 +5,11 @@ import { AuthenticationSection } from './Authenticacion.style';
 
 
 
-const FormControl = () => {
+const Authentication = () => {
 
     const [user, setUser] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
-    const inputRef = useRef<HTMLInputElement>(null);
 
     const handleDisable = (): boolean => {
         if (user === '' || password === '') return true
@@ -22,7 +21,6 @@ const FormControl = () => {
             <Input
                 value={user}
                 onChange={event => setUser(event.currentTarget.value)}
-                inputRef={inputRef}
                 type="text"
                 placeholder="User"
                 overrides={{
@@ -38,7 +36,6 @@ const FormControl = () => {
             <Input
                 value={password}
                 onChange={event => setPassword(event.currentTarget.value)}
-                inputRef={inputRef}
                 placeholder="Password"
                 type="password"
                 overrides={{
@@ -53,11 +50,10 @@ const FormControl = () => {
             />
 
             <Button type="submit" disabled={handleDisable()}
-                // onClick={() => inputRef.current && inputRef.current.focus()}
-                overrides={{ BaseButton: { style: { width: "80%" } } }}>LOGIN
+                overrides={{ BaseButton: { style: { width: "100%" } } }}>LOGIN
             </Button>
         </AuthenticationSection>
     )
 }
 
-export default FormControl
+export default Authentication
