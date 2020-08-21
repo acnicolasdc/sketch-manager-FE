@@ -16,7 +16,7 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
 ) => {
   const { texts, updateTexts } = React.useContext(StoreContext);
   const handlerClick = (e:any, id:any) => {
-    if (e.type === 'click') {
+    if (e.type === 'click' || e.type === 'tap') {
         selectText(id);
       } else if (e.type === 'contextmenu') {
         window.addEventListener("contextmenu", function(a){ a.preventDefault()})

@@ -16,7 +16,7 @@ const ReducerModule: React.FunctionComponent<ReducerProps> = (
 ) => {
 const { updateReducers, reducers } = React.useContext(StoreContext);
   const handlerClick = (e:any, id:any) => {
-    if (e.type === 'click') {
+    if (e.type === 'click' || e.type === 'tap') {
         selectReducer(id);
       } else if (e.type === 'contextmenu') {
         window.addEventListener("contextmenu", function(a){ a.preventDefault()})

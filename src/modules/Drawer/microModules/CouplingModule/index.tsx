@@ -16,7 +16,7 @@ const CouplingModule: React.FunctionComponent<RectangleProps> = (
 ) => {
   const { couplings, updateCouplings } = React.useContext(StoreContext);
   const handlerClick = (e:any, id:any) => {
-    if (e.type === 'click') {
+    if (e.type === 'click' || e.type === 'tap') {
         selectCoupling(id);
       } else if (e.type === 'contextmenu') {
         window.addEventListener("contextmenu", function(a){ a.preventDefault()})

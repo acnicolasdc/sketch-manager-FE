@@ -14,7 +14,7 @@ const DripModule: React.FunctionComponent<DripProps> = (
 ) => {
 const { updateDrips, drips } = React.useContext(StoreContext);
   const handlerClick = (e:any, id:any) => {
-    if (e.type === 'click') {
+    if (e.type === 'click' || e.type === 'tap') {
         selectDrip(id);
       } else if (e.type === 'contextmenu') {
         window.addEventListener("contextmenu", function(a){ a.preventDefault()})
