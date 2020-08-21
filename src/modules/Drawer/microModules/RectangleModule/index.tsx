@@ -15,7 +15,8 @@ const RectangleModule: React.FunctionComponent<RectangleProps> = (
 ) => {
 const { updateReact, rectangles } = React.useContext(StoreContext);
   const handlerClick = (e:any, id:any) => {
-    if (e.type === 'click') {
+    console.log(e.type);
+    if (e.type === 'click' || e.type === 'tap') {
         selectRect(id);
       } else if (e.type === 'contextmenu') {
         window.addEventListener("contextmenu", function(a){ a.preventDefault()})
