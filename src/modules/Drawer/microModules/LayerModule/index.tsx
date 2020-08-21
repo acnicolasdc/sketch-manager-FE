@@ -5,6 +5,7 @@ import { Stage, Layer } from 'react-konva';
 import { getGuides, getObjectSnappingEdges} from '../../utils/guideLines';
 
 export interface LayerProps {
+    grid?: any;
     children?: any;
     width: number | any;
     selectShape:(value:string)=>void;    
@@ -13,7 +14,7 @@ export interface LayerProps {
 const GUIDELINE_OFFSET = 5;
 const HEIGHT = window.innerHeight;
 
-const LayerModule: React.FunctionComponent<LayerProps> = ({ selectShape, width, children }) => {
+const LayerModule: React.FunctionComponent<LayerProps> = ({ selectShape, width, children, grid }) => {
 
   const stageRef = useRef<HTMLHeadingElement | any>();
   const layerRef = useRef<HTMLHeadingElement | any>();
@@ -74,12 +75,14 @@ const LayerModule: React.FunctionComponent<LayerProps> = ({ selectShape, width, 
               {(value:any) => (
                   <Stage
                       ref={stageRef}
-                      width={width-170}
+                      width={width}
                       height={HEIGHT-40}
                       onMouseDown={checkDeselect}
                       onTouchStart={checkDeselect}>
                         <StoreContext.Provider value={value}>
-                          <Layer ref={layerRef}       
+                          {grid}
+                          <Layer ref={layerRef} 
+                            id="later-print-report"      
                             onDragMove={(e)=>{
                                 layerRef.current.find('.guid-line').destroy();
                                 let lineGuideStops = getLineGuideStops(e.target);

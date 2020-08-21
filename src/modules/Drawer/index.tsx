@@ -10,6 +10,7 @@ import RectangleModule, {
 import CouplingModule, { CouplingModal } from "./microModules/CouplingModule";
 import InformationModule from "./microModules/InformationModule";
 import LayerModule from "./microModules/LayerModule";
+import GridModule from "./microModules/GridModule";
 import StoreProvider from "./providers/Store";
 /** @components Presentantional Elements */
 import { ChevronDown } from "baseui/icon";
@@ -34,7 +35,7 @@ const Drawer: React.FunctionComponent = () => {
   const printDocument = async () => {
     if (geratePDF) return;
     setGeneratePDF(true);
-    const input: any = document.querySelector(".konvajs-content > canvas");
+    const input: any = document.querySelector(".konvajs-content canvas:last-child");
     await documentGenerator(input);
     setGeneratePDF(false);
   };
@@ -51,7 +52,7 @@ const Drawer: React.FunctionComponent = () => {
             accessibilityType={"tooltip"}
           >
             <Button
-            kind={KIND.tertiary}
+              kind={KIND.tertiary}
               shape={SHAPE.square}
               overrides={{
                 Root: {
@@ -68,7 +69,7 @@ const Drawer: React.FunctionComponent = () => {
             accessibilityType={"tooltip"}
           >
             <Button
-            kind={KIND.tertiary}
+              kind={KIND.tertiary}
               shape={SHAPE.square}
               disabled={geratePDF}
               overrides={{ Root: { style: { marginRight: "5px" } } }}
@@ -83,7 +84,7 @@ const Drawer: React.FunctionComponent = () => {
             accessibilityType={"tooltip"}
           >
             <Button
-            kind={KIND.tertiary}
+              kind={KIND.tertiary}
               endEnhancer={() => <ChevronDown size={24} />}
               onClick={() => setOpenReport(true)}
             >
@@ -96,7 +97,11 @@ const Drawer: React.FunctionComponent = () => {
             onClick={(key: string) => setRunModule(key)}
             options={INITIAL_OPTIONS}
           />
-          <LayerModule selectShape={selectShape} width={width}>
+          <LayerModule
+            selectShape={selectShape}
+            width={width}
+            grid={<GridModule width={width} />}
+          >
             <RectangleModule selected={selectedId} selectRect={selectShape} />
             <TextModule selected={selectedId} selectText={selectShape} />
             <ValveModule selected={selectedId} selectValve={selectShape} />
