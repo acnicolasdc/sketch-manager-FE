@@ -89,7 +89,6 @@ const LayerModule: React.FunctionComponent<LayerProps> = ({ selectShape, width, 
                                 let itemBounds = getObjectSnappingEdges(e.target);
                                 let guides = getGuides(lineGuideStops, itemBounds, GUIDELINE_OFFSET);
                                 if (!guides.length) {
-                                  console.log(guides);
                                   return;
                                 }
                                 drawGuides(guides);
