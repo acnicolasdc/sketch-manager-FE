@@ -1,6 +1,6 @@
 import React from 'react';
 import { Line, Transformer, Group, Text } from 'react-konva';
-
+import { Callback, minus, add, onTransformX, onTransformY, moveConfiguration } from '../../../../utils/transform';
 export interface ReducerProps {
     shapeProps?: any;
     isSelected?: boolean;
@@ -12,6 +12,7 @@ const Reducer: React.FunctionComponent <ReducerProps> = ({ shapeProps, isSelecte
   
   const shapeRef = React.useRef<HTMLHeadingElement | any>();
   const trRef = React.useRef<HTMLHeadingElement | any>();
+  const textRef = React.useRef<HTMLHeadingElement | any>();
 
   React.useEffect(() => {
     if (isSelected) {
@@ -19,30 +20,63 @@ const Reducer: React.FunctionComponent <ReducerProps> = ({ shapeProps, isSelecte
       trRef.current.getLayer().batchDraw();
     }
   }, [isSelected]);
+
+  const onTraformElement = (reference:HTMLHeadingElement | any, element:HTMLHeadingElement | any, cba: Callback, cbb: Callback) => {
+    const node: any = reference.current;
+    const rotation = node.rotation();
+    const nodeWidth = node.width()*2;
+    const transformX = onTransformX(rotation, nodeWidth, node.x(), cba);
+    const transformY = onTransformY(rotation, nodeWidth, node.y(), cbb);
+    element.current.rotation(node.rotation());
+    element.current.x(transformX)
+    element.current.y(transformY);
+  }
+
+  const groupTransform = () => {
+    onTraformElement(shapeRef, textRef, minus, add);
+  }
+
+  const x = onTransformX(shapeProps.rotation, shapeProps.width*2, shapeProps.x, minus);
+  const y = onTransformY(shapeProps.rotation, shapeProps.width*2, shapeProps.y, add);
+
+
   return (
     <React.Fragment>
-      <Group ref={shapeRef}
-        onContextMenu={onSelect}
-        onClick={onSelect}
-        onTap={onSelect}
-        draggable
-      >
-      <Text text={shapeProps.value}fontSize={12} x={shapeProps.x+30} y={shapeProps.y}/>
+      <Group>
+      <Text text={shapeProps.value}fontSize={12} x={x} y={y} ref={textRef}/>
         <Line
-          points={[0, 30, 15, 0, 30, 30]}
+          ref={shapeRef}
+          onContextMenu={onSelect}
+          onClick={onSelect}
+          onTap={onSelect}
+          draggable
+          points={[0, 30, 15, 15, 30, 30]}
           closed
           fill="#2d3436"
           {...shapeProps}
+          onDragEnd={()=>{
+            const node: any = shapeRef.current;
+            node.x(moveConfiguration(node.x()));
+            node.y(moveConfiguration(node.y()));
+            groupTransform();
+          }}
+          onDragMove={()=>{
+            const node: any = shapeRef.current;
+            node.x(moveConfiguration(node.x()));
+            node.y(moveConfiguration(node.y()));
+            groupTransform();
+          }}
+          onTransform={groupTransform}
           onTransformEnd={e => {
             const node: any = shapeRef.current;
-            const scaleY = node.scaleY();
             node.scaleX(1);
             node.scaleY(1);
+            groupTransform();
             onChange({
               ...shapeProps,
               x: node.x(),
               y: node.y(),
-              radius: Math.max(node.height() * scaleY)
+              rotation: node.rotation(),
             });
           }}
         />
@@ -51,12 +85,7 @@ const Reducer: React.FunctionComponent <ReducerProps> = ({ shapeProps, isSelecte
         <Transformer
           ref={trRef}
           keepRatio={true}
-          enabledAnchors={[
-            'top-left',
-            'top-right',
-            'bottom-left',
-            'bottom-right',
-          ]}
+          resizeEnabled={false}
         />
       )}
     </React.Fragment>

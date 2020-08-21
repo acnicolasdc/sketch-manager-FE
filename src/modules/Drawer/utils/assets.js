@@ -24,10 +24,11 @@ export const LABEL = {
 export const CIRCLE = {
   x: 200,
   y: 200,
-  radius: 10,
+  radius: 8,
   code:'V#12345',
   id: 'circle-code',
-  name:'guideLine-element'
+  name:'guideLine-element',
+  rotation:0,
 }
 
 export const TRIANGLE = {
@@ -35,7 +36,10 @@ export const TRIANGLE = {
   y: 200,
   code:'12"',
   id: 'triangle-code',
-  name:'guideLine-element'
+  name:'guideLine-element',
+  width: 30,
+  height: 15,
+  rotation:0,
 }
 
 export const COUPLING = {
@@ -44,7 +48,8 @@ export const COUPLING = {
   id: 'coupling-code',
   type: CouplingEnum.uni,
   text: '',
-  name:'guideLine-element'
+  name:'guideLine-element',
+  rotation:0,
 }
 
 export const INITIAL_OPTIONS = [

@@ -21,7 +21,11 @@ const OptionsBar: React.FunctionComponent<ButtonRadioGroupProps> = ({ options = 
                         return {
                           outline: 'none',
                           backgroundColor: '#0581C1',
-                          maxHeight:'100vh'
+                          height:'480px',
+                          maxHeight:'480px',
+                          position:'absolute',
+                          zIndex:50,
+                          top: '210px'
                         };
                       }
                 },

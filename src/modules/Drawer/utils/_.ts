@@ -17,6 +17,7 @@ export type Label = {
     text?: string;
     id?: string;
     name?: string;
+    rotation?:number;
 }
 
 export type Circle = {
@@ -26,6 +27,7 @@ export type Circle = {
     code?:string;
     id?: string;
     name?: string;
+    rotation?:number;
 }
 
 export type Trinagle = {
@@ -34,6 +36,9 @@ export type Trinagle = {
     value?:string;
     id?: string;
     name?: string;
+    width?: number;
+    height?: number;
+    rotation?:number;
 }
 
 export type Options = {
@@ -41,6 +46,7 @@ export type Options = {
     key?: string;
     icon?: string;
     name?: string;
+    rotation?:number;
 }
 
 export type LineCoupling = {
@@ -50,6 +56,7 @@ export type LineCoupling = {
     text?: string;
     type?: string;
     name?: string;
+    rotation?:number;
 }
 
 export enum ModulesEnum {
@@ -60,6 +67,10 @@ export enum ModulesEnum {
     drip = "drip-module",
     reducer = "reducer-module",
     union = "union-module",
+}
+
+export enum GridEnum {
+    block = 16,
 }
 
 export enum CouplingEnum {
