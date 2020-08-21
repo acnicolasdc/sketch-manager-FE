@@ -20,7 +20,16 @@ export const TicketSection = styled.section`
   padding: auto;
   color: black;
   min-height: 150px;
-  width: 300px;
+  max-width: 300px;
   
 }`;
 
+export const Title = styled.h5`
+margin-bottom:15px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+max-width: 300px;
+font-size: 15px;
+color: black;
+letter-spacing:0.5px;
+font-weight: 500;
+`;
