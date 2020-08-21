@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "525759b97f5fca684e7b8cb4896bb2db",
+    "revision": "86b3639c3959e030395baa035e2ed4e1",
     "url": "/sketch-manager-FE/index.html"
   },
   {
-    "revision": "de69e35e894cfc17e805",
+    "revision": "6e05fe3d3a613b9f410f",
     "url": "/sketch-manager-FE/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sketch-manager-FE/static/js/2.142eef25.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "de69e35e894cfc17e805",
-    "url": "/sketch-manager-FE/static/js/main.6a2cc7be.chunk.js"
+    "revision": "6e05fe3d3a613b9f410f",
+    "url": "/sketch-manager-FE/static/js/main.d935a25d.chunk.js"
   },
   {
     "revision": "7eb0103126b39ec3b974",
