@@ -8,9 +8,8 @@ export const OptionContainer = styled.div`
     height: 70px;
     width:80px;
     padding:5px;
-    background-color:'#FFF';
     :hover{
-        background-color:${props => props.theme.colors.menuFontDefault}
+        background-color:#0793D0
     }
 `;
 

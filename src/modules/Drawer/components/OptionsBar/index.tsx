@@ -20,7 +20,7 @@ const OptionsBar: React.FunctionComponent<ButtonRadioGroupProps> = ({ options = 
                     style:({ $theme }) => {
                         return {
                           outline: 'none',
-                          backgroundColor: $theme.colors.black,
+                          backgroundColor: '#0581C1',
                           maxHeight:'100vh'
                         };
                       }
