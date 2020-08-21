@@ -16,6 +16,15 @@ const OptionsBar: React.FunctionComponent<ButtonRadioGroupProps> = ({ options = 
         <StatefulMenu
             items={options}
             overrides={{
+                List: {
+                    style:({ $theme }) => {
+                        return {
+                          outline: 'none',
+                          backgroundColor: $theme.colors.black,
+                          maxHeight:'100vh'
+                        };
+                      }
+                },
                 Option: {
                     component: Option,
                     props:{

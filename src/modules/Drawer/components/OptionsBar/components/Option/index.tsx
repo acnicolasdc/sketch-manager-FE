@@ -24,7 +24,7 @@ const Option: React.FunctionComponent<OptionProps> = (props) => {
     return (
         <OptionContainer {...rest} theme={theme} onClick={()=>onClick(key)}
             data-cy="option-side-bar">
-            <Icon color={theme.colors.mono500}/>
+            <Icon color={theme.colors.white}/>
             <OptionLabel theme={theme} >{label}</OptionLabel>
         </OptionContainer>
     )

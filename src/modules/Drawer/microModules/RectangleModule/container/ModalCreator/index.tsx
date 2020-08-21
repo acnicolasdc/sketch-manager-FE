@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Select } from "baseui/select";
 import { Input } from "baseui/input";
 import { Slider } from "baseui/slider";
+import {Heading, HeadingLevel} from 'baseui/heading';
 import {
   Modal,
   ModalHeader,
@@ -124,6 +125,14 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
                 placeholder="Length"
               />
           </Row>
+          <HeadingLevel ><Heading styleLevel={6} overrides={{
+            Block:{
+              style:{
+                marginBottom:'0px'
+              }
+            }
+          }}>Cover</Heading>
+      </HeadingLevel>
           <Slider
             value={cover}
             min={10}

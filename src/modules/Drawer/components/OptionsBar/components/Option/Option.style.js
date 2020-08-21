@@ -10,11 +10,11 @@ export const OptionContainer = styled.div`
     padding:5px;
     background-color:'#FFF';
     :hover{
-        background-color:${props => props.theme.colors.buttonMinimalHover}
+        background-color:${props => props.theme.colors.menuFontDefault}
     }
 `;
 
 export const OptionLabel = styled.label`
     margin-top:3px;
-    color:${props => props.theme.colors.mono500};
+    color:${props => props.theme.colors.white};
 `;
