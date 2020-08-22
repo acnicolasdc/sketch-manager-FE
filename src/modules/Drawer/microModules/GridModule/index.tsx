@@ -15,6 +15,7 @@ const generateRows = ():any[] => {
     for (var i = 0; i < width / PADDING; i++) {
         gridLayerRow.push(
         <Line {...{
+          key:`${i}-row`,
           points: [Math.round(i * PADDING) + 0.5, 0, Math.round(i * PADDING) + 0.5, HEIGHT],
           stroke: '#ddd',
           strokeWidth: 1,
@@ -27,6 +28,7 @@ const generateColumns = ():any[] => {
     const gridLayerColumn: any[] = []
     for (var j = 0; j < HEIGHT / PADDING; j++) {
         gridLayerColumn.push(<Line {...{
+          key:`${j}-column`,
           points: [0, Math.round(j * PADDING), width, Math.round(j * PADDING)],
           stroke: '#ddd',
           strokeWidth: 0.5,

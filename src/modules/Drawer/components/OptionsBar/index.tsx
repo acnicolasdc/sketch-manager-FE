@@ -24,7 +24,7 @@ const OptionsBar: React.FunctionComponent<ButtonRadioGroupProps> = ({ options = 
                           height:'480px',
                           maxHeight:'480px',
                           position:'absolute',
-                          zIndex:50,
+                          zIndex:5,
                           top: '210px'
                         };
                       }
