@@ -23,10 +23,11 @@ import useWindowDimensions from "hooks/useWindowDimensions";
 import { INITIAL_OPTIONS } from "./utils/assets";
 import { ModulesEnum } from "./utils/_";
 import documentGenerator from "./utils/printDocument";
-import { DrawerContainer, OptionHeader, DrawerContent } from "./Drawer.style";
+import { DrawerContainer, OptionHeader, DrawerContent, ContainerHeader,LabelStyle } from "./Drawer.style";
+import UserInfo from "../../components/UserInfo/index";
 
 const Drawer: React.FunctionComponent = () => {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const [runModule, setRunModule] = React.useState<string>("");
   const [selectedId, selectShape] = React.useState<string>("");
   const [openReport, setOpenReport] = React.useState<boolean>(false);
@@ -47,53 +48,59 @@ const Drawer: React.FunctionComponent = () => {
     <StoreProvider>
       <DrawerContainer>
         <OptionHeader>
-          <StatefulTooltip
-            content={<p>Delete selected element</p>}
-            accessibilityType={"tooltip"}
-          >
-            <Button
-              kind={KIND.tertiary}
-              shape={SHAPE.square}
-              overrides={{
-                Root: {
-                  style: { marginRight: "15px" },
-                },
-              }}
-              disabled={selectedId === ""}
-            >
-              <BsFillTrashFill />
-            </Button>
-          </StatefulTooltip>
-          <StatefulTooltip
-            content={<p>¿Are you done? Save it as PDF for approval</p>}
-            accessibilityType={"tooltip"}
-          >
-            <Button
-              kind={KIND.tertiary}
-              shape={SHAPE.square}
-              disabled={geratePDF}
-              overrides={{ Root: { style: { marginRight: "5px" } } }}
-              endEnhancer={() => <BsFileEarmarkArrowDown />}
-              onClick={() => printDocument()}
-            >
-              {geratePDF ? "Generating..." : "Generate PDF"}
-            </Button>
-          </StatefulTooltip>
-          <StatefulTooltip
-            content={<p>Check the status of the report</p>}
-            accessibilityType={"tooltip"}
-          >
-            <Button
-              kind={KIND.tertiary}
-              endEnhancer={() => <ChevronDown size={24} />}
-              onClick={() => setOpenReport(true)}
-            >
-              Open Report
-            </Button>
-          </StatefulTooltip>
+                <LabelStyle>
+                  {<UserInfo/>}
+                </LabelStyle>
+                          <ContainerHeader>
+                            <StatefulTooltip
+                              content={<p>Delete selected element</p>}
+                              accessibilityType={"tooltip"}
+                            >
+                              <Button
+                              kind={KIND.tertiary}
+                                shape={SHAPE.square}
+                                overrides={{
+                                  Root: {
+                                    style: { marginRight: "15px" },
+                                  },
+                                }}
+                                disabled={selectedId === ""}
+                              >
+                                <BsFillTrashFill />
+                              </Button>
+                            </StatefulTooltip>
+                            <StatefulTooltip
+                              content={<p>¿Are you done? Save it as PDF for approval</p>}
+                              accessibilityType={"tooltip"}
+                            >
+                              <Button
+                              kind={KIND.tertiary}
+                                shape={SHAPE.square}
+                                disabled={geratePDF}
+                                overrides={{ Root: { style: { marginRight: "5px" } } }}
+                                endEnhancer={() => <BsFileEarmarkArrowDown />}
+                                onClick={() => printDocument()}
+                              >
+                                {geratePDF ? "Generating..." : "Generate PDF"}
+                              </Button>
+                            </StatefulTooltip>
+                            <StatefulTooltip
+                              content={<p>Check the status of the report</p>}
+                              accessibilityType={"tooltip"}
+                            >
+                              <Button
+                              kind={KIND.tertiary}
+                                endEnhancer={() => <ChevronDown size={24} />}
+                                onClick={() => setOpenReport(true)}
+                              >
+                                Open Report
+                              </Button>
+                            </StatefulTooltip>
+                          </ContainerHeader>
         </OptionHeader>
         <DrawerContent>
-          <OptionsBar
+          <OptionsBar 
+            height = {height}
             onClick={(key: string) => setRunModule(key)}
             options={INITIAL_OPTIONS}
           />
