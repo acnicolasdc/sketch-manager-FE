@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import {Client as Styletron} from 'styletron-engine-atomic';
-import {Provider as StyletronProvider} from 'styletron-react';
-import {BaseProvider, createTheme } from 'baseui';
-import Sketch from 'pages/Sketch';
-import Login  from 'pages/Login';
-import Ticket from 'pages/Ticket';
+import { Provider as ReduxProvider } from 'react-redux';
+import SessionProvider from 'providers/session';
+import { Client as Styletron } from 'styletron-engine-atomic';
+import { Provider as StyletronProvider } from 'styletron-react';
+import { createTheme, BaseProvider } from 'baseui';
+import store from './redux';
+import Routes from 'routes';
 
 const primitives = {
   accent: '#0581C1', // hot pink
@@ -36,18 +36,16 @@ const engine = new Styletron();
 
 function App() {
   return (
-      <StyletronProvider value={engine}>
-        <BaseProvider theme={theme}> 
-          <BrowserRouter>
-            <Redirect from = '/' to = '/Login'/>
-              <Switch>
-                <Route path="/Login"  component={Login} />
-                <Route path="/Ticket" component={Ticket} />
-                <Route path="/Sketch" component={Sketch} />
-              </Switch>
-          </BrowserRouter>
-        </BaseProvider>
-      </StyletronProvider>
+    <ReduxProvider store={store}>
+      <SessionProvider>
+        <StyletronProvider value={engine}>git 
+          <BaseProvider theme={theme}>
+            <Routes>
+            </Routes>
+          </BaseProvider>
+        </StyletronProvider>
+      </SessionProvider>
+    </ReduxProvider>
   );
 }
 
