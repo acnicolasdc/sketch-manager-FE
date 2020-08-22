@@ -48,7 +48,7 @@ const Drawer: React.FunctionComponent = () => {
       <DrawerContainer>
         <OptionHeader>
                 <LabelStyle>
-                  Aqui va un componente lindis {UserInfo}
+                  {<UserInfo/>}
                 </LabelStyle>
                           <ContainerHeader>
                             <StatefulTooltip

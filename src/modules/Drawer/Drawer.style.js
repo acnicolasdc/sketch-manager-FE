@@ -24,17 +24,19 @@ export const OptionHeader = styled.div`
 
 export const ContainerHeader = styled.div`
     height:40px; 
-    width:100%; 
     background-Color:#FFF; 
     position: relative;
     display: flex;
     flex-flow: row;
     justify-content: flex-end;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 4px 16px;
 `;
 
 export const LabelStyle = styled.label`
     height:40px;
-    width:300px;
-    border: 1px solid blue;
+    min-width:400px;
+    display: flex;
+    align-items:center;
+    Justify-content:flex-start;
+    padding-left: 15px;
+    
 `;
