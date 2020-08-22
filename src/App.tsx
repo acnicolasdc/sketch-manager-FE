@@ -39,7 +39,7 @@ function App() {
       <StyletronProvider value={engine}>
         <BaseProvider theme={theme}> 
           <BrowserRouter>
-            <Redirect from = '/' to = '/Login'/>
+            <Redirect from = '/' to = '/Sketch'/>
               <Switch>
                 <Route path="/Login"      component={Login} />
                 <Route path="/Ticket"     component={Ticket} />

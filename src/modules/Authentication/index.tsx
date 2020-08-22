@@ -56,7 +56,7 @@ const Authentication = () => {
             />
 
             <Button type="submit" disabled={handleDisable()} onClick = {handleClick}
-            overrides={{ BaseButton: { style: { width: "100%" } } }}>LOGIN
+                overrides={{ BaseButton: { style: { width: "100%" } } }}>LOGIN
             </Button>
         </AuthenticationSection>
     )
