@@ -7,6 +7,7 @@ export const DrawerContainer = styled.div`
 `;
 export const DrawerContent = styled.div`
     display: flex;
+    position:relative;
     flex-flow: row;
     background-color: #F9F9F9;
 `;

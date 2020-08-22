@@ -106,6 +106,14 @@ const sumStrings = (val:string, val2: string): number => {
       autoFocus
       size={SIZE.full}
       role={ROLE.dialog}
+      unstable_ModalBackdropScroll={true}
+      overrides={{
+          Root:{
+              style:{
+                  zIndex:99
+              }
+          }
+      }}
     >
       <ModalHeader>Report status</ModalHeader>
       <ModalBody>

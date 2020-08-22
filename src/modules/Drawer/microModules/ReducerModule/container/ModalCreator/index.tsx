@@ -35,7 +35,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({ cancell=FAKE
     return false;
   }
   return (
-      <Modal onClose={cancell} isOpen={isOpen}>
+      <Modal onClose={cancell} isOpen={isOpen} unstable_ModalBackdropScroll={true}>
         <FocusOnce>
           <ModalHeader>Create a Reducer</ModalHeader>
         </FocusOnce>

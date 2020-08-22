@@ -72,7 +72,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
     }
   })
   return (
-      <Modal onClose={cancell} isOpen={isOpen}>
+      <Modal onClose={cancell} isOpen={isOpen} unstable_ModalBackdropScroll={true}>
         <FocusOnce>
           <ModalHeader>Create a Pipe</ModalHeader>
         </FocusOnce>

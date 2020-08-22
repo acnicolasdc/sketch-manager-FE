@@ -10,6 +10,7 @@ import RectangleModule, {
 import CouplingModule, { CouplingModal } from "./microModules/CouplingModule";
 import InformationModule from "./microModules/InformationModule";
 import LayerModule from "./microModules/LayerModule";
+import GridModule from "./microModules/GridModule";
 import StoreProvider from "./providers/Store";
 /** @components Presentantional Elements */
 import { ChevronDown } from "baseui/icon";
@@ -26,7 +27,7 @@ import { DrawerContainer, OptionHeader, DrawerContent, ContainerHeader,LabelStyl
 import UserInfo from "../../components/UserInfo/index";
 
 const Drawer: React.FunctionComponent = () => {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const [runModule, setRunModule] = React.useState<string>("");
   const [selectedId, selectShape] = React.useState<string>("");
   const [openReport, setOpenReport] = React.useState<boolean>(false);
@@ -35,7 +36,7 @@ const Drawer: React.FunctionComponent = () => {
   const printDocument = async () => {
     if (geratePDF) return;
     setGeneratePDF(true);
-    const input: any = document.querySelector(".konvajs-content > canvas");
+    const input: any = document.querySelector(".konvajs-content canvas:last-child");
     await documentGenerator(input);
     setGeneratePDF(false);
   };
@@ -96,14 +97,18 @@ const Drawer: React.FunctionComponent = () => {
                               </Button>
                             </StatefulTooltip>
                           </ContainerHeader>
-          
         </OptionHeader>
         <DrawerContent>
-          <OptionsBar
+          <OptionsBar 
+            height = {height}
             onClick={(key: string) => setRunModule(key)}
             options={INITIAL_OPTIONS}
           />
-          <LayerModule selectShape={selectShape} width={width}>
+          <LayerModule
+            selectShape={selectShape}
+            width={width}
+            grid={<GridModule width={width} />}
+          >
             <RectangleModule selected={selectedId} selectRect={selectShape} />
             <TextModule selected={selectedId} selectText={selectShape} />
             <ValveModule selected={selectedId} selectValve={selectShape} />

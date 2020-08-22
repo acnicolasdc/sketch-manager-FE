@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rect, Transformer, Group, Text } from 'react-konva';
-import { Callback, minus, add, onTransformX, onTransformY } from '../../../../utils/transform';
+import { Callback, minus, add, onTransformX, onTransformY, moveConfiguration, lengthConfiguration } from '../../../../utils/transform';
 
 export interface RectangleProps {
     shapeProps?: any;
@@ -46,17 +46,29 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
 
   return (
     <React.Fragment>
-      <Group 
+      <Group>
+      <Text text={`Length: ${shapeProps.value}`}fontSize={12} x={x} y={y} ref={textRef}/>
+      <Rect
         onContextMenu={onSelect}
         onClick={onSelect}
         onTap={onSelect}
         draggable
-      >
-      <Text text={`Length: ${shapeProps.value}`}fontSize={12} x={x} y={y} ref={textRef}/>
-      <Rect
         ref={shapeRef}
         fill='#2d3436'
         {...shapeProps}
+        width={lengthConfiguration(parseInt(shapeProps.width, 10))}
+        onDragEnd={()=>{
+          const node: any = shapeRef.current;
+          node.x(moveConfiguration(node.x()));
+          node.y(moveConfiguration(node.y(), shapeProps.height/2));
+          groupTransform();
+        }}
+        onDragMove={()=>{
+          const node: any = shapeRef.current;
+          node.x(moveConfiguration(node.x()));
+          node.y(moveConfiguration(node.y(), shapeProps.height/2));
+          groupTransform();
+        }}
         onTransform={groupTransform}
         onTransformEnd={e => {
           const node: any = shapeRef.current;
@@ -75,17 +87,24 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
           });
         }}
       />
-      <Text text={`Cover: ${shapeProps.data.cover}"`}fontSize={12} x={x2} y={y2} ref={text2Ref}/>
+      <Text text={`Cover: ${shapeProps.data.cover}"`} fontSize={12} x={x2} y={y2} ref={text2Ref}/>
       </Group>
       {isSelected && (
         <Transformer
           ref={trRef}
           rotateAnchorOffset={100}
           rotationSnaps={[45,90, 135, 180, 225, 270, 315, 360]}
+          enabledAnchors={[
+            'top-left',
+            'top-right',
+            'bottom-left',
+            'bottom-right',
+          ]}
           boundBoxFunc={(oldBox, newBox) => {
             if (newBox.width < 5 || newBox.height < 5) {
               return oldBox;
             }
+            newBox.width = lengthConfiguration(newBox.width)
             newBox.height = oldBox.height;
             return newBox;
           }}
