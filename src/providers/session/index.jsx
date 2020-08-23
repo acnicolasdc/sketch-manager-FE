@@ -15,13 +15,12 @@ function SessionProvider({ children }) {
   const [session, setSession] = useState(false);
 
   useLayoutEffect(() => {
-    getStorage('user-session-otr').then((response) => {
-      if (response) {
-        setSession(true);
-        let token = JSON.parse(response).access_token;
-        serviceManager.setAuthorization(token);
-      }
-    });
+    const userSession = getStorage('user-session-otr');
+    if (userSession) {
+      setSession(true);
+      let token = JSON.parse(userSession).token;
+      serviceManager.setAuthorization(token); 
+    }    
   }, [session]);
 
   const deleteSession = () => {
