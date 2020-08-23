@@ -65,6 +65,7 @@ const Drawer: React.FunctionComponent = () => {
 
       <DrawerContainer>
         <OptionHeader>
+<<<<<<< Updated upstream
           <LabelStyle>
             <UserInfo data={handlerHeader()}/>
           </LabelStyle>
@@ -114,6 +115,58 @@ const Drawer: React.FunctionComponent = () => {
               </Button>
             </StatefulTooltip>
           </ContainerHeader>
+=======
+                <LabelStyle>
+                  <UserInfo data={handlerHeader()}/>
+                </LabelStyle>
+                          <ContainerHeader>
+                            {/* <StatefulTooltip
+                              content={<p>Delete selected element</p>}
+                              accessibilityType={"tooltip"}
+                            >
+                              <Button
+                              kind={KIND.tertiary}
+                                shape={SHAPE.square}
+                                onClick={() => console.log(selectedId)}
+                                overrides={{
+                                  Root: {
+                                    style: { marginRight: "15px" },
+                                  },
+                                }}
+                                disabled={selectedId === ""}
+                              >
+                                <BsFillTrashFill />
+                              </Button>
+                            </StatefulTooltip> */}
+                            <StatefulTooltip
+                              content={<p>¿Are you done? Save it as PDF for approval</p>}
+                              accessibilityType={"tooltip"}
+                            >
+                              <Button
+                              kind={KIND.tertiary}
+                                shape={SHAPE.square}
+                                disabled={geratePDF}
+                                overrides={{ Root: { style: { marginRight: "5px" } } }}
+                                endEnhancer={() => <BsFileEarmarkArrowDown />}
+                                onClick={() => printDocument()}
+                              >
+                                {geratePDF ? "Generating..." : "Generate PDF"}
+                              </Button>
+                            </StatefulTooltip>
+                            <StatefulTooltip
+                              content={<p>Check the status of the report</p>}
+                              accessibilityType={"tooltip"}
+                            >
+                              <Button
+                              kind={KIND.tertiary}
+                                endEnhancer={() => <ChevronDown size={24} />}
+                                onClick={() => setOpenReport(true)}
+                              >
+                                Open Report
+                              </Button>
+                            </StatefulTooltip>
+                          </ContainerHeader>
+>>>>>>> Stashed changes
         </OptionHeader>
         <DrawerContent>
           <OptionsBar
