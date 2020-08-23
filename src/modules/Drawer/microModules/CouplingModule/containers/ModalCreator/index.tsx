@@ -19,11 +19,11 @@ export interface ModalCreatorProps {
 };
 
 const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({ cancell=FAKE_FN, isOpen= false }) => {
-  const [value, setValue] = React.useState<string>('ji');
+  const [value, setValue] = React.useState<string>(CouplingEnum.ij);
   const { addCoupling, couplings } = React.useContext(StoreContext);
 
   const addCouplings = () => {
-    const text = value==='simple'?'':value;
+    const text = value===CouplingEnum.simple?'':value;
     const newCoupling: LineCoupling = {...COUPLING, id:`rect-code-coypling-${couplings.length}`, text, type:value};
     addCoupling(newCoupling);
     setValue('');
@@ -33,7 +33,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({ cancell=FAKE
   return (
       <Modal onClose={cancell} isOpen={isOpen} unstable_ModalBackdropScroll={true}>
         <FocusOnce>
-          <ModalHeader>Create a Coupling</ModalHeader>
+          <ModalHeader>Create a Join/Fitting</ModalHeader>
         </FocusOnce>
         <ModalBody>
         <RadioGroup
@@ -46,9 +46,9 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({ cancell=FAKE
           <Radio
             value={CouplingEnum.ij}
           >
-            JI
+            IJ
           </Radio>
-          <Radio value={CouplingEnum.uni}>Union</Radio>
+          <Radio value={CouplingEnum.uni}>Coupling</Radio>
           <Radio value={CouplingEnum.simple}>Simple</Radio>
         </RadioGroup>
  

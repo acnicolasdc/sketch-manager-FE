@@ -76,6 +76,6 @@ export enum GridEnum {
 export enum CouplingEnum {
     tf = "TF",
     ij = "IJ",
-    simple = "SM",
+    simple = "J",
     uni = "UNI",
 }
