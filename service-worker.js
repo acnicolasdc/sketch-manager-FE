@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/sketch-manager-FE/precache-manifest.b569a34f96a8da8f7369e1570801065f.js"
+  "/sketch-manager-FE/precache-manifest.09b77b8dba1ab09c6ead3d85b2c06eb0.js"
 );
 
 self.addEventListener('message', (event) => {
