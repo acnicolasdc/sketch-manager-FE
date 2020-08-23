@@ -32,7 +32,7 @@ function isActive(
     return active;
 }
 export default () => {
-    const [activeNavItem, setActiveNavItem] = React.useState();
+    const [activeNavItem, setActiveNavItem] = React.useState<any>(null);
 
     const appDisplayImage = (
         <StyledLink 
@@ -63,8 +63,15 @@ export default () => {
                                 );
                             }}
                             onNavItemSelect={({ item }) => {
-                                if (item === activeNavItem) return;
-                                setActiveNavItem(item);
+                                console.log(item, activeNavItem);
+                                console.log(item===activeNavItem);
+                                if (item === activeNavItem){
+                                    setActiveNavItem(null);
+                                } else{
+                                    setActiveNavItem(item);
+                                }
+                                
+                                
                             }}
                             userNav={userNav}
                             username="Juan Cruz"
