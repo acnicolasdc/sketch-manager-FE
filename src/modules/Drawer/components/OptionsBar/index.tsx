@@ -14,10 +14,8 @@ export interface ButtonRadioGroupProps {
 };
 
 
-const OptionsBar: React.FunctionComponent<ButtonRadioGroupProps> = ({ options = [], onClick = ON_ClICK, height= window.innerHeight}) => {
-    
+const OptionsBar: React.FunctionComponent<ButtonRadioGroupProps> = ({ options = [], onClick = ON_ClICK, height= window.innerHeight}) => {    
     const top = (height/2) - 40 - (480/2);
-    console.log(top, height);
     return (
         <StatefulMenu
             items={options}

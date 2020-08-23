@@ -7,7 +7,7 @@ const PrivateRoutes: React.FunctionComponent = () => {
   return (
     <Switch>
       <Route exact path="/" component={TicketComponent} />
-      <Route exact path="/Sketch" component={SketchComponent} />
+      <Route exact path="/Sketch/:sketchId" component={SketchComponent} />
     </Switch>
   );
 };

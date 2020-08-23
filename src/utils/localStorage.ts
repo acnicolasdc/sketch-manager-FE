@@ -1,18 +1,16 @@
-export const getStorage = (key) => {
+export const getStorage = (key:string):string|boolean => {
   const response = localStorage.getItem(key.toString());
   if(!response) return false;
   return response;
 }
 
-export const setStorage = (key, value) => {
+export const setStorage = (key:string, value:any) => {
   let dataToSave = value;
   if(typeof dataToSave == 'object') dataToSave = JSON.stringify(dataToSave);
-  const response = localStorage.setItem(key, dataToSave)
-  if(!response) return false;
-  return response;
+  localStorage.setItem(key, dataToSave)
 }
 
-export const deleteStorage = (key) => {
+export const deleteStorage = (key:string):string|boolean => {
   localStorage.removeItem(key.toString())
   const response = localStorage.getItem(key.toString());
   if(!response) return false;

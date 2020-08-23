@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
+/** @session */
+import { SessionContext } from 'providers/session';
 /** @microModules Functionality */
 import ValveModule, { ValveModal } from "./microModules/ValveModule";
 import DripModule, { DripModal } from "./microModules/DripModule";
@@ -24,10 +27,13 @@ import { INITIAL_OPTIONS } from "./utils/assets";
 import { ModulesEnum } from "./utils/_";
 import documentGenerator from "./utils/printDocument";
 import { DrawerContainer, OptionHeader, DrawerContent, ContainerHeader,LabelStyle } from "./Drawer.style";
-import UserInfo from "../../components/UserInfo/index";
+import UserInfo, { Data, MOCK_USER } from "../../components/UserInfo/index";
 
 const Drawer: React.FunctionComponent = () => {
   const { width, height } = useWindowDimensions();
+  const { getSession } = useContext(SessionContext);
+  let { sketchId } = useParams();
+
   const [runModule, setRunModule] = React.useState<string>("");
   const [selectedId, selectShape] = React.useState<string>("");
   const [openReport, setOpenReport] = React.useState<boolean>(false);
@@ -44,12 +50,20 @@ const Drawer: React.FunctionComponent = () => {
   const closeModal = () => setRunModule("");
   const cancellReport = () => setOpenReport(false);
 
+  const handlerHeader = ():Data => {
+    const data = getSession();
+    if(typeof data === 'object'){
+      const { firstname, username, email } =  data;
+      return { firstname, username, email,  ticketNumber: sketchId }
+    }
+    return MOCK_USER
+  }
   return (
     <StoreProvider>
       <DrawerContainer>
         <OptionHeader>
                 <LabelStyle>
-                  {<UserInfo/>}
+                  <UserInfo data={handlerHeader()}/>
                 </LabelStyle>
                           <ContainerHeader>
                             <StatefulTooltip
@@ -107,7 +121,8 @@ const Drawer: React.FunctionComponent = () => {
           <LayerModule
             selectShape={selectShape}
             width={width}
-            grid={<GridModule width={width} />}
+            height={height}
+            grid={<GridModule width={width} height={height}/>}
           >
             <RectangleModule selected={selectedId} selectRect={selectShape} />
             <TextModule selected={selectedId} selectText={selectShape} />
