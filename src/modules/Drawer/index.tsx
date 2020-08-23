@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 /** @session */
-import { SessionContext } from 'providers/session';
+import { SessionContext } from "providers/session";
 /** @microModules Functionality */
 import ValveModule, { ValveModal } from "./microModules/ValveModule";
 import DripModule, { DripModal } from "./microModules/DripModule";
@@ -20,15 +20,20 @@ import { ChevronDown } from "baseui/icon";
 import { Button, SHAPE, KIND } from "baseui/button";
 import OptionsBar from "./components/OptionsBar";
 import { StatefulTooltip } from "baseui/tooltip";
-import { BsFillTrashFill, BsFileEarmarkArrowDown } from "react-icons/bs";
+import { BsFileEarmarkArrowDown } from "react-icons/bs";
 /** @utils Types, Enums and Styles */
 import useWindowDimensions from "hooks/useWindowDimensions";
 import { INITIAL_OPTIONS } from "./utils/assets";
 import { ModulesEnum } from "./utils/_";
 import documentGenerator from "./utils/printDocument";
-import { DrawerContainer, OptionHeader, DrawerContent, ContainerHeader, LabelStyle } from "./Drawer.style";
+import {
+  DrawerContainer,
+  OptionHeader,
+  DrawerContent,
+  ContainerHeader,
+  LabelStyle,
+} from "./Drawer.style";
 import UserInfo, { Data, MOCK_USER } from "../../components/UserInfo/index";
-
 
 const Drawer: React.FunctionComponent = () => {
   const { width, height } = useWindowDimensions();
@@ -43,7 +48,9 @@ const Drawer: React.FunctionComponent = () => {
   const printDocument = async () => {
     if (geratePDF) return;
     setGeneratePDF(true);
-    const input: any = document.querySelector(".konvajs-content canvas:last-child");
+    const input: any = document.querySelector(
+      ".konvajs-content canvas:last-child"
+    );
     await documentGenerator(input);
     setGeneratePDF(false);
   };
@@ -53,40 +60,21 @@ const Drawer: React.FunctionComponent = () => {
 
   const handlerHeader = (): Data => {
     const data = getSession();
-    if (typeof data === 'object') {
+    if (typeof data === "object") {
       const { firstname, username, email } = data;
-      return { firstname, username, email, ticketNumber: sketchId }
+      return { firstname, username, email, ticketNumber: sketchId };
     }
-    return MOCK_USER
-  }
-  
+    return MOCK_USER;
+  };
+
   return (
     <StoreProvider>
-
       <DrawerContainer>
         <OptionHeader>
-<<<<<<< Updated upstream
           <LabelStyle>
-            <UserInfo data={handlerHeader()}/>
+            <UserInfo data={handlerHeader()} />
           </LabelStyle>
           <ContainerHeader>
-            <StatefulTooltip
-              content={<p>Delete selected element</p>}
-              accessibilityType={"tooltip"}
-            >
-              <Button
-                kind={KIND.tertiary}
-                shape={SHAPE.square}
-                overrides={{
-                  Root: {
-                    style: { marginRight: "15px" },
-                  },
-                }}
-                disabled={selectedId === ""}
-              >
-                <BsFillTrashFill />
-              </Button>
-            </StatefulTooltip>
             <StatefulTooltip
               content={<p>¿Are you done? Save it as PDF for approval</p>}
               accessibilityType={"tooltip"}
@@ -115,58 +103,6 @@ const Drawer: React.FunctionComponent = () => {
               </Button>
             </StatefulTooltip>
           </ContainerHeader>
-=======
-                <LabelStyle>
-                  <UserInfo data={handlerHeader()}/>
-                </LabelStyle>
-                          <ContainerHeader>
-                            {/* <StatefulTooltip
-                              content={<p>Delete selected element</p>}
-                              accessibilityType={"tooltip"}
-                            >
-                              <Button
-                              kind={KIND.tertiary}
-                                shape={SHAPE.square}
-                                onClick={() => console.log(selectedId)}
-                                overrides={{
-                                  Root: {
-                                    style: { marginRight: "15px" },
-                                  },
-                                }}
-                                disabled={selectedId === ""}
-                              >
-                                <BsFillTrashFill />
-                              </Button>
-                            </StatefulTooltip> */}
-                            <StatefulTooltip
-                              content={<p>¿Are you done? Save it as PDF for approval</p>}
-                              accessibilityType={"tooltip"}
-                            >
-                              <Button
-                              kind={KIND.tertiary}
-                                shape={SHAPE.square}
-                                disabled={geratePDF}
-                                overrides={{ Root: { style: { marginRight: "5px" } } }}
-                                endEnhancer={() => <BsFileEarmarkArrowDown />}
-                                onClick={() => printDocument()}
-                              >
-                                {geratePDF ? "Generating..." : "Generate PDF"}
-                              </Button>
-                            </StatefulTooltip>
-                            <StatefulTooltip
-                              content={<p>Check the status of the report</p>}
-                              accessibilityType={"tooltip"}
-                            >
-                              <Button
-                              kind={KIND.tertiary}
-                                endEnhancer={() => <ChevronDown size={24} />}
-                                onClick={() => setOpenReport(true)}
-                              >
-                                Open Report
-                              </Button>
-                            </StatefulTooltip>
-                          </ContainerHeader>
->>>>>>> Stashed changes
         </OptionHeader>
         <DrawerContent>
           <OptionsBar
