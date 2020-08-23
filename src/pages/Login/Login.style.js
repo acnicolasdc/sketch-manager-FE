@@ -12,7 +12,6 @@ export const GeneralSection = styled.div`
 a {
   color: white;
   cursor: pointer;
-  font-size: 14px;
   text-decoration: none;
 }
 `;

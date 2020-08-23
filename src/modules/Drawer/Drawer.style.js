@@ -4,13 +4,22 @@ export const DrawerContainer = styled.div`
     display: flex;
     flex-flow: column;
     background-color: #F9F9F9;
+    
 `;
 export const DrawerContent = styled.div`
     display: flex;
     position:relative;
     flex-flow: row;
     background-color: #F9F9F9;
+    
 `;
+
+export const ContainerNav = styled.div`
+    ${'' /* border: 1px solid red; */}
+    
+
+`;
+
 
 export const OptionHeader = styled.div`
     height:40px; 
@@ -20,7 +29,8 @@ export const OptionHeader = styled.div`
     display: flex;
     flex-flow: row;
     justify-content: Space-Between;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 4px 16px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 16px 4px;
+
 `;
 
 export const ContainerHeader = styled.div`
@@ -41,3 +51,4 @@ export const LabelStyle = styled.label`
     padding-left: 15px;
     
 `;
+
