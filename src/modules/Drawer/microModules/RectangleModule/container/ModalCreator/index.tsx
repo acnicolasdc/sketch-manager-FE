@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMaterial, setMethod, setSize, setPressure, setYear, setLength, setCover } from 'redux/ducks/pipeForm.duck';
 import { Select } from "baseui/select";
 import { Input } from "baseui/input";
 import { Slider } from "baseui/slider";
@@ -11,10 +13,9 @@ import {
   ModalButton,
   FocusOnce,
 } from 'baseui/modal';
-import { RECT } from '../../../../utils/assets';
+import { RECT, OPTIONS_TYPES_MATERIAL, OPTIONS_TYPES_METHOD, OPTIONS_TYPES_PRESSURE, OPTIONS_TYPES_SIZE } from '../../../../utils/assets';
 import { Rect } from '../../../../utils/_';
 import { StoreContext } from '../../../../providers/Store';
-import { OPTIONS_TYPES_MATERIAL, OPTIONS_TYPES_METHOD, OPTIONS_TYPES_PRESSURE, OPTIONS_TYPES_SIZE } from './utils/assets';
 import { Row } from './ModalCreator.style';
 const FAKE_FN = () => {};
 
@@ -25,14 +26,8 @@ export interface ModalCreatorProps {
 };
 
 const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_FN, cancell=FAKE_FN, isOpen= false}) => {
-  const [material, setMaterial] = React.useState<any[]>([]);
-  const [pressure, setPressure] = React.useState<any[]>([]);
-  const [ size, setSize ] = React.useState<any[]>([]);
-  const [ method, setMethod ] = React.useState<any[]>([]);
-  const [length, setLenght] = React.useState('');
-  const [ year, setYear] = React.useState('');
-  const [ cover, setCover ] = React.useState([70]);
-
+  const dispatch = useDispatch();
+  const { material, pressure, size, method, length, year, cover  } = useSelector((state: any) => state.get('pipeForm').toObject());
   const { addReact, rectangles } = React.useContext(StoreContext);
   const generateData = (): object => {
     const data = {
@@ -83,14 +78,14 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
               options={OPTIONS_TYPES_MATERIAL}
               value={material}
               placeholder="Select material"
-              onChange={(params:any) => setMaterial(params.value)}
+              onChange={(params:any) => dispatch(setMaterial(params.value))}
             />
             <Select
               overrides={overriesTestinE2E("rmm-select-method")}
               options={OPTIONS_TYPES_METHOD}
               value={method}
               placeholder="Select method"
-              onChange={(params:any) => setMethod(params.value)}
+              onChange={(params:any) => dispatch(setMethod(params.value))}
             />
           </Row>
           <Row>
@@ -99,21 +94,21 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
               options={OPTIONS_TYPES_SIZE}
               value={size}
               placeholder="Select size"
-              onChange={(params:any) => setSize(params.value)}
+              onChange={(params:any) => dispatch(setSize(params.value))}
             />
             <Select
               overrides={overriesTestinE2E("rmm-select-pressure")}
               options={OPTIONS_TYPES_PRESSURE}
               value={pressure}
               placeholder="Select pressure"
-              onChange={(params:any) => setPressure(params.value)}
+              onChange={(params:any) => dispatch(setPressure(params.value))}
             />
           </Row>
           <Row>
               <Input
                 required
                 value={year}
-                onChange={(e: any) => setYear(e.target.value)}
+                onChange={(e: any) => dispatch(setYear(e.target.value))}
                 overrides={overriesTestinE2E("rmm-input-year")} 
                 placeholder="Year"
               />
@@ -121,7 +116,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
                 required 
                 value={length}
                 overrides={overriesTestinE2E("rmm-input-length")}
-                onChange={(e: any) => setLenght(e.target.value)}
+                onChange={(e: any) => dispatch(setLength(e.target.value))}
                 placeholder="Length"
               />
           </Row>
@@ -137,7 +132,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({accept=FAKE_F
             value={cover}
             min={10}
             max={100}
-            onChange={({value}) => setCover(value)}
+            onChange={({value}) => dispatch(setCover(value))}
             overrides={{
               InnerThumb: ({$value, $thumbIndex}) => (
                 <React.Fragment>{$value[$thumbIndex]+'"'}</React.Fragment>
