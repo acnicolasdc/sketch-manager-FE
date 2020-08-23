@@ -1,6 +1,6 @@
 import React from 'react';
 import { LayoutStyle,ImageStyle } from './Layout.style';
-import conEdison_logo from '../../assets/icons/conEdison_logo.png'
+import conEdison_logo from '../../assets/icons/conEdison_logo.png';
 
 
 export interface LayoutProps {

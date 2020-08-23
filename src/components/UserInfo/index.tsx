@@ -9,7 +9,7 @@ export interface UserInfoProps {
 
 
 const user = {
-    firstName: 'Sebastian',
+    firstName: 'Juan',
     lastName: 'Cruz',
     ticketNumber: 'XG19000590'
     
@@ -27,6 +27,7 @@ const element = (
 const UserInfo: React.FunctionComponent<UserInfoProps> = () => {
 
     return (
+        
         element
     )
 }
