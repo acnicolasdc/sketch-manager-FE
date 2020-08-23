@@ -19,6 +19,7 @@ import StoreProvider from "./providers/Store";
 import { ChevronDown } from "baseui/icon";
 import { Button, SHAPE, KIND } from "baseui/button";
 import OptionsBar from "./components/OptionsBar";
+import Header from 'components/Header/index'
 import { StatefulTooltip } from "baseui/tooltip";
 import { BsFillTrashFill, BsFileEarmarkArrowDown } from "react-icons/bs";
 /** @utils Types, Enums and Styles */
@@ -26,8 +27,9 @@ import useWindowDimensions from "hooks/useWindowDimensions";
 import { INITIAL_OPTIONS } from "./utils/assets";
 import { ModulesEnum } from "./utils/_";
 import documentGenerator from "./utils/printDocument";
-import { DrawerContainer, OptionHeader, DrawerContent, ContainerHeader,LabelStyle } from "./Drawer.style";
+import { DrawerContainer, OptionHeader, DrawerContent, ContainerHeader, LabelStyle } from "./Drawer.style";
 import UserInfo, { Data, MOCK_USER } from "../../components/UserInfo/index";
+
 
 const Drawer: React.FunctionComponent = () => {
   const { width, height } = useWindowDimensions();
@@ -50,71 +52,73 @@ const Drawer: React.FunctionComponent = () => {
   const closeModal = () => setRunModule("");
   const cancellReport = () => setOpenReport(false);
 
-  const handlerHeader = ():Data => {
+  const handlerHeader = (): Data => {
     const data = getSession();
-    if(typeof data === 'object'){
-      const { firstname, username, email } =  data;
-      return { firstname, username, email,  ticketNumber: sketchId }
+    if (typeof data === 'object') {
+      const { firstname, username, email } = data;
+      return { firstname, username, email, ticketNumber: sketchId }
     }
     return MOCK_USER
   }
+  
   return (
-    <StoreProvider>      
+    <StoreProvider>
+
       <DrawerContainer>
         <OptionHeader>
-                <LabelStyle>
-                  <UserInfo data={handlerHeader()}/>
-                </LabelStyle>
-                          <ContainerHeader>
-                            <StatefulTooltip
-                              content={<p>Delete selected element</p>}
-                              accessibilityType={"tooltip"}
-                            >
-                              <Button
-                              kind={KIND.tertiary}
-                                shape={SHAPE.square}
-                                overrides={{
-                                  Root: {
-                                    style: { marginRight: "15px" },
-                                  },
-                                }}
-                                disabled={selectedId === ""}
-                              >
-                                <BsFillTrashFill />
-                              </Button>
-                            </StatefulTooltip>
-                            <StatefulTooltip
-                              content={<p>¿Are you done? Save it as PDF for approval</p>}
-                              accessibilityType={"tooltip"}
-                            >
-                              <Button
-                              kind={KIND.tertiary}
-                                shape={SHAPE.square}
-                                disabled={geratePDF}
-                                overrides={{ Root: { style: { marginRight: "5px" } } }}
-                                endEnhancer={() => <BsFileEarmarkArrowDown />}
-                                onClick={() => printDocument()}
-                              >
-                                {geratePDF ? "Generating..." : "Generate PDF"}
-                              </Button>
-                            </StatefulTooltip>
-                            <StatefulTooltip
-                              content={<p>Check the status of the report</p>}
-                              accessibilityType={"tooltip"}
-                            >
-                              <Button
-                              kind={KIND.tertiary}
-                                endEnhancer={() => <ChevronDown size={24} />}
-                                onClick={() => setOpenReport(true)}
-                              >
-                                Open Report
-                              </Button>
-                            </StatefulTooltip>
-                          </ContainerHeader>
+          <LabelStyle>
+            <UserInfo data={handlerHeader()}/>
+          </LabelStyle>
+          <ContainerHeader>
+            <StatefulTooltip
+              content={<p>Delete selected element</p>}
+              accessibilityType={"tooltip"}
+            >
+              <Button
+                kind={KIND.tertiary}
+                shape={SHAPE.square}
+                overrides={{
+                  Root: {
+                    style: { marginRight: "15px" },
+                  },
+                }}
+                disabled={selectedId === ""}
+              >
+                <BsFillTrashFill />
+              </Button>
+            </StatefulTooltip>
+            <StatefulTooltip
+              content={<p>¿Are you done? Save it as PDF for approval</p>}
+              accessibilityType={"tooltip"}
+            >
+              <Button
+                kind={KIND.tertiary}
+                shape={SHAPE.square}
+                disabled={geratePDF}
+                overrides={{ Root: { style: { marginRight: "5px" } } }}
+                endEnhancer={() => <BsFileEarmarkArrowDown />}
+                onClick={() => printDocument()}
+              >
+                {geratePDF ? "Generating..." : "Generate PDF"}
+              </Button>
+            </StatefulTooltip>
+            <StatefulTooltip
+              content={<p>Check the status of the report</p>}
+              accessibilityType={"tooltip"}
+            >
+              <Button
+                kind={KIND.tertiary}
+                endEnhancer={() => <ChevronDown size={24} />}
+                onClick={() => setOpenReport(true)}
+              >
+                Open Report
+              </Button>
+            </StatefulTooltip>
+          </ContainerHeader>
         </OptionHeader>
         <DrawerContent>
-          <OptionsBar 
-            height = {height}
+          <OptionsBar
+            height={height}
             onClick={(key: string) => setRunModule(key)}
             options={INITIAL_OPTIONS}
           />
@@ -122,7 +126,7 @@ const Drawer: React.FunctionComponent = () => {
             selectShape={selectShape}
             width={width}
             height={height}
-            grid={<GridModule width={width} height={height}/>}
+            grid={<GridModule width={width} height={height} />}
           >
             <RectangleModule selected={selectedId} selectRect={selectShape} />
             <TextModule selected={selectedId} selectText={selectShape} />
@@ -136,6 +140,7 @@ const Drawer: React.FunctionComponent = () => {
           </LayerModule>
         </DrawerContent>
       </DrawerContainer>
+
       <RectangleModal
         isOpen={runModule === ModulesEnum.rect}
         cancell={closeModal}

@@ -5,7 +5,7 @@ export const ContainerNav = styled.section`
         width: 100vw;
         position: fixed;
         top: 0;
-        left: 0;
+        left: 0;   
 `;
 
 export const ImageStyle = styled.section`

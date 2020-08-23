@@ -8,8 +8,9 @@ export const TicketSection = styled.section`
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  padding: 50px 30px;
+  padding:  50px 30px 50px 30px;
   min-height: calc(100vh - 200px);
+  
 
 .ticket__container{
   display: flex;
