@@ -1,12 +1,10 @@
-import * as React from 'react';
-import { useStyletron } from 'baseui';
+import React from 'react';
 import { StyledLink } from 'baseui/link';
-import { Layer } from 'baseui/layer';
-import {ChevronDown,Delete,Overflow as UserIcon,Upload as Icon} from 'baseui/icon';
-import {Unstable_AppNavBar as AppNavBar,POSITION} from 'baseui/app-nav-bar';
+import {Unstable_AppNavBar as AppNavBar} from 'baseui/app-nav-bar';
 import mainNav from '../Header/utils/mainNav';
 import userNav from '../Header/utils/userNav';
-import conEdison_horizontal from '../../assets/icons/conEdison_logo.png';
+import {ContainerNav} from './Header.style';
+
 
 function renderItem(item: any) {
     return item.label;
@@ -34,37 +32,27 @@ function isActive(
     return active;
 }
 export default () => {
-    const [css] = useStyletron();
-    // const [isNavBarVisible, setIsNavBarVisible] = React.useState(true);
     const [activeNavItem, setActiveNavItem] = React.useState();
-    const containerStyles = css({
-        boxSizing: 'border-box',
-        width: '100vw',
-        position: 'fixed',
-        top: '0',
-        left: '0',
-    });
 
     const appDisplayImage = (
         <StyledLink 
-            img = {conEdison_horizontal}
             $style={{
                 textDecoration: 'none',
+                fontWeight: 'bold',
                 color: 'inherit',
                 ':hover': { color: 'inherit' },
                 ':visited': { color: 'inherit' },
             }}
             href={'/Login'}
         >
+            ConEdison
         </StyledLink>
     );
 
 
     return (
         <React.Fragment>
-
-                <Layer>
-                    <div className={containerStyles}>
+                    <ContainerNav>
                         <AppNavBar
                             appDisplayName={appDisplayImage}
                             mainNav={mainNav}
@@ -80,11 +68,10 @@ export default () => {
                             }}
                             userNav={userNav}
                             username="Juan Cruz"
-                            usernameSubtitle="XG19000590"
-                            userImgUrl={conEdison_horizontal}
+                            usernameSubtitle="Civil engineering"
+                            userImgUrl=""
                         />
-                    </div>
-                </Layer>)
+                    </ContainerNav>
         </React.Fragment>
     );
 };
