@@ -8,6 +8,7 @@ const PrivateRoutes: React.FunctionComponent = () => {
     <Switch>
       <Route exact path="/" component={TicketComponent} />
       <Route exact path="/Sketch/:sketchId" component={SketchComponent} />
+      <Route children={<h1>404</h1>} />
     </Switch>
   );
 };
