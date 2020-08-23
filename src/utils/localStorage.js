@@ -1,13 +1,7 @@
 export const getStorage = (key) => {
-  return new Promise((resolve, rejects) => {
-    try {
-      const response = localStorage.getItem(key.toString());
-      if(!response) return resolve(false);
-      return resolve(response);
-    } catch (error) {
-      rejects(error);
-    }
-  })
+  const response = localStorage.getItem(key.toString());
+  if(!response) return false;
+  return response;
 }
 
 export const setStorage = (key, value) => {
