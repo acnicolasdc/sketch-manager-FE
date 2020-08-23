@@ -20,6 +20,12 @@ export interface AppContextInterface {
     updateDrips: (drips: Array<object>) => void,
     updateReact: (rectangles: Array<object>) => void,
     updateCouplings: (couplings: Array<object>) => void,
+    deleteTexts: (texts: Array<object>) => void,
+    deleteValves: (valves: Array<object>) => void,
+    deleteReducers: (reducers: Array<object>) => void,
+    deleteDrips: (drips: Array<object>) => void,
+    deleteReact: (rectangles: Array<object>) => void,
+    deleteCouplings: (couplings: Array<object>) => void,
 }
 
 export const StoreContext = React.createContext<AppContextInterface>({
@@ -41,6 +47,12 @@ export const StoreContext = React.createContext<AppContextInterface>({
     updateDrips: () => {},
     updateReducers: () => {},
     updateCouplings: () => {},
+    deleteTexts: () => {},
+    deleteValves: () => {},
+    deleteReact: () => {},
+    deleteDrips: () => {},
+    deleteReducers: () => {},
+    deleteCouplings: () => {},
 });
 export interface StoreProviderProps {
     children?: React.ReactNode;
@@ -75,9 +87,41 @@ const StoreProvider:React.FunctionComponent<StoreProviderProps> = ({ children })
     const updateDrips = (drips:Array<object>) => setDrips(drips);
     const updateReducers = (reducers:Array<object>) => setReducers(reducers);
     const updateCouplings = (couplings:Array<object>) => setCouplings(couplings);
+
+    const deleteReact = (rectangles:Array<object>) => setRect(rectangles);
+    const deleteValves = (valves:Array<object>) => setValves(valves);
+    const deleteTexts = (texts:Array<object>) => setTexts(texts);
+    const deleteDrips = (drips:Array<object>) => setDrips(drips);
+    const deleteReducers = (reducers:Array<object>) => setReducers(reducers);
+    const deleteCouplings = (couplings:Array<object>) => setCouplings(couplings);
     
     return (
-        <StoreContext.Provider value={{ rectangles, couplings, texts, valves, drips, reducers, addReact, addText, addValves, addDrips, addReducers, updateReact, updateCouplings, updateTexts, updateValves, updateDrips, updateReducers, addCoupling }}>
+        <StoreContext.Provider value={{ 
+            rectangles, 
+            couplings, 
+            texts, 
+            valves, 
+            drips, 
+            reducers, 
+            addReact, 
+            addText, 
+            addValves, 
+            addDrips, 
+            addReducers, 
+            updateReact, 
+            updateCouplings, 
+            updateTexts, 
+            updateValves, 
+            updateDrips, 
+            updateReducers, 
+            addCoupling,
+            deleteReact,
+            deleteValves,
+            deleteTexts,
+            deleteDrips,
+            deleteReducers,
+            deleteCouplings 
+            }}>
             {children}
         </StoreContext.Provider>
     )
