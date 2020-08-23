@@ -1,11 +1,9 @@
 import {
     ChevronDown,
     Delete,
-    Overflow as UserIcon,
     Upload as Icon,
 } from 'baseui/icon';
 import {
-    Unstable_AppNavBar as AppNavBar,
     POSITION,
 } from 'baseui/app-nav-bar';
 

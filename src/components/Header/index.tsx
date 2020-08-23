@@ -6,10 +6,6 @@ import userNav from '../Header/utils/userNav';
 import {ContainerNav} from './Header.style';
 
 
-function renderItem(item: any) {
-    return item.label;
-}
-
 function isActive(
     arr: Array<any>,
     item: any,
