@@ -8,13 +8,15 @@ export interface LayerProps {
     grid?: any;
     children?: any;
     width: number | any;
+    height: number | any;
     selectShape:(value:string)=>void;    
 };
 
 const GUIDELINE_OFFSET = 5;
 const HEIGHT = window.innerHeight;
+const WIDTH = window.innerWidth;
 
-const LayerModule: React.FunctionComponent<LayerProps> = ({ selectShape, width, children, grid }) => {
+const LayerModule: React.FunctionComponent<LayerProps> = ({ selectShape, width = WIDTH, height = HEIGHT, children, grid }) => {
 
   const stageRef = useRef<HTMLHeadingElement | any>();
   const layerRef = useRef<HTMLHeadingElement | any>();
@@ -29,7 +31,7 @@ const LayerModule: React.FunctionComponent<LayerProps> = ({ selectShape, width, 
 
   function getLineGuideStops(skipShape: any):object {
     let vertical: any[] = [0, width / 2, width];
-    let horizontal: any[] = [0, HEIGHT / 2, HEIGHT];
+    let horizontal: any[] = [0, height / 2, height];
     stageRef.current.find('.guideLine-element').forEach((guideItem:any) => {
       if (guideItem === skipShape) return;
       let box = guideItem.getClientRect();
@@ -76,7 +78,7 @@ const LayerModule: React.FunctionComponent<LayerProps> = ({ selectShape, width, 
                   <Stage
                       ref={stageRef}
                       width={width}
-                      height={HEIGHT-40}
+                      height={height-40}
                       onMouseDown={checkDeselect}
                       onTouchStart={checkDeselect}>
                         <StoreContext.Provider value={value}>

@@ -84,6 +84,7 @@ const Authentication = () => {
             />
 
             <Button type="submit" disabled={handleDisable() || fetching} onClick={handleClick}
+                isLoading={fetching}
                 overrides={{ BaseButton: { style: { width: "100%" } } }}>LOGIN
             </Button>
         </AuthenticationSection>

@@ -1,34 +1,30 @@
 import React from 'react'
 import { LabelStyle } from './UserInfo.style';
 
-
+export type Data = {
+    email?:string,
+    firstname:string,
+    username?:string,
+    ticketNumber: string 
+}
 export interface UserInfoProps {
-    children?: any
+    data?: Data
 };
 
-
-
-const user = {
-    firstName: 'Juan',
-    lastName: 'Cruz',
-    ticketNumber: 'XG19000590'
+export const MOCK_USER = {
+    firstname: 'Staff',
+    lastName: 'User',
+    ticketNumber: 'X0000000'
     
 }
 
-const dataUser = (user:any) => `${user.firstName} ${user.lastName} - ${user.ticketNumber}` ;
+const dataUser = ({firstname, ticketNumber}:Data): string  => `${firstname} - ${ticketNumber}` ;
 
-const element = (
-    <LabelStyle>
-        {dataUser(user)}         
-    </LabelStyle>
-);
-
-
-const UserInfo: React.FunctionComponent<UserInfoProps> = () => {
-
+const UserInfo: React.FunctionComponent<UserInfoProps> = ({ data = MOCK_USER }) => {
     return (
-        
-        element
+    <LabelStyle>
+        {dataUser(data)} 
+    </LabelStyle>
     )
 }
 
