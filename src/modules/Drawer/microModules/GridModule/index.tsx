@@ -4,19 +4,21 @@ import { GridEnum } from '../../utils/_';
 
 export interface GridProps {
   width: number | any;
+  height: number | any;
 };
 var BLOCK_SNAP_SIZE = GridEnum.block;
 var PADDING = BLOCK_SNAP_SIZE;
-const HEIGHT = window.innerHeight - 40;
-const Grid: React.FunctionComponent<GridProps> = ({ width = 0 }) => {
-
+const HEIGHT = window.innerHeight;
+const WIDTH = window.innerWidth;
+const Grid: React.FunctionComponent<GridProps> = ({ width = WIDTH, height = HEIGHT }) => {
+  const operationHeight =  height - 40;
   const generateRows = (): any[] => {
     const gridLayerRow: any[] = []
     for (var i = 0; i < width / PADDING; i++) {
       gridLayerRow.push(
         <Line {...{
           key: `${i}-row`,
-          points: [Math.round(i * PADDING) + 0.5, 0, Math.round(i * PADDING) + 0.5, HEIGHT],
+          points: [Math.round(i * PADDING) + 0.5, 0, Math.round(i * PADDING) + 0.5, operationHeight],
           stroke: '#ddd',
           strokeWidth: 1,
         }} />);
@@ -26,7 +28,7 @@ const Grid: React.FunctionComponent<GridProps> = ({ width = 0 }) => {
 
   const generateColumns = (): any[] => {
     const gridLayerColumn: any[] = []
-    for (var j = 0; j < HEIGHT / PADDING; j++) {
+    for (var j = 0; j < operationHeight / PADDING; j++) {
       gridLayerColumn.push(<Line {...{
         key: `${j}-column`,
         points: [0, Math.round(j * PADDING), width, Math.round(j * PADDING)],

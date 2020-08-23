@@ -29,14 +29,12 @@ const Ticket = () => {
 
     const handleClick = async () => {
         const ticketData = await validTicketServicesRequest(dispatch, { number: pin });
-        console.log('ticketData', ticketData)
         if (Object.prototype.hasOwnProperty.call(ticketData, "error")) {
             setErrorMessage(ticketData.error);
             setError(true);
             setOpen(true);
-            resetFields();
         } else {
-            history.push('/Sketch');
+            history.push(`/Sketch/${pin}`);
         }
     }
 
@@ -62,13 +60,17 @@ const Ticket = () => {
                 <ModalFooter>
                   <ModalButton
                     kind="tertiary"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false)
+                      resetFields();
+                    }}
                   >
                     Cancel
                   </ModalButton>
                   <ModalButton autoFocus onClick={() => {
+                      history.push(`/Sketch/${pin}`);
                       setOpen(false);
-                      history.push('/Sketch');
+                      resetFields();
                     }}>
                     Confirm
                   </ModalButton>
