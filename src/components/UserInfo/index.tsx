@@ -19,8 +19,7 @@ const dataUser = (user:any) => `${user.firstName} ${user.lastName} - ${user.tick
 
 const element = (
     <LabelStyle>
-        {dataUser(user)} 
-        
+        {dataUser(user)}         
     </LabelStyle>
 );
 
