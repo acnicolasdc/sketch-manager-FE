@@ -38,7 +38,7 @@ function App() {
   return (
     <ReduxProvider store={store}>
       <SessionProvider>
-        <StyletronProvider value={engine}> 
+        <StyletronProvider value={engine}>
           <BaseProvider theme={theme}>
             <Routes>
             </Routes>
