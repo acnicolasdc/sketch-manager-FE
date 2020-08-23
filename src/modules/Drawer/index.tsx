@@ -23,7 +23,7 @@ import useWindowDimensions from "hooks/useWindowDimensions";
 import { INITIAL_OPTIONS } from "./utils/assets";
 import { ModulesEnum } from "./utils/_";
 import documentGenerator from "./utils/printDocument";
-import { DrawerContainer, OptionHeader, DrawerContent, ContainerHeader,LabelStyle } from "./Drawer.style";
+import { DrawerContainer, OptionHeader, DrawerContent, ContainerHeader,LabelStyle} from "./Drawer.style";
 import UserInfo from "../../components/UserInfo/index";
 
 const Drawer: React.FunctionComponent = () => {
@@ -45,7 +45,7 @@ const Drawer: React.FunctionComponent = () => {
   const cancellReport = () => setOpenReport(false);
 
   return (
-    <StoreProvider>
+    <StoreProvider>      
       <DrawerContainer>
         <OptionHeader>
                 <LabelStyle>
