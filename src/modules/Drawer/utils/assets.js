@@ -121,3 +121,17 @@ export const OPTIONS_TYPES_SIZE = [
   { label: '20"', id: "20" },
   { label: '24"', id: "24" },
 ];
+
+export const VALVE_TYPES = [
+  { label: 'BALL', id: "BALL" },
+  { label: 'PLUG', id: "PLUG" },
+  { label: 'GATE', id: "GATE" },
+];
+
+
+export const VALVE_HAS_BEEN = [
+  { label: 'INSTALLED NEW', id: "INSTALLED_NEW" },
+  { label: 'ABANDONED', id: "ABANDONED" },
+  { label: 'REPAIRED', id: "REPAIRED" },
+  { label: 'OPERATED', id: "OPERATED" },
+];
