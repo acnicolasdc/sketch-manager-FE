@@ -124,7 +124,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({ cancell = FA
       </FocusOnce>
       <ModalBody>
         <HeadingLevel>
-          <Heading styleLevel={6}>Code</Heading>
+          <Heading styleLevel={6}>Drip Number</Heading>
         </HeadingLevel>
         <PinCode
           values={value}
