@@ -135,3 +135,11 @@ export const VALVE_HAS_BEEN = [
   { label: 'REPAIRED', id: "REPAIRED" },
   { label: 'OPERATED', id: "OPERATED" },
 ];
+
+export const DRIP_HAS_BEEN = [
+  { label: 'INSTALLED NEW', id: "INSTALLED_NEW" },
+  { label: 'REMOVED', id: "REMOVED" },
+  { label: 'ABANDONED', id: "ABANDONED" },
+  { label: 'REPAIRED', id: "REPAIRED" },
+  { label: 'LOCATION CHANGED', id: "LOCATION_CHANGED" },
+];
