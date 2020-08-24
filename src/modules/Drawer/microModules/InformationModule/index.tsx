@@ -5,12 +5,7 @@ import { Input } from "baseui/input";
 import { RadioGroup, Radio, ALIGN } from "baseui/radio";
 import { Checkbox, LABEL_PLACEMENT } from "baseui/checkbox";
 import { StoreContext } from "../../providers/Store";
-import {
-  Row,
-  Form,
-  FormSectionCenter,
-  RadioSection,
-} from "./ModalCreator.style";
+import { Row, Form, RadioSection } from "./ModalCreator.style";
 import { Heading, HeadingLevel } from "baseui/heading";
 import { Paragraph3 } from "baseui/typography";
 export interface InformationProps {
@@ -28,6 +23,7 @@ export enum ReducerInformation {
   setNamew = "namew",
   setEmp = "emp",
   setEmpw = "empw",
+  setDate = "date",
 }
 
 type InitialState = {
@@ -41,6 +37,7 @@ type InitialState = {
   namew: string;
   emp: string;
   empw: string;
+  date: string;
 };
 const initialState: InitialState = {
   pressure: "",
@@ -53,6 +50,7 @@ const initialState: InitialState = {
   namew: "",
   emp: "",
   empw: "",
+  date: "",
 };
 
 const reducer = (state: any, action: any): InitialState => {
@@ -77,6 +75,8 @@ const reducer = (state: any, action: any): InitialState => {
       return { ...state, mb: action.value };
     case ReducerInformation.setEmpw:
       return { ...state, mb2: action.value };
+    case ReducerInformation.setDate:
+      return { ...state, date: action.value };
     default:
       throw new Error();
   }
@@ -87,7 +87,7 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({
   cancell = () => {},
 }) => {
   const [
-    { pressure, duration, na2air, maop, mb, mb2, name, namew, emp, empw },
+    { pressure, duration, na2air, maop, mb, mb2, name, namew, emp, empw, date },
     dispatch,
   ] = useReducer(reducer, initialState);
   const { rectangles } = React.useContext(StoreContext);
@@ -195,9 +195,46 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({
         },
       }}
     >
-      <ModalHeader>MAIN PRESSURE TEST</ModalHeader>
+      <ModalHeader>MAIN INSTALLATION</ModalHeader>
       <ModalBody>
+        <Table columns={header} data={data} />
         <Form>
+          <HeadingLevel>
+            <Heading
+              styleLevel={6}
+              overrides={{
+                Block: {
+                  style: {
+                    marginBottom: "20px",
+                  },
+                },
+              }}
+            >
+              MAIN PRESSURE TEST
+            </Heading>
+          </HeadingLevel>
+          <Row>
+            <Checkbox
+              checked={maop}
+              onChange={() =>
+                dispatch({ type: ReducerInformation.setMaop, value: !maop })
+              }
+              labelPlacement={LABEL_PLACEMENT.right}
+            >
+              PRESSURE INCREASED TO NEW MAOP
+            </Checkbox>
+            <Input
+              required
+              placeholder="DATE"
+              value={date}
+              onChange={(e: any) =>
+                dispatch({
+                  type: ReducerInformation.setDate,
+                  value: e.target.value,
+                })
+              }
+            />
+          </Row>
           <Row>
             <RadioGroup
               value={na2air}
@@ -213,7 +250,6 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({
               <Radio value="N2">N2</Radio>
               <Radio value="AIR">AIR</Radio>
             </RadioGroup>
-            <Input required placeholder="DATE" />
           </Row>
           <Row>
             <HeadingLevel>
@@ -250,19 +286,23 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({
               required
               placeholder="Name"
               value={name}
-              onChange={(e: any) => dispatch({
-                type: ReducerInformation.setName,
-                value: e.target.value,
-              })}
+              onChange={(e: any) =>
+                dispatch({
+                  type: ReducerInformation.setName,
+                  value: e.target.value,
+                })
+              }
             />
             <Input
               required
               placeholder="Name"
               value={namew}
-              onChange={(e: any) => dispatch({
-                type: ReducerInformation.setNamew,
-                value: e.target.value,
-              })}
+              onChange={(e: any) =>
+                dispatch({
+                  type: ReducerInformation.setNamew,
+                  value: e.target.value,
+                })
+              }
             />
           </Row>
           <Row>
@@ -270,19 +310,23 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({
               required
               placeholder="EMP/ITS #"
               value={emp}
-              onChange={(e: any) => dispatch({
-                type: ReducerInformation.setEmp,
-                value: e.target.value,
-              })}
+              onChange={(e: any) =>
+                dispatch({
+                  type: ReducerInformation.setEmp,
+                  value: e.target.value,
+                })
+              }
             />
             <Input
               required
               placeholder="EMP/ITS #"
               value={empw}
-              onChange={(e: any) => dispatch({
-                type: ReducerInformation.setEmpw,
-                value: e.target.value,
-              })}
+              onChange={(e: any) =>
+                dispatch({
+                  type: ReducerInformation.setEmpw,
+                  value: e.target.value,
+                })
+              }
             />
           </Row>
           <Row>
@@ -329,7 +373,7 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({
                 name="PRESSURE"
                 align={ALIGN.horizontal}
               >
-                <Radio value="(LP/PMP)">90 PSIG (LP/PMP)</Radio>
+                <Radio value="(LP/PMP)">90 PSIG (LP/IP/PMP)</Radio>
                 <Radio value="(HP)">150 PSIG (HP)</Radio>
               </RadioGroup>
               <Paragraph3>
@@ -346,9 +390,9 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({
                 name="PRESSURE2"
                 align={ALIGN.horizontal}
               >
-                <Radio value="(LP)">10 P8K3 (LP)</Radio>
-                <Radio value="(PMP)">90 P8K3 (PMP)</Radio>
-                <Radio value="150P8K3(HP)">150 P8K3 (HP)</Radio>
+                <Radio value="(LP)">10 PSIG (LP)</Radio>
+                <Radio value="(PMP)">90 PSIG (IP/PMP)</Radio>
+                <Radio value="150P8K3(HP)">150 PSIG (HP)</Radio>
               </RadioGroup>
             </RadioSection>
             <RadioSection>
@@ -363,8 +407,8 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({
                 name="DURATION"
                 align={ALIGN.horizontal}
               >
-                <Radio value="1H">1 HOURS {"(< 1,000')"}</Radio>
-                <Radio value="11H">1 HOURS {"(> 1,000')"}</Radio>
+                <Radio value="1H">1 HOUR {"(< 1,000')"}</Radio>
+                <Radio value="2H>">2 HOURS {"(> 1,000')"}</Radio>
               </RadioGroup>
               <Paragraph3>
                 <strong>CURED-IN-PLACE (CIP) LINER</strong>
@@ -384,51 +428,48 @@ const InformationModule: React.FunctionComponent<InformationProps> = ({
               </RadioGroup>
             </RadioSection>
           </Row>
-          <FormSectionCenter>
-            <Checkbox
-              checked={maop}
-              onChange={() =>
-                dispatch({ type: ReducerInformation.setMaop, value: !maop })
-              }
-              labelPlacement={LABEL_PLACEMENT.right}
-            >
-              PRESSURE INCREASED TO NEW MAOP
-            </Checkbox>
-            <Checkbox
-              checked={mb}
-              onChange={() =>
-                dispatch({ type: ReducerInformation.setMarkerB, value: !mb })
-              }
-              labelPlacement={LABEL_PLACEMENT.right}
-            >
-              MARKER BALLS WERE INSTALLED EVERY 20'
-            </Checkbox>
-            <Checkbox
-              checked={mb2}
-              onChange={() =>
-                dispatch({ type: ReducerInformation.setMarkerB2, value: !mb2 })
-              }
-              labelPlacement={LABEL_PLACEMENT.right}
-            >
-              MARKER BALLS WERE INSTALLED AT EVERY MAIN ELEMENT
-            </Checkbox>
-          </FormSectionCenter>
+          <Form>
+            <HeadingLevel>
+              <Heading
+                styleLevel={6}
+                overrides={{
+                  Block: {
+                    style: {
+                      marginBottom: "10px",
+                    },
+                  },
+                }}
+              >
+                MARKER BALLS LOCATIONS
+              </Heading>
+            </HeadingLevel>
+            <Row>
+              <Checkbox
+                error={!mb}
+                checked={mb}
+                onChange={() =>
+                  dispatch({ type: ReducerInformation.setMarkerB, value: !mb })
+                }
+                labelPlacement={LABEL_PLACEMENT.right}
+              >
+                MARKER BALLS WERE INSTALLED EVERY 20'
+              </Checkbox>
+              <Checkbox
+                error={!mb2}
+                checked={mb2}
+                onChange={() =>
+                  dispatch({
+                    type: ReducerInformation.setMarkerB2,
+                    value: !mb2,
+                  })
+                }
+                labelPlacement={LABEL_PLACEMENT.right}
+              >
+                MARKER BALLS WERE INSTALLED AT EVERY MAIN VALVE, REDUCER, COUPLING, CAPS AND TEES
+              </Checkbox>
+            </Row>
+          </Form>
         </Form>
-        <HeadingLevel>
-          <Heading
-            styleLevel={6}
-            overrides={{
-              Block: {
-                style: {
-                  marginBottom: "20px",
-                },
-              },
-            }}
-          >
-            MAIN INSTALLATION
-          </Heading>
-        </HeadingLevel>
-        <Table columns={header} data={data} />
       </ModalBody>
     </Modal>
   );

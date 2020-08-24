@@ -11,7 +11,7 @@ export const Form = styled('div', {
     display: 'flex',
     flexDirection:'column',
     marginTop: '20px',
-    marginBottom: '20px',
+    borderTop: '0.5px solid #757575'
 });
 
 export const FormSectionCenter = styled('div', {
