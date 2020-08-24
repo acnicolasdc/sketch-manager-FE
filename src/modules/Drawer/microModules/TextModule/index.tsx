@@ -20,15 +20,20 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
   const [openSubMenu, setOpenSubMenu] = React.useState<boolean>(false);
   const { texts, updateTexts, deleteTexts } = React.useContext(StoreContext);
 
-  const handlerClick = (e: any, id: any) => {
-    if (e.type === 'click' || e.type === 'tap') {
-      selectText(id);
+  React.useEffect(() => {
+    if (selected !== selectedContextMenu.id ) {
       setOpenSubMenu(false);
-    } else if (e.type === 'contextmenu') {
+    }
+  }, [selected, selectedContextMenu]);
+
+  const handlerClick = (e: any, id: any) => {    
+    selectText(id);      
+    if (e.type === 'contextmenu') {
       window.addEventListener("contextmenu", function (a) { a.preventDefault() })
       const mousePosition = e.target.getStage().getPointerPosition();
       setSelectedContextMenu({
         position: mousePosition,
+        id
       });
       setOpenSubMenu(true);
     }
@@ -49,7 +54,7 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
 
   return (
     <React.Fragment>
-      {openSubMenu && selected !== '' && (
+      {openSubMenu && (
         <Portal>
           <ContextMenu
             position={selectedContextMenu.position}
