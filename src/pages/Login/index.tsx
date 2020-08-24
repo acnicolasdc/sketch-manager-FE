@@ -1,5 +1,5 @@
 import React from 'react'
-import { GeneralSection,LoginSection } from './Login.style';
+import { GeneralSection,LoginSection, SloganStyle,PointStyle } from './Login.style';
 import Authentication from '../../modules/Authentication';
 import Layout from '../../components/Layout';
 
@@ -8,7 +8,11 @@ const Login = () => {
     return (
         <GeneralSection> 
             <LoginSection> 
-                    <Layout children = {<Authentication/>}/>
+                    <Layout>
+                        <PointStyle>.........................</PointStyle>
+                        <SloganStyle>EVERYTHING MATTERS</SloganStyle>
+                            <Authentication/>
+                    </Layout>
             </LoginSection>
         </GeneralSection>
     )
