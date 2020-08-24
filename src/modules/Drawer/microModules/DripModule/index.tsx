@@ -18,15 +18,20 @@ const DripModule: React.FunctionComponent<DripProps> = (
   const [openSubMenu, setOpenSubMenu] = React.useState<boolean>(false);
   const { deleteDrips, updateDrips, drips } = React.useContext(StoreContext);
 
-  const handlerClick = (e: any, id: any) => {
-    if (e.type === 'click' || e.type === 'tap') {
-      selectDrip(id);
+  React.useEffect(() => {
+    if (selected !== selectedContextMenu.id) {
       setOpenSubMenu(false);
-    } else if (e.type === 'contextmenu') {
+    }
+  }, [selected, selectedContextMenu]);
+
+  const handlerClick = (e: any, id: any) => {
+    selectDrip(id);
+    if (e.type === 'contextmenu') {
       window.addEventListener("contextmenu", function (a) { a.preventDefault() })
       const mousePosition = e.target.getStage().getPointerPosition();
       setSelectedContextMenu({
         position: mousePosition,
+        id
       });
       setOpenSubMenu(true);
     }
@@ -47,7 +52,7 @@ const DripModule: React.FunctionComponent<DripProps> = (
 
   return (
     <React.Fragment>
-      {openSubMenu && selected !== '' && (
+      {openSubMenu && (
         <Portal>
           <ContextMenu
             position={selectedContextMenu.position}

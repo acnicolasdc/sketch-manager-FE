@@ -19,15 +19,20 @@ const ReducerModule: React.FunctionComponent<ReducerProps> = (
   const [openSubMenu, setOpenSubMenu] = React.useState<boolean>(false);
   const { deleteReducers, updateReducers, reducers } = React.useContext(StoreContext);
 
-  const handlerClick = (e: any, id: any) => {
-    if (e.type === 'click' || e.type === 'tap') {
-      selectReducer(id);
+  React.useEffect(() => {
+    if (selected !== selectedContextMenu.id) {
       setOpenSubMenu(false);
-    } else if (e.type === 'contextmenu') {
+    }
+  }, [selected, selectedContextMenu]);
+
+  const handlerClick = (e: any, id: any) => {
+    selectReducer(id);
+    if (e.type === 'contextmenu') {
       window.addEventListener("contextmenu", function (a) { a.preventDefault() })
       const mousePosition = e.target.getStage().getPointerPosition();
       setSelectedContextMenu({
         position: mousePosition,
+        id
       });
       setOpenSubMenu(true);
     }
@@ -48,7 +53,7 @@ const ReducerModule: React.FunctionComponent<ReducerProps> = (
 
   return (
     <React.Fragment>
-      {openSubMenu && selected !== '' && (
+      {openSubMenu && (
         <Portal>
           <ContextMenu
             position={selectedContextMenu.position}
