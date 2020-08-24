@@ -19,7 +19,6 @@ import StoreProvider from "./providers/Store";
 import { ChevronDown } from "baseui/icon";
 import { Button, SHAPE, KIND } from "baseui/button";
 import OptionsBar from "./components/OptionsBar";
-import Header from 'components/Header/index'
 import { StatefulTooltip } from "baseui/tooltip";
 import { BsFillTrashFill, BsFileEarmarkArrowDown } from "react-icons/bs";
 /** @utils Types, Enums and Styles */
