@@ -43,7 +43,6 @@ export const SloganStyle = styled.h1`
     color: #10A5C3;
     font-size: 40px;
     margin: 10px;
-    ${'' /* line-height: 35px; */}
     text-align: center;
     max-width:300px;
 `;

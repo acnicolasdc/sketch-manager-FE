@@ -10,6 +10,7 @@ function isActive(
     arr: Array<any>,
     item: any,
     activeItem: any,
+    
 ): boolean {
     let active = false;
     for (let i = 0; i < arr.length; i++) {
@@ -66,12 +67,12 @@ export default () => {
                                 } else{
                                     setActiveNavItem(item);
                                 }
-                                
+                                if( )console.log('Eureka')
                                 
                             }}
                             userNav={userNav}
                             username="Juan Cruz"
-                            usernameSubtitle="Civil engineering"
+                            usernameSubtitle="Gas engineering"
                             userImgUrl=""
                         />
                     </ContainerNav>
