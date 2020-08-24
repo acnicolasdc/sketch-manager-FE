@@ -39,7 +39,7 @@ export default () => {
                 ':hover': { color: 'inherit' },
                 ':visited': { color: 'inherit' },
             }}
-            href={'/Login'}
+            href={'/'}
         >
             ConEdison
         </StyledLink>

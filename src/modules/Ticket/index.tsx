@@ -52,7 +52,7 @@ const Ticket = () => {
             {error &&
                 <Modal onClose={() => setOpen(false)} isOpen={isOpen}>
                 <FocusOnce>
-                  <ModalHeader>Oops! Something happened to your search</ModalHeader>
+                  <ModalHeader>New Ticket!</ModalHeader>
                 </FocusOnce>
                 <ModalBody>
                   {errorMessage}
