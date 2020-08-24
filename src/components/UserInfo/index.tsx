@@ -4,6 +4,7 @@ import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { ITEMS } from './utils/Menu'
 import { Menu } from 'baseui/menu';
 import { ChevronDown as ArrowMenu} from "baseui/icon";
+import {StyledLink} from 'baseui/link';
 
 export type Data = {
     email?: string,
@@ -31,20 +32,21 @@ const UserInfo: React.FunctionComponent<UserInfoProps> = ({ data = MOCK_USER }) 
                 <div>
                     <Menu
                         items={ITEMS}
-                        rootRef={React.createRef()}
+                        // rootRef={React.createRef()}
                         overrides={{
                             List: {
                                 style: {
                                     width: '200px',
-                                    // paddingLeft: '100px'
                                 },
                             },
                             Option: {
                                 props: {
                                     getItemLabel: (item: { label: string }) => item.label,
+                                    
+                                    
                                 },
                             },
-                        }}
+                        }}                       
                     />
                 </div>
             )}
@@ -52,9 +54,15 @@ const UserInfo: React.FunctionComponent<UserInfoProps> = ({ data = MOCK_USER }) 
             autoFocus
         >
             
-            <Button kind={KIND.tertiary}
-            endEnhancer={() => <ArrowMenu size={24}/>}>{dataUser(data)}</Button>
+            <Button 
+            kind={KIND.tertiary}
+            endEnhancer={() => <ArrowMenu size={24}/>}>
+                {dataUser(data)}
+            </Button>
             
+            {/* <StyledLink href="javascript:void(0);" tabIndex={0} >
+                {dataUser(data)}
+            </StyledLink> */}
             
         </StatefulPopover>
 
