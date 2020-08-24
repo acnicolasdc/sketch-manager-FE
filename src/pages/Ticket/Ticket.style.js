@@ -11,6 +11,7 @@ export const TicketSection = styled.section`
   padding:  50px 30px 50px 30px;
   min-height: calc(100vh - 200px);
   
+  
 
 .ticket__container{
   display: flex;
@@ -27,10 +28,10 @@ export const TicketSection = styled.section`
 
 export const Title = styled.h5`
 margin-bottom:15px;
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
 max-width: 300px;
 font-size: 15px;
 color: black;
 letter-spacing:0.5px;
-font-weight: 500;
+font-weight: bold;
 `;

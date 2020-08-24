@@ -7,13 +7,13 @@ function renderItem(item: any) {
 const userNav = [
     {
         icon: UserIcon,
-        item: { label: 'New from template' },
+        item: { label: 'Option #1' },
         mapItemToNode: renderItem,
         mapItemToString: renderItem,
     },
     {
         icon: UserIcon,
-        item: { label: 'Save process' },
+        item: { label: 'Option #2' },
         mapItemToNode: renderItem,
         mapItemToString: renderItem,
     },
