@@ -23,8 +23,7 @@ const ModalCreator: React.FunctionComponent<ModalCreatorProps> = ({ cancell=FAKE
   const { addCoupling, couplings } = React.useContext(StoreContext);
 
   const addCouplings = () => {
-    const text = value===CouplingEnum.simple?'':value;
-    const newCoupling: LineCoupling = {...COUPLING, id:`rect-code-coypling-${couplings.length}`, text, type:value};
+    const newCoupling: LineCoupling = {...COUPLING, id:`rect-code-coypling-${couplings.length}`, text:value, type:value};
     addCoupling(newCoupling);
     setValue('');
     cancell();
