@@ -67,7 +67,7 @@ export default () => {
                                 } else{
                                     setActiveNavItem(item);
                                 }
-                                if( )console.log('Eureka')
+                                
                                 
                             }}
                             userNav={userNav}
