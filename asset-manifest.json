@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/sketch-manager-FE/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/sketch-manager-FE/static/js/main.ca4b58d2.chunk.js",
-    "main.js.map": "/sketch-manager-FE/static/js/main.ca4b58d2.chunk.js.map",
+    "main.js": "/sketch-manager-FE/static/js/main.3f746b34.chunk.js",
+    "main.js.map": "/sketch-manager-FE/static/js/main.3f746b34.chunk.js.map",
     "runtime-main.js": "/sketch-manager-FE/static/js/runtime-main.2af6ce11.js",
     "runtime-main.js.map": "/sketch-manager-FE/static/js/runtime-main.2af6ce11.js.map",
     "static/js/2.6c4849e5.chunk.js": "/sketch-manager-FE/static/js/2.6c4849e5.chunk.js",
     "static/js/2.6c4849e5.chunk.js.map": "/sketch-manager-FE/static/js/2.6c4849e5.chunk.js.map",
     "index.html": "/sketch-manager-FE/index.html",
-    "precache-manifest.45c4e57e01823a07e091edacba674e3c.js": "/sketch-manager-FE/precache-manifest.45c4e57e01823a07e091edacba674e3c.js",
+    "precache-manifest.75fcad525c6e7614808c10017786a82a.js": "/sketch-manager-FE/precache-manifest.75fcad525c6e7614808c10017786a82a.js",
     "service-worker.js": "/sketch-manager-FE/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/sketch-manager-FE/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.6c4849e5.chunk.js.LICENSE.txt": "/sketch-manager-FE/static/js/2.6c4849e5.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.2af6ce11.js",
     "static/js/2.6c4849e5.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.ca4b58d2.chunk.js"
+    "static/js/main.3f746b34.chunk.js"
   ]
 }
