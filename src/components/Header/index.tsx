@@ -3,7 +3,7 @@ import { StyledLink } from 'baseui/link';
 import {Unstable_AppNavBar as AppNavBar} from 'baseui/app-nav-bar';
 import mainNav from '../Header/utils/mainNav';
 import userNav from '../Header/utils/userNav';
-import {ContainerNav} from './Header.style';
+import {ContainerNav,LogoStyle, ContainerLeftStyle, PointsStyle,SubTitleStyle} from './Header.style';
 import { SessionContext } from 'providers/session';
 import { useHistory } from "react-router-dom";
 
@@ -46,7 +46,11 @@ export default () => {
             }}
             href={'/'}
         >
-            ConEdison
+        <ContainerLeftStyle>
+            <LogoStyle>ConEdison</LogoStyle> 
+            <PointsStyle>.......</PointsStyle>
+            <SubTitleStyle>EVERYTHING MATTERS</SubTitleStyle>
+        </ContainerLeftStyle>   
         </StyledLink>
     );
 
@@ -56,7 +60,6 @@ export default () => {
                     <ContainerNav>
                         <AppNavBar
                             appDisplayName={appDisplayImage}
-                            mainNav={mainNav}
                             isNavItemActive={({ item }) => {
                                 return (
                                     item === activeNavItem ||
