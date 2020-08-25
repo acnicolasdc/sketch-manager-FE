@@ -7,13 +7,13 @@ function renderItem(item: any) {
 const userNav = [
     {
         icon: UserIcon,
-        item: { label: 'Option #1' },
+        item: { label: 'Search by ticket' },
         mapItemToNode: renderItem,
         mapItemToString: renderItem,
     },
     {
         icon: UserIcon,
-        item: { label: 'Option #2' },
+        item: { label: 'Search by location' },
         mapItemToNode: renderItem,
         mapItemToString: renderItem,
     },

@@ -3,9 +3,8 @@ import { StyledLink } from 'baseui/link';
 import {Unstable_AppNavBar as AppNavBar} from 'baseui/app-nav-bar';
 import mainNav from '../Header/utils/mainNav';
 import userNav from '../Header/utils/userNav';
-import {ContainerNav} from './Header.style';
+import {ContainerNav,LogoStyle} from './Header.style';
 import { SessionContext } from 'providers/session';
-import { useHistory } from 'react-router';
 
 
 
@@ -35,7 +34,6 @@ function isActive(
 export default () => {
     const [activeNavItem, setActiveNavItem] = React.useState<any>(null);
     const { deleteSession } = useContext(SessionContext);
-    const history = useHistory();
 
     const appDisplayImage = (
         <StyledLink 
@@ -48,7 +46,7 @@ export default () => {
             }}
             href={'/'}
         >
-            ConEdison
+        <LogoStyle>ConEdison</LogoStyle> 
         </StyledLink>
     );
 
@@ -58,7 +56,6 @@ export default () => {
                     <ContainerNav>
                         <AppNavBar
                             appDisplayName={appDisplayImage}
-                            mainNav={mainNav}
                             isNavItemActive={({ item }) => {
                                 return (
                                     item === activeNavItem ||

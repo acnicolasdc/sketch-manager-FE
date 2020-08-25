@@ -8,7 +8,7 @@ export const ContainerNav = styled.section`
         left: 0;   
 `;
 
-export const ImageStyle = styled.section`
-
-
+export const LogoStyle = styled.h1`
+        margin: 0px;
+        color:#10A5C3;
 `;
