@@ -24,6 +24,12 @@ const DripModule: React.FunctionComponent<DripProps> = (
     }
   }, [selected, selectedContextMenu]);
 
+  const changeSubMenuState = (isActive:boolean) => {
+    if (openSubMenu !== isActive) {
+      setOpenSubMenu(isActive);
+    } 
+  }
+
   const handlerClick = (e: any, id: any) => {
     selectDrip(id);
     if (e.type === 'contextmenu') {
@@ -33,7 +39,7 @@ const DripModule: React.FunctionComponent<DripProps> = (
         position: mousePosition,
         id
       });
-      setOpenSubMenu(true);
+      changeSubMenuState(true);
     }
   }
 
@@ -46,7 +52,7 @@ const DripModule: React.FunctionComponent<DripProps> = (
   const handleOptionSelected = (option: string) => {
     if (option === 'delete') deleteElement();
     setSelectedContextMenu({});
-    setOpenSubMenu(false);
+    changeSubMenuState(false);
     selectDrip('');
   };
 
@@ -67,6 +73,7 @@ const DripModule: React.FunctionComponent<DripProps> = (
             shapeProps={element}
             isSelected={element.id === selected}
             onSelect={(e: any) => handlerClick(e, element.id)}
+            onDragStart={()=>changeSubMenuState(false)}
             onChange={(newAttrs: object) => {
               const rects = drips.slice();
               rects[i] = newAttrs;

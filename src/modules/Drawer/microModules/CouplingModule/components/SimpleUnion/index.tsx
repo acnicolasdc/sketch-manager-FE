@@ -6,9 +6,10 @@ export interface SimpleUnionProps {
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
+    onDragStart?: (e:any) => void;
 };
 
-const SimpleUnion: React.FunctionComponent <SimpleUnionProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const SimpleUnion: React.FunctionComponent <SimpleUnionProps> = ({ shapeProps, isSelected, onSelect, onChange, onDragStart }) => {
   const ijRef = React.useRef<HTMLHeadingElement | any>();
   const ijeRef = React.useRef<HTMLHeadingElement | any>();
 
@@ -24,6 +25,7 @@ const SimpleUnion: React.FunctionComponent <SimpleUnionProps> = ({ shapeProps, i
       onContextMenu={onSelect}
       onClick={onSelect}
       onTap={onSelect}
+      onDragStart={onDragStart}
       ref={ijRef}
       draggable
     >

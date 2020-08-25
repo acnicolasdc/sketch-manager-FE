@@ -26,6 +26,12 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
     }
   }, [selected, selectedContextMenu]);
 
+  const changeSubMenuState = (isActive:boolean) => {
+    if (openSubMenu !== isActive) {
+      setOpenSubMenu(isActive);
+    } 
+  }
+
   const handlerClick = (e: any, id: any) => {    
     selectText(id);      
     if (e.type === 'contextmenu') {
@@ -35,7 +41,7 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
         position: mousePosition,
         id
       });
-      setOpenSubMenu(true);
+      changeSubMenuState(true);
     }
   }
 
@@ -48,7 +54,7 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
   const handleOptionSelected = (option: string) => {
     if (option === 'delete') deleteElement();
     setSelectedContextMenu({});
-    setOpenSubMenu(false);
+    changeSubMenuState(false);
     selectText('');
   };
 
@@ -67,6 +73,7 @@ const TextModule: React.FunctionComponent<RectangleProps> = (
           <Text
             key={element.id}
             shapeProps={element}
+            onDragStart={()=>changeSubMenuState(false)}
             isSelected={element.id === selected}
             onSelect={(e: any) => handlerClick(e, element.id)}
             onChange={(newAttrs: object) => {

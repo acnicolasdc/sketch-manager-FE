@@ -7,9 +7,10 @@ export interface RectangleProps {
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
+    onDragStart?: (e:any) => void;    
 };
 
-const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSelected, onSelect, onChange, onDragStart }) => {
   
   const shapeRef = React.useRef<HTMLHeadingElement | any>();
   const textRef = React.useRef<HTMLHeadingElement | any>();
@@ -52,6 +53,7 @@ const Rectangle: React.FunctionComponent <RectangleProps> = ({ shapeProps, isSel
         onContextMenu={onSelect}
         onClick={onSelect}
         onTap={onSelect}
+        onDragStart={onDragStart}
         draggable
         ref={shapeRef}
         fill='#2d3436'
