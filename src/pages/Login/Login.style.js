@@ -25,7 +25,7 @@ export const LoginSection = styled.section`
   
 
 .login__container{
-  font-family: "Muli", sans-serif;
+  font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,5 +38,21 @@ export const LoginSection = styled.section`
 }
 `;
 
+export const SloganStyle = styled.h1`
+    font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #10A5C3;
+    font-size: 40px;
+    margin: 10px;
+    text-align: center;
+    max-width:300px;
+`;
 
+export const PointStyle = styled.p`
+    font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #10A5C3;
+    font-size: 50px;
+    margin: -35px auto 0;
+    text-align: center;
+    
 
+`;

@@ -10,6 +10,7 @@ function isActive(
     arr: Array<any>,
     item: any,
     activeItem: any,
+    
 ): boolean {
     let active = false;
     for (let i = 0; i < arr.length; i++) {
@@ -71,7 +72,7 @@ export default () => {
                             }}
                             userNav={userNav}
                             username="Juan Cruz"
-                            usernameSubtitle="Civil engineering"
+                            usernameSubtitle="Gas engineering"
                             userImgUrl=""
                         />
                     </ContainerNav>
