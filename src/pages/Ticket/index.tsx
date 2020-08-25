@@ -10,7 +10,7 @@ const TicketPage = () => {
             <TicketSection>
                 <Header/>
                 <Layout>
-                        <Title>Please introduce your job ticket number</Title>
+                        <Title>Please enter your job ticket number</Title>
                     <Ticket/>
                 </Layout>
             </TicketSection>
