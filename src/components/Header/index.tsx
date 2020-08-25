@@ -5,8 +5,7 @@ import mainNav from '../Header/utils/mainNav';
 import userNav from '../Header/utils/userNav';
 import {ContainerNav} from './Header.style';
 import { SessionContext } from 'providers/session';
-import { useHistory } from 'react-router';
-
+import { useHistory } from "react-router-dom";
 
 
 
@@ -36,7 +35,6 @@ export default () => {
     const [activeNavItem, setActiveNavItem] = React.useState<any>(null);
     const { deleteSession } = useContext(SessionContext);
     const history = useHistory();
-
     const appDisplayImage = (
         <StyledLink 
             $style={{
@@ -74,6 +72,7 @@ export default () => {
                                 }
                                 if(item.label === 'Log out'){
                                     deleteSession();
+                                    history.push('/');
                                     
                                 }
                                 
