@@ -1,10 +1,12 @@
-import React from 'react'
-import { Button,KIND } from "baseui/button";
+import React, { useContext } from 'react'
+import { Button, KIND } from "baseui/button";
 import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { ITEMS } from './utils/Menu'
-import { Menu } from 'baseui/menu';
-import { ChevronDown as ArrowMenu} from "baseui/icon";
-import {StyledLink} from 'baseui/link';
+import { StatefulMenu as Menu } from 'baseui/menu';
+import { ChevronDown as ArrowMenu } from "baseui/icon";
+import { SessionContext } from 'providers/session';
+import { useHistory } from "react-router-dom";
+
 
 export type Data = {
     email?: string,
@@ -26,13 +28,23 @@ export const MOCK_USER = {
 const dataUser = ({ firstname, ticketNumber }: Data): string => `${firstname} - ${ticketNumber}`;
 
 const UserInfo: React.FunctionComponent<UserInfoProps> = ({ data = MOCK_USER }) => {
+    const { deleteSession } = useContext(SessionContext);
+    const history = useHistory();
+
     return (
         <StatefulPopover
             content={() => (
                 <div>
                     <Menu
                         items={ITEMS}
-                        // rootRef={React.createRef()}
+                        onItemSelect = {({item} ) => {
+                            if (item.label === 'Log out') {
+                                deleteSession();
+                                history.push('/');
+
+                            }
+                        }
+                        }
                         overrides={{
                             List: {
                                 style: {
@@ -41,29 +53,26 @@ const UserInfo: React.FunctionComponent<UserInfoProps> = ({ data = MOCK_USER }) 
                             },
                             Option: {
                                 props: {
-                                    getItemLabel: (item: { label: string }) => item.label,
-                                    
-                                    
+                                    getItemLabel: (item: { label: string }) => {
+                                        return item.label
+                                    },
+
+
                                 },
                             },
-                        }}                       
+                        }}
                     />
                 </div>
             )}
             placement={PLACEMENT.rightTop}
             autoFocus
         >
-            
-            <Button 
-            kind={KIND.tertiary}
-            endEnhancer={() => <ArrowMenu size={24}/>}>
+
+            <Button
+                kind={KIND.tertiary}
+                endEnhancer={() => <ArrowMenu size={24} />}>
                 {dataUser(data)}
             </Button>
-            
-            {/* <StyledLink href="javascript:void(0);" tabIndex={0} >
-                {dataUser(data)}
-            </StyledLink> */}
-            
         </StatefulPopover>
 
     )

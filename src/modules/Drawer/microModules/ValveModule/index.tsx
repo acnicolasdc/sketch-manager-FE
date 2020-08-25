@@ -17,6 +17,12 @@ const ValveModule: React.FunctionComponent<ValveProps> = (
   const [selectedContextMenu, setSelectedContextMenu] = React.useState<any>({});
   const [openSubMenu, setOpenSubMenu] = React.useState<boolean>(false);
   const { deleteValves, updateValves, valves } = React.useContext(StoreContext);
+  
+  const changeSubMenuState = (isActive:boolean) => {
+    if (openSubMenu !== isActive) {
+      setOpenSubMenu(isActive);
+    } 
+  }
 
   React.useEffect(() => {
     if (selected !== selectedContextMenu.id ) {
@@ -33,7 +39,7 @@ const ValveModule: React.FunctionComponent<ValveProps> = (
         position: mousePosition,
         id
       });
-      setOpenSubMenu(true);
+      changeSubMenuState(true);
     }
   }
 
@@ -46,7 +52,7 @@ const ValveModule: React.FunctionComponent<ValveProps> = (
   const handleOptionSelected = (option: string) => {
     if (option === 'delete') deleteElement();
     setSelectedContextMenu({});
-    setOpenSubMenu(false);
+    changeSubMenuState(false);
     selectValve('');
   };
 
@@ -66,6 +72,7 @@ const ValveModule: React.FunctionComponent<ValveProps> = (
             key={element.id}
             shapeProps={element}
             isSelected={element.id === selected}
+            onDragStart={()=>changeSubMenuState(false)}
             onSelect={(e: any) => handlerClick(e, element.id)}
             onChange={(newAttrs: object) => {
               const rects = valves.slice();

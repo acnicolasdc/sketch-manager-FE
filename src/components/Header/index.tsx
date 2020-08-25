@@ -3,9 +3,9 @@ import { StyledLink } from 'baseui/link';
 import {Unstable_AppNavBar as AppNavBar} from 'baseui/app-nav-bar';
 import mainNav from '../Header/utils/mainNav';
 import userNav from '../Header/utils/userNav';
-import {ContainerNav,LogoStyle} from './Header.style';
+import {ContainerNav,LogoStyle, ContainerLeftStyle, PointsStyle,SubTitleStyle} from './Header.style';
 import { SessionContext } from 'providers/session';
-
+import { useHistory } from "react-router-dom";
 
 
 
@@ -34,7 +34,7 @@ function isActive(
 export default () => {
     const [activeNavItem, setActiveNavItem] = React.useState<any>(null);
     const { deleteSession } = useContext(SessionContext);
-
+    const history = useHistory();
     const appDisplayImage = (
         <StyledLink 
             $style={{
@@ -46,7 +46,11 @@ export default () => {
             }}
             href={'/'}
         >
-        <LogoStyle>ConEdison</LogoStyle> 
+        <ContainerLeftStyle>
+            <LogoStyle>ConEdison</LogoStyle> 
+            <PointsStyle>.......</PointsStyle>
+            <SubTitleStyle>EVERYTHING MATTERS</SubTitleStyle>
+        </ContainerLeftStyle>   
         </StyledLink>
     );
 
@@ -71,6 +75,7 @@ export default () => {
                                 }
                                 if(item.label === 'Log out'){
                                     deleteSession();
+                                    history.push('/');
                                     
                                 }
                                 

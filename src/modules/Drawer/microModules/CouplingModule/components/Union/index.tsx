@@ -6,9 +6,10 @@ export interface UnionProps {
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
+    onDragStart?: (e:any) => void;
 };
 
-const Union: React.FunctionComponent <UnionProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const Union: React.FunctionComponent <UnionProps> = ({ shapeProps, isSelected, onSelect, onChange, onDragStart }) => {
   const ijRef = React.useRef<HTMLHeadingElement | any>();
   const ijeRef = React.useRef<HTMLHeadingElement | any>();
 
@@ -37,6 +38,7 @@ const Union: React.FunctionComponent <UnionProps> = ({ shapeProps, isSelected, o
     onContextMenu={onSelect}
     onClick={onSelect}
     onTap={onSelect}
+    onDragStart={onDragStart}
     draggable
     >
     <Line

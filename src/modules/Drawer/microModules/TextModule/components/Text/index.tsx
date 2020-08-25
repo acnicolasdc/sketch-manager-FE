@@ -6,9 +6,10 @@ export interface LabelProps {
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
+    onDragStart?: (e:any) => void;    
 };
 
-const Label: React.FunctionComponent <LabelProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const Label: React.FunctionComponent <LabelProps> = ({ shapeProps, isSelected, onSelect, onChange, onDragStart }) => {
   const textRef = React.useRef<HTMLHeadingElement | any>();
   const texRef = React.useRef<HTMLHeadingElement | any>();
 
@@ -25,6 +26,7 @@ const Label: React.FunctionComponent <LabelProps> = ({ shapeProps, isSelected, o
         onContextMenu={onSelect}
         onClick={onSelect}
         onTap={onSelect}
+        onDragStart={onDragStart}
         ref={textRef}
         {...shapeProps}
         draggable

@@ -26,6 +26,12 @@ const CouplingModule: React.FunctionComponent<RectangleProps> = (
     }
   }, [selected, selectedContextMenu]);
 
+  const changeSubMenuState = (isActive:boolean) => {
+    if (openSubMenu !== isActive) {
+      setOpenSubMenu(isActive);
+    } 
+  }
+
   const handlerClick = (e: any, id: any) => {
     selectCoupling(id);
     if (e.type === 'contextmenu') {
@@ -35,7 +41,7 @@ const CouplingModule: React.FunctionComponent<RectangleProps> = (
         position: mousePosition,
         id
       });
-      setOpenSubMenu(true);
+      changeSubMenuState(true);
     }
   }
 
@@ -48,7 +54,7 @@ const CouplingModule: React.FunctionComponent<RectangleProps> = (
   const handleOptionSelected = (option: string) => {
     if (option === 'delete') deleteElement();
     setSelectedContextMenu({});
-    setOpenSubMenu(false);
+    changeSubMenuState(false);
     selectCoupling('');
   };
 
@@ -70,6 +76,7 @@ const CouplingModule: React.FunctionComponent<RectangleProps> = (
               shapeProps={element}
               isSelected={element.id === selected}
               onSelect={(e: any) => handlerClick(e, element.id)}
+              onDragStart={()=>changeSubMenuState(false)}
               onChange={(newAttrs: object) => {
                 const rects = couplings.slice();
                 rects[i] = newAttrs;
@@ -85,6 +92,7 @@ const CouplingModule: React.FunctionComponent<RectangleProps> = (
             shapeProps={element}
             isSelected={element.id === selected}
             onSelect={(e: any) => handlerClick(e, element.id)}
+            onDragStart={()=>setOpenSubMenu(false)}
             onChange={(newAttrs: object) => {
               const rects = couplings.slice();
               rects[i] = newAttrs;

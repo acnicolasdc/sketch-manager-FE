@@ -25,6 +25,12 @@ const ReducerModule: React.FunctionComponent<ReducerProps> = (
     }
   }, [selected, selectedContextMenu]);
 
+  const changeSubMenuState = (isActive:boolean) => {
+    if (openSubMenu !== isActive) {
+      setOpenSubMenu(isActive);
+    } 
+  }
+
   const handlerClick = (e: any, id: any) => {
     selectReducer(id);
     if (e.type === 'contextmenu') {
@@ -34,7 +40,7 @@ const ReducerModule: React.FunctionComponent<ReducerProps> = (
         position: mousePosition,
         id
       });
-      setOpenSubMenu(true);
+      changeSubMenuState(true);
     }
   }
 
@@ -47,7 +53,7 @@ const ReducerModule: React.FunctionComponent<ReducerProps> = (
   const handleOptionSelected = (option: string) => {
     if (option === 'delete') deleteElement();
     setSelectedContextMenu({});
-    setOpenSubMenu(false);
+    changeSubMenuState(false);
     selectReducer('');
   };
 
@@ -68,6 +74,7 @@ const ReducerModule: React.FunctionComponent<ReducerProps> = (
             shapeProps={element}
             isSelected={element.id === selected}
             onSelect={(e: any) => handlerClick(e, element.id)}
+            onDragStart={()=>changeSubMenuState(false)}
             onChange={(newAttrs: object) => {
               const rects = reducers.slice();
               rects[i] = newAttrs;
