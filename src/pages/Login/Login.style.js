@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 
 export const GeneralSection = styled.div`
-
   margin: 0;
   font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: flex;

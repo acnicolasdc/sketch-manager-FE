@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { StyledLink } from 'baseui/link';
 import {Unstable_AppNavBar as AppNavBar} from 'baseui/app-nav-bar';
 import mainNav from '../Header/utils/mainNav';
 import userNav from '../Header/utils/userNav';
 import {ContainerNav} from './Header.style';
+import { SessionContext } from 'providers/session';
+import { useHistory } from 'react-router';
+
+
 
 
 function isActive(
@@ -30,6 +34,8 @@ function isActive(
 }
 export default () => {
     const [activeNavItem, setActiveNavItem] = React.useState<any>(null);
+    const { deleteSession } = useContext(SessionContext);
+    const history = useHistory();
 
     const appDisplayImage = (
         <StyledLink 
@@ -59,13 +65,16 @@ export default () => {
                                     isActive(mainNav, item, activeNavItem)
                                 );
                             }}
-                            onNavItemSelect={({ item }) => {
-                                console.log(item, activeNavItem);
-                                console.log(item===activeNavItem);
+                            onNavItemSelect={({item:{item}}: { item: any }) => {
+                                console.log(item)
                                 if (item === activeNavItem){
                                     setActiveNavItem(null);
                                 } else{
                                     setActiveNavItem(item);
+                                }
+                                if(item.label === 'Log out'){
+                                    deleteSession();
+                                    
                                 }
                                 
                                 
