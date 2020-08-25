@@ -7,9 +7,10 @@ export interface DripProps {
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
+    onDragStart?: (e:any) => void;    
 };
 
-const Drip: React.FunctionComponent <DripProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const Drip: React.FunctionComponent <DripProps> = ({ shapeProps, isSelected, onSelect, onChange, onDragStart}) => {
   
   const shapeRef = React.useRef<HTMLHeadingElement | any>();
   const trRef = React.useRef<HTMLHeadingElement | any>();
@@ -52,6 +53,7 @@ const Drip: React.FunctionComponent <DripProps> = ({ shapeProps, isSelected, onS
           onContextMenu={onSelect}
           onClick={onSelect}
           onTap={onSelect}
+          onDragStart={onDragStart}
           draggable
           onDragEnd={()=>{
             const node: any = shapeRef.current;

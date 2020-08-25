@@ -6,9 +6,10 @@ export interface ReducerProps {
     isSelected?: boolean;
     onChange?: any;
     onSelect?: (e:any) => void;
+    onDragStart?: (e:any) => void;    
 };
 
-const Reducer: React.FunctionComponent <ReducerProps> = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const Reducer: React.FunctionComponent <ReducerProps> = ({ shapeProps, isSelected, onSelect, onChange, onDragStart }) => {
   
   const shapeRef = React.useRef<HTMLHeadingElement | any>();
   const trRef = React.useRef<HTMLHeadingElement | any>();
@@ -49,6 +50,7 @@ const Reducer: React.FunctionComponent <ReducerProps> = ({ shapeProps, isSelecte
           onContextMenu={onSelect}
           onClick={onSelect}
           onTap={onSelect}
+          onDragStart={onDragStart}
           draggable
           points={[0, 30, 15, 15, 30, 30]}
           closed
