@@ -19,7 +19,7 @@
     "@types/styletron-standard": "^2.0.1",
     "baseui": "^9.91.0",
     "html2canvas": "^1.0.0-rc.6",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "konva": "^7.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
